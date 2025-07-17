@@ -6,5 +6,9 @@ export default defineConfig({
       '@': '/src',
     },
   },
-  test: {},
+  test: {
+    coverage: {
+      include: ['src'],
+    },
+  },
 })

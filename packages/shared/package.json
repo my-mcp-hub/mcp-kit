@@ -36,7 +36,7 @@
     "build:types": "tsc",
     "build": "npm run clean:dist && npm run build:types && rolldown -c rolldown.config.ts",
     "test": "vitest run",
-    "coverage": "rimraf coverage && npm run test"
+    "coverage": "rimraf coverage && vitest run --coverage"
   },
   "bugs": {
     "url": "https://github.com/my-mcp-hub/mcp-kit/issues"
