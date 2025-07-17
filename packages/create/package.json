@@ -1,10 +1,9 @@
 {
-  "name": "@mcp-tool-kit/shared",
+  "name": "create-mcp-kit",
   "version": "0.0.0",
-  "description": "mcp tool kit shared",
-  "type": "module",
+  "description": "watermark design core",
   "author": "zhensherlock",
-  "homepage": "https://github.com/my-mcp-hub/mcp-kit/tree/master/packages/shared#readme",
+  "homepage": "https://github.com/watermark-design/watermark/tree/master/packages/core#readme",
   "keywords": [
     "mcp",
     "mcp server",
@@ -33,13 +32,13 @@
   },
   "scripts": {
     "clean:dist": "rimraf dist",
-    "build:types": "tsc",
-    "build": "npm run clean:dist && npm run build:types && rolldown -c rolldown.config.ts",
-    "test": "vitest run",
-    "coverage": "rimraf coverage && npm run test"
+    "build": "npm run clean:dist && rollup -c --bundleConfigAsCjs --environment NODE_ENV:production",
+    "test": "jest --no-cache"
   },
   "bugs": {
     "url": "https://github.com/my-mcp-hub/mcp-kit/issues"
   },
-  "dependencies": {}
+  "dependencies": {
+    "@mcp-tool-kit/shared": "workspace:^"
+  }
 }

@@ -2,9 +2,11 @@
   "name": "mcp-kit",
   "version": "1.0.0",
   "description": "mcp tool kit",
+  "type": "module",
   "scripts": {
     "prepare": "husky",
-    "test": "pnpm -r --aggregate-output --filter=./packages/shared build",
+    "build": "pnpm -r --aggregate-output --filter=./packages/shared build",
+    "test": "pnpm -r --aggregate-output --filter=./packages/shared test",
     "changeset": "changeset",
     "version": "changeset version"
   },
@@ -43,6 +45,7 @@
     "prettier": "^3.6.2",
     "rimraf": "^6.0.1",
     "rolldown": "1.0.0-beta.27",
-    "typescript": "^5.8.3"
+    "typescript": "^5.8.3",
+    "vitest": "^3.2.4"
   }
 }

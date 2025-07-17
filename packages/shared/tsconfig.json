@@ -5,9 +5,6 @@
     "outDir": "dist/types",
     "declaration": true,
     "sourceMap": true,
-    "paths": {
-      "@/*": ["./src/*"]
-    }
   },
-  "include": ["src"]
+  "include": ["src", "tests", "rolldown.config.ts", "vitest.config.ts"]
 }
