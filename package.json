@@ -1,0 +1,48 @@
+{
+  "name": "mcp-kit",
+  "version": "1.0.0",
+  "description": "mcp tool kit",
+  "scripts": {
+    "prepare": "husky",
+    "test": "pnpm -r --aggregate-output --filter=./packages/shared build",
+    "changeset": "changeset",
+    "version": "changeset version"
+  },
+  "author": "zhensherlock",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/my-mcp-hub/mcp-kit/issues"
+  },
+  "homepage": "https://github.com/my-mcp-hub/mcp-kit",
+  "keywords": [
+    "mcp",
+    "mcp server",
+    "mcp client",
+    "mcp kit",
+    "mcp tool kit",
+    "create mcp",
+    "create mcp server",
+    "create mcp client",
+    "modelcontextprotocol",
+    "typescript"
+  ],
+  "devDependencies": {
+    "@changesets/cli": "^2.29.5",
+    "@commitlint/cli": "^19.8.1",
+    "@commitlint/config-conventional": "^19.8.1",
+    "@rollup/plugin-terser": "^0.4.4",
+    "@rollup/plugin-typescript": "^12.1.4",
+    "@typescript-eslint/eslint-plugin": "^8.37.0",
+    "@typescript-eslint/parser": "^8.37.0",
+    "eslint": "^9.31.0",
+    "eslint-plugin-import": "^2.32.0",
+    "eslint-plugin-prettier": "^5.5.1",
+    "globals": "^16.3.0",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.1.2",
+    "prettier": "^3.6.2",
+    "rimraf": "^6.0.1",
+    "rolldown": "1.0.0-beta.27",
+    "typescript": "^5.8.3"
+  }
+}
