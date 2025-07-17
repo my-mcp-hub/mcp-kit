@@ -1,0 +1,44 @@
+{
+  "name": "@mcp-tool-kit/shared",
+  "version": "0.0.0",
+  "description": "mcp tool kit shared",
+  "author": "zhensherlock",
+  "homepage": "https://github.com/my-mcp-hub/mcp-kit/tree/master/packages/shared#readme",
+  "keywords": [
+    "mcp",
+    "mcp server",
+    "mcp client",
+    "mcp kit",
+    "mcp tool kit",
+    "create mcp",
+    "create mcp server",
+    "create mcp client",
+    "modelcontextprotocol",
+    "typescript"
+  ],
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/",
+    "access": "public"
+  },
+  "license": "MIT",
+  "files": [
+    "dist",
+    "LICENSE",
+    "README.md"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/my-mcp-hub/mcp-kit.git"
+  },
+  "scripts": {
+    "clean:dist": "rimraf dist",
+    "build:types": "tsc",
+    "build": "npm run clean:dist && npm run build:types && rolldown -c rolldown.config.ts",
+    "test": "vitest run",
+    "coverage": "rimraf coverage && npm run test"
+  },
+  "bugs": {
+    "url": "https://github.com/my-mcp-hub/mcp-kit/issues"
+  },
+  "dependencies": {}
+}
