@@ -1,0 +1,36 @@
+name: npm-publish
+
+on:
+  release:
+    types: [created]
+
+jobs:
+  build:
+    if: github.repository == '{{PROJECT_NAME}}'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Install Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          registry-url: https://registry.npmjs.org/
+          cache: npm
+
+      - name: Install Package
+        run: npm i
+
+      - name: Build Package
+        run: npm run build
+
+      - name: Publish NPM Package
+        run: npm publish --provenance --access public
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.npm_token}}
