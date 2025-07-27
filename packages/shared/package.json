@@ -17,6 +17,8 @@
     "modelcontextprotocol",
     "typescript"
   ],
+  "main": "dist/index.js",
+  "types": "dist/types/index.d.ts",
   "publishConfig": {
     "registry": "https://registry.npmjs.org/",
     "access": "public"

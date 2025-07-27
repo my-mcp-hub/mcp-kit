@@ -4,7 +4,7 @@
     "baseUrl": ".",
     "outDir": "dist/types",
     "declaration": true,
-    "sourceMap": true,
+    "sourceMap": true
   },
-  "include": ["src", "tests", "rolldown.config.ts", "vitest.config.ts"]
+  "include": ["src"]
 }

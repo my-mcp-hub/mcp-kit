@@ -11,6 +11,11 @@ export default defineConfig({
     preserveModules: true,
     preserveModulesRoot: 'src',
   },
+  // resolve: {
+  //   alias: {
+  //     '@': './src',
+  //   },
+  // },
   plugins: [terser(), typescript()],
-  external: [],
+  external: ['fs/promises', 'timers/promises', 'path', 'child_process'],
 })
