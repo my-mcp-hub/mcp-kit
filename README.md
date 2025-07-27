@@ -26,6 +26,8 @@ pnpm create mcp-kit@latest
 ```
 
 ## Project Structure
+
+```text
 The generated project will have the following structure:
 
 ├── src/
@@ -38,6 +40,7 @@ The generated project will have the following structure:
 ├── scripts/            # Build and development scripts
 ├── .github/            # GitHub Actions workflows
 └── package.json
+```
 
 ## Development Scripts
 
