@@ -1,5 +1,13 @@
 # @mcp-tool-kit/shared
 
+## 0.0.2
+
+### Patch Changes
+
+- [`9abefd4`](https://github.com/my-mcp-hub/mcp-kit/commit/9abefd459bc593759af596cbbe670771eb183b49) Thanks [@zhensherlock](https://github.com/zhensherlock)! - refactor: rename create folder to create-mcp-kit
+
+- [`a3dee13`](https://github.com/my-mcp-hub/mcp-kit/commit/a3dee1376a7cb99f347f85fed69ff09d839f8a0d) Thanks [@zhensherlock](https://github.com/zhensherlock)! - ci: add build step before npm publish
+
 ## 0.0.1
 
 ### Patch Changes
