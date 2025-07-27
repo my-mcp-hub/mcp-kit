@@ -1,0 +1,49 @@
+name: npm-publish
+
+on:
+  release:
+    types: [created]
+
+jobs:
+  build:
+    if: github.repository == 'my-mcp-hub/mcp-kit'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - name: Get package name
+        id: package
+        run: |
+          echo "PACKAGE_NAME=$(echo $RELEASE_NAME | sed -E 's/^@[^/]+\/(.+)@.+$/\1/')" >> $GITHUB_ENV
+        env:
+          RELEASE_NAME: ${{ github.event.release.name }}
+
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Install Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Install PNPM
+        run: npm i pnpm@latest -g
+
+      - name: Setup npmrc
+        run: echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > .npmrc
+
+      - name: setup pnpm config
+        run: pnpm config set store-dir $PNPM_CACHE_FOLDER
+
+      - name: Install Package
+        run: pnpm install
+
+      - name: Publish NPM Package
+        run: |
+          cd packages/$PACKAGE_NAME
+          pnpm publish --no-git-checks --provenance --access public
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.npm_token}}
