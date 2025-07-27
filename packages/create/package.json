@@ -1,9 +1,13 @@
 {
   "name": "create-mcp-kit",
   "version": "0.0.0",
-  "description": "watermark design core",
+  "description": "create mcp tool kit",
+  "type": "module",
   "author": "zhensherlock",
-  "homepage": "https://github.com/watermark-design/watermark/tree/master/packages/core#readme",
+  "homepage": "https://github.com/my-mcp-hub/mcp-kit/tree/master/packages/create#readme",
+  "bin": {
+    "create-mcp-kit": "./dist/index.js"
+  },
   "keywords": [
     "mcp",
     "mcp server",
@@ -23,6 +27,7 @@
   "license": "MIT",
   "files": [
     "dist",
+    "template",
     "LICENSE",
     "README.md"
   ],
@@ -32,13 +37,26 @@
   },
   "scripts": {
     "clean:dist": "rimraf dist",
-    "build": "npm run clean:dist && rollup -c --bundleConfigAsCjs --environment NODE_ENV:production",
-    "test": "jest --no-cache"
+    "build:types": "tsc --noEmit",
+    "build": "npm run clean:dist && npm run build:types && rolldown -c rolldown.config.ts",
+    "dev": "rolldown -c rolldown.config.ts --watch",
+    "start": "node ./dist/index.js"
   },
   "bugs": {
     "url": "https://github.com/my-mcp-hub/mcp-kit/issues"
   },
   "dependencies": {
-    "@mcp-tool-kit/shared": "workspace:^"
+    "@clack/prompts": "^0.11.0",
+    "@mcp-tool-kit/shared": "workspace:^",
+    "picocolors": "^1.1.1"
+  },
+  "devDependencies": {
+    "@modelcontextprotocol/sdk": "^1.17.0",
+    "@types/express": "^5.0.3",
+    "@types/yargs": "^17.0.33",
+    "express": "^5.1.0",
+    "nanoid": "^5.1.5",
+    "yargs": "^17.7.2",
+    "zod": "^3.25.76"
   }
 }

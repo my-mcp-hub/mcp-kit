@@ -5,9 +5,11 @@
   "type": "module",
   "scripts": {
     "prepare": "husky",
-    "build": "pnpm -r --aggregate-output --filter=./packages/shared build",
-    "test": "pnpm -r --aggregate-output --filter=./packages/shared test",
-    "coverage": "pnpm -r --aggregate-output --filter=./packages/shared coverage",
+    "build": "pnpm -r --aggregate-output --filter=./packages/* build",
+    "dev": "pnpm -r --aggregate-output --filter=./packages/create dev",
+    "start": "pnpm -r --aggregate-output --filter=./packages/create start",
+    "test": "pnpm -r --aggregate-output --filter=./packages/* test",
+    "coverage": "pnpm -r --aggregate-output --filter=./packages/* coverage",
     "changeset": "changeset",
     "version": "changeset version"
   },
