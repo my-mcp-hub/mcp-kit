@@ -41,6 +41,9 @@ jobs:
       - name: Install Package
         run: pnpm install
 
+      - name: Build Package
+        run: pnpm run build
+
       - name: Publish NPM Package
         run: |
           cd packages/$PACKAGE_NAME
