@@ -1,5 +1,12 @@
 # create-mcp-kit
 
+## 0.0.2
+
+### Patch Changes
+
+- Updated dependencies [[`9abefd4`](https://github.com/my-mcp-hub/mcp-kit/commit/9abefd459bc593759af596cbbe670771eb183b49), [`a3dee13`](https://github.com/my-mcp-hub/mcp-kit/commit/a3dee1376a7cb99f347f85fed69ff09d839f8a0d)]:
+  - @mcp-tool-kit/shared@0.0.2
+
 ## 0.0.1
 
 ### Patch Changes
