@@ -36,7 +36,7 @@
   "scripts": {
     "clean:dist": "rimraf dist",
     "build:types": "tsc",
-    "build": "npm run clean:dist && npm run build:types && rolldown -c rolldown.config.ts",
+    "build": "cross-env NODE_ENV=production && npm run clean:dist && npm run build:types && rolldown -c rolldown.config.ts",
     "test": "vitest run",
     "coverage": "rimraf coverage && vitest run --coverage"
   },

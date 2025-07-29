@@ -2,12 +2,14 @@ import terser from '@rollup/plugin-terser'
 import { defineConfig } from 'rolldown'
 import typescript from '@rollup/plugin-typescript'
 
+const isProd = process.env.NODE_ENV === 'production'
+
 export default defineConfig({
   input: 'src/index.ts',
   output: {
     format: 'esm',
     dir: 'dist',
-    sourcemap: true,
+    sourcemap: false,
     preserveModules: true,
     preserveModulesRoot: 'src',
   },
@@ -16,6 +18,6 @@ export default defineConfig({
   //     '@': './src',
   //   },
   // },
-  plugins: [terser(), typescript()],
+  plugins: [isProd && terser(), typescript()],
   external: ['fs/promises', 'timers/promises', 'path', 'child_process'],
 })
