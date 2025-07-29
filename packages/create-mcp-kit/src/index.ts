@@ -100,8 +100,7 @@ ${pc.green('✓')} Project created successfully!
 
 ${pc.cyan('Next steps:')}
   ${pc.dim('cd')} ${group.name}
-  ${pc.dim('npm install')}
-  ${pc.dim('npm run dev')}
+  ${group.install ? '' : `${pc.dim('npm install')}\n  `}${pc.dim('npm run dev')}
 
 Enjoy coding! 🎉
   `)
