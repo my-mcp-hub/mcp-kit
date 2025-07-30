@@ -8,8 +8,6 @@ describe('test project setup file', () => {
     const projectName = 'test'
     const templatePath = join(__dirname, '../../create-mcp-kit/template', 'standard-ts')
     const targetPath = join(__dirname, '../../', projectName)
-    console.log(templatePath)
-    console.log(targetPath)
     await createProject(targetPath, templatePath, { projectName })
     await installDependencies(targetPath)
     rmSync(targetPath, { recursive: true, force: true })
