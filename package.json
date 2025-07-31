@@ -6,8 +6,8 @@
   "scripts": {
     "prepare": "husky",
     "build": "pnpm -r --aggregate-output --filter=./packages/* build",
-    "dev": "pnpm -r --aggregate-output --filter=./packages/create dev",
-    "start": "pnpm -r --aggregate-output --filter=./packages/create start",
+    "dev": "pnpm -r --aggregate-output --filter=./packages/create-mcp-kit dev",
+    "start": "pnpm -r --aggregate-output --filter=./packages/create-mcp-kit start",
     "test": "pnpm -r --aggregate-output --filter=./packages/* test",
     "coverage": "pnpm -r --aggregate-output --filter=./packages/* coverage",
     "changeset": "changeset",
@@ -46,12 +46,14 @@
     "eslint": "^9.32.0",
     "eslint-plugin-import": "^2.32.0",
     "eslint-plugin-prettier": "^5.5.3",
+    "execa": "^9.6.0",
     "globals": "^16.3.0",
     "husky": "^9.1.7",
     "lint-staged": "^16.1.2",
     "prettier": "^3.6.2",
     "rimraf": "^6.0.1",
     "rolldown": "1.0.0-beta.27",
+    "tsx": "^4.20.3",
     "typescript": "^5.8.3",
     "vitest": "^3.2.4"
   }

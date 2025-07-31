@@ -40,7 +40,8 @@
     "build:types": "tsc --noEmit",
     "build": "cross-env NODE_ENV=production && npm run clean:dist && npm run build:types && rolldown -c rolldown.config.ts",
     "dev": "cross-env NODE_ENV=local && rolldown -c rolldown.config.ts --watch",
-    "start": "node ./dist/index.js"
+    "start": "node ./dist/index.js",
+    "test": "vitest run"
   },
   "bugs": {
     "url": "https://github.com/my-mcp-hub/mcp-kit/issues"
