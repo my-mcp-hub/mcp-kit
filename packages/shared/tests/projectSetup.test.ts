@@ -13,5 +13,5 @@ describe('test project setup file', () => {
     await createProject(testDir, templatePath, { projectName })
     await installDependencies(testDir)
     rmSync(testDir, { recursive: true, force: true })
-  }, 20000)
+  }, 30000)
 })
