@@ -1,15 +1,17 @@
+import { tmpdir } from 'os'
 import { join } from 'path'
-import { rmSync } from 'fs'
+import { mkdirSync, rmSync } from 'fs'
 import { describe, test } from 'vitest'
 import { createProject, installDependencies } from '../src'
 
 describe('test project setup file', () => {
   test('should create project', async () => {
     const projectName = 'test'
+    const testDir = join(tmpdir(), `test-shared-${Date.now()}`)
+    mkdirSync(testDir, { recursive: true })
     const templatePath = join(__dirname, '../../create-mcp-kit/template', 'standard-ts')
-    const targetPath = join(__dirname, '../../', projectName)
-    await createProject(targetPath, templatePath, { projectName })
-    await installDependencies(targetPath)
-    rmSync(targetPath, { recursive: true, force: true })
+    await createProject(testDir, templatePath, { projectName })
+    await installDependencies(testDir)
+    rmSync(testDir, { recursive: true, force: true })
   }, 20000)
 })
