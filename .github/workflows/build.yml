@@ -34,3 +34,9 @@ jobs:
 
       - name: Build Package
         run: pnpm run build
+
+      - name: Test Package
+        run: pnpm run coverage
+
+      - name: Coveralls
+        uses: coverallsapp/github-action@v2
