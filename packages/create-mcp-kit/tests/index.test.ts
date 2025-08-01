@@ -9,11 +9,14 @@ describe('test index cli', () => {
     const testDir = join(tmpdir(), `test-cli-${Date.now()}`)
     mkdirSync(testDir, { recursive: true })
     const userInput = ['\x0D', '\x0D', '\x0D', '\x0D', 'y\x0D']
-    const scriptPath = resolve('./src/index.ts')
-    const subprocess = execa('tsx', [scriptPath], {
+    const scriptPath = resolve('./packages/create-mcp-kit/src/index.ts')
+    const subprocess = execa('c8', ['--reporter=lcov', '--reporter=text', 'tsx', scriptPath], {
       // stdio: ['pipe', 'inherit', 'inherit'],
       cwd: testDir,
-      timeout: 30000,
+      timeout: 60000,
+      env: {
+        ...process.env,
+      },
     })
     userInput.forEach((input, index) => {
       setTimeout(
@@ -26,5 +29,5 @@ describe('test index cli', () => {
     const result = await subprocess
     expect(result.stdout).toContain('Project created successfully!')
     rmSync(testDir, { recursive: true, force: true })
-  }, 30000)
+  }, 60000)
 })

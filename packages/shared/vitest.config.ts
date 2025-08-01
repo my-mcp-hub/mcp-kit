@@ -1,10 +1,5 @@
-import { defineConfig } from 'vitest/config'
+import { defineProject } from 'vitest/config'
 
-export default defineConfig({
-  test: {
-    coverage: {
-      provider: 'v8',
-      include: ['src/**/*.ts'],
-    },
-  },
+export default defineProject({
+  test: {},
 })

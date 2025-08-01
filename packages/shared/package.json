@@ -36,9 +36,7 @@
   "scripts": {
     "clean:dist": "rimraf dist",
     "build:types": "tsc",
-    "build": "cross-env NODE_ENV=production && npm run clean:dist && npm run build:types && rolldown -c rolldown.config.ts",
-    "test": "vitest run",
-    "coverage": "rimraf coverage && vitest run --coverage"
+    "build": "cross-env NODE_ENV=production && npm run clean:dist && npm run build:types && rolldown -c rolldown.config.ts"
   },
   "bugs": {
     "url": "https://github.com/my-mcp-hub/mcp-kit/issues"
