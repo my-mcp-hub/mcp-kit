@@ -1,5 +1,23 @@
 # @mcp-tool-kit/shared
 
+## 0.0.3
+
+### Patch Changes
+
+- [`7bb71e2`](https://github.com/my-mcp-hub/mcp-kit/commit/7bb71e2c1eadabacebe865015cc4edad1922a2ff) Thanks [@zhensherlock](https://github.com/zhensherlock)! - test: use temporary directory for test isolation
+
+- [`8de8d2e`](https://github.com/my-mcp-hub/mcp-kit/commit/8de8d2eb47d1347cc92b99ea0e55c80dcee5c066) Thanks [@zhensherlock](https://github.com/zhensherlock)! - ci: add test steps to build and publish workflows
+
+- [`febe839`](https://github.com/my-mcp-hub/mcp-kit/commit/febe83995330490ac200e86a6843ebf59465a1d3) Thanks [@zhensherlock](https://github.com/zhensherlock)! - refactor: remove unused string utilities
+
+- [`04dac7d`](https://github.com/my-mcp-hub/mcp-kit/commit/04dac7dc66948548bf29d2bc1e6ebe3ef3463c30) Thanks [@zhensherlock](https://github.com/zhensherlock)! - test: increase test timeout to 30 seconds
+
+- [`7114ef3`](https://github.com/my-mcp-hub/mcp-kit/commit/7114ef3fbd4b3e78e069633c3ff746b9325df998) Thanks [@zhensherlock](https://github.com/zhensherlock)! - test: add project setup tests
+
+- [`3bde48f`](https://github.com/my-mcp-hub/mcp-kit/commit/3bde48f49b4897e0c73078cf412487056af9eb52) Thanks [@zhensherlock](https://github.com/zhensherlock)! - test: centralize vitest config and update test setup
+
+- [`f9a2fe3`](https://github.com/my-mcp-hub/mcp-kit/commit/f9a2fe317b6b71370c2088a34838c566bccfdc83) Thanks [@zhensherlock](https://github.com/zhensherlock)! - test: update vitest config to use v8 coverage provider
+
 ## 0.0.2
 
 ### Patch Changes
