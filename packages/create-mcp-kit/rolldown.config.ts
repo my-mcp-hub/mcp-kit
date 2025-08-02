@@ -13,5 +13,14 @@ export default defineConfig({
     sourcemap: isDev,
   },
   plugins: [isProd && terser(), typescript()],
-  external: ['@clack/prompts', 'picocolors', 'fs/promises', 'timers/promises', 'path', 'child_process', 'url'],
+  external: [
+    '@clack/prompts',
+    'picocolors',
+    'fs/promises',
+    'timers/promises',
+    'path',
+    'child_process',
+    'url',
+    '@mcp-tool-kit/shared',
+  ],
 })
