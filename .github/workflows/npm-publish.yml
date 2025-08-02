@@ -42,7 +42,7 @@ jobs:
         run: pnpm install
 
       - name: Test Package
-        run: pnpm run test
+        run: pnpm run coverage
 
       - name: Build Package
         run: pnpm run build
