@@ -41,11 +41,11 @@ jobs:
       - name: Install Package
         run: pnpm install
 
-      - name: Test Package
-        run: pnpm run coverage
-
       - name: Build Package
         run: pnpm run build
+
+      - name: Test Package
+        run: pnpm run test
 
       - name: Publish NPM Package
         run: |
