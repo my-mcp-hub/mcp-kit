@@ -1,6 +1,12 @@
 # create-mcp-kit
 A CLI tool to create MCP (Model Context Protocol) applications with ease.
 
+[![][npm-release-shield]][npm-release-link]
+[![][codecov-shield]][codecov-link]
+[![][github-release-date-shield]][github-release-date-link]
+[![][github-action-build-shield]][github-action-build-link]
+[![][github-license-shield]][github-license-link]
+
 ## Features
 - 🚀 Quick project scaffolding
 - 📦 TypeScript support out of the box
@@ -123,3 +129,14 @@ This project exists thanks to all the people who contribute.
 ## License
 
 [MIT](LICENSE) © MichaelSun
+
+[npm-release-link]: https://www.npmjs.com/package/create-mcp-kit
+[npm-release-shield]: https://img.shields.io/npm/v/create-mcp-kit?color=1677FF&labelColor=black&logo=npm&logoColor=white&style=flat-square
+[codecov-link]: https://coveralls.io/github/my-mcp-hub/mcp-kit?branch=main
+[codecov-shield]: https://img.shields.io/coverallsCoverage/github/my-mcp-hub/mcp-kit?color=1677FF&labelColor=black&style=flat-square&logo=codecov&logoColor=white
+[github-release-date-link]: https://github.com/my-mcp-hub/mcp-kit/releases
+[github-release-date-shield]: https://img.shields.io/github/release-date/my-mcp-hub/mcp-kit?color=1677FF&labelColor=black&style=flat-square
+[github-action-build-link]: https://github.com/my-mcp-hub/mcp-kit/actions/workflows/build.yml
+[github-action-build-shield]: https://img.shields.io/github/actions/workflow/status/my-mcp-hub/mcp-kit/build.yml?branch=main&color=1677FF&label=build&labelColor=black&logo=githubactions&logoColor=white&style=flat-square
+[github-license-link]: https://github.com/my-mcp-hub/mcp-kit/blob/main/LICENSE
+[github-license-shield]: https://img.shields.io/github/license/my-mcp-hub/mcp-kit?color=1677FF&labelColor=black&style=flat-square
