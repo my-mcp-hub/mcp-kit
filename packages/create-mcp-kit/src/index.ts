@@ -32,7 +32,7 @@ const group = await clack.group(
         message: 'Project language:',
         options: [
           { value: 'ts', label: pc.magenta('TypeScript') },
-          // { value: 'js', label: pc.blue('JavaScript') },
+          { value: 'js', label: pc.blue('JavaScript') },
         ],
       }),
     template: () =>
