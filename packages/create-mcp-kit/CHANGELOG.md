@@ -1,5 +1,18 @@
 # create-mcp-kit
 
+## 0.0.3
+
+### Patch Changes
+
+- [`08b43e7`](https://github.com/my-mcp-hub/mcp-kit/commit/08b43e7ab828cec504472142163c84973fa19c77) Thanks [@zhensherlock](https://github.com/zhensherlock)! - feat: add standard-js template
+
+- [`c4060a8`](https://github.com/my-mcp-hub/mcp-kit/commit/c4060a8d70ffc6588fc7c368af53fd6e4d829a20) Thanks [@zhensherlock](https://github.com/zhensherlock)! - feat: update standard-ts template
+
+- [`fa0b144`](https://github.com/my-mcp-hub/mcp-kit/commit/fa0b1443c37a5ff07d63930f3951ee02600b1cea) Thanks [@zhensherlock](https://github.com/zhensherlock)! - chore: update dependencies
+
+- Updated dependencies [[`fa0b144`](https://github.com/my-mcp-hub/mcp-kit/commit/fa0b1443c37a5ff07d63930f3951ee02600b1cea)]:
+  - @mcp-tool-kit/shared@0.0.4
+
 ## 0.0.2
 
 ### Patch Changes
