@@ -27,6 +27,9 @@ jobs:
       - name: Install Package
         run: npm i
 
+      - name: Lint
+        run: npm run lint
+
       - name: Build Package
         run: npm run build
 

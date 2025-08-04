@@ -9,7 +9,7 @@ const serverParams = new StdioClientTransport({
     '--reporter=lcov',
     '--reporter=text',
     'tsx',
-    './src/index.ts'
+    './src/index.ts',
   ],
   env: {
     ...process.env as Record<string, string>,
