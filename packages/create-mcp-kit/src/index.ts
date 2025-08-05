@@ -56,7 +56,7 @@ const group = await clack.group(
   },
 )
 
-const templatePath = join(__dirname, '../template', `${group.template}-${group.language}`)
+const templatePath = join(__dirname, '../template', `${group.type}-${group.template}-${group.language}`)
 const targetPath = resolve(process.cwd(), group.name as string)
 
 try {
