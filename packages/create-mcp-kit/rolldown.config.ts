@@ -22,5 +22,6 @@ export default defineConfig({
     'child_process',
     'url',
     '@mcp-tool-kit/shared',
+    'gradient-string',
   ],
 })

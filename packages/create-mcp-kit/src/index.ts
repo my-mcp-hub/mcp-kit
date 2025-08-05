@@ -1,14 +1,23 @@
 #!/usr/bin/env node
-import * as clack from '@clack/prompts'
-import pc from 'picocolors'
 import { fileURLToPath } from 'url'
 import { dirname, join, resolve } from 'path'
 import { stat } from 'fs/promises'
+import * as clack from '@clack/prompts'
+import pc from 'picocolors'
+import gradient from 'gradient-string'
 import { sleep, createProject, installDependencies } from '@mcp-tool-kit/shared'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
-clack.intro(pc.inverse(' create-mcp-kit '))
+
+clack.intro(
+  gradient([
+    { color: '#a855f7', pos: 0 },
+    { color: '#3b82f6', pos: 0.4 },
+    { color: '#06b6d4', pos: 0.8 },
+    { color: '#10b981', pos: 1 },
+  ])('MCP Kit - The Modern Context Protocol Builder'),
+)
 
 const group = await clack.group(
   {
