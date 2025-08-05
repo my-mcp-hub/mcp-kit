@@ -48,7 +48,7 @@ const group = await clack.group(
       clack.select({
         message: 'Project template:',
         options: [
-          { value: 'standard', label: pc.magenta('Standard') },
+          { value: 'standard', label: pc.magenta('Standard (recommended)') },
           // { value: 'custom', label: pc.blue('Custom') },
         ],
       }),
