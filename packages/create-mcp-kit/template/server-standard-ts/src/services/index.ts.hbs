@@ -2,8 +2,12 @@ import { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js'
 import { registerTools } from '@/tools'
 import { registerResources } from '@/resources'
 import { registerPrompts } from '@/prompts'
+{{#if (includes transports 'stdio')}}
 import { stdioServer } from './stdio'
+{{/if}}
+{{#if (or (includes transports 'streamable') (includes transports 'sse'))}}
 import { webServer } from './web'
+{{/if}}
 import type { OptionsType } from '@/types'
 
 const createServer = (options: OptionsType) => {
@@ -16,13 +20,17 @@ const createServer = (options: OptionsType) => {
   registerPrompts(server)
   return server
 }
+{{#if (includes transports 'stdio')}}
 
 export async function startStdioServer(options: OptionsType) {
   const server = createServer(options)
   await stdioServer(server)
 }
+{{/if}}
+{{#if (or (includes transports 'streamable') (includes transports 'sse'))}}
 
 export async function startWebServer(options: OptionsType) {
   const server = createServer(options)
   await webServer(server, options)
 }
+{{/if}}

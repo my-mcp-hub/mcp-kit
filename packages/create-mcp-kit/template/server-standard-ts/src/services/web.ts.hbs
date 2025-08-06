@@ -1,8 +1,15 @@
+{{#if (includes transports 'streamable')}}
 import { nanoid } from 'nanoid'
+{{/if}}
+{{#if (or (includes transports 'streamable') (includes transports 'sse'))}}
 import express from 'express'
+{{#if (includes transports 'streamable')}}
 import { isInitializeRequest } from '@modelcontextprotocol/sdk/types.js'
 import { StreamableHTTPServerTransport } from '@modelcontextprotocol/sdk/server/streamableHttp.js'
+{{/if}}
+{{#if (includes transports 'sse')}}
 import { SSEServerTransport } from '@modelcontextprotocol/sdk/server/sse.js'
+{{/if}}
 import type { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js'
 import type { OptionsType } from '@/types'
 
@@ -11,9 +18,15 @@ export async function webServer(server: McpServer, options: OptionsType) {
   app.use(express.json())
 
   const transports = {
+{{#if (includes transports 'streamable')}}
     streamable: {} as Record<string, StreamableHTTPServerTransport>,
+{{/if}}
+{{#if (includes transports 'sse')}}
     sse: {} as Record<string, SSEServerTransport>,
+{{/if}}
   }
+{{#if (includes transports 'streamable')}}
+
   app.post('/mcp', async (req, res) => {
     const sessionId = req.headers['mcp-session-id'] as string | undefined
     let transport: StreamableHTTPServerTransport
@@ -63,6 +76,8 @@ export async function webServer(server: McpServer, options: OptionsType) {
   app.get('/mcp', handleSessionRequest)
 
   app.delete('/mcp', handleSessionRequest)
+{{/if}}
+{{#if (includes transports 'sse')}}
 
   app.get('/sse', async (req, res) => {
     const transport = new SSEServerTransport('/messages', res)
@@ -85,6 +100,8 @@ export async function webServer(server: McpServer, options: OptionsType) {
     }
   })
 
+{{/if}}
   app.listen(options.port)
-  console.log(`MCP server started on port ${options.port}. SSE endpoint: /sse, streamable endpoint: /mcp`)
+  console.log(`MCP server started on port ${options.port}.{{#if (includes transports 'sse')}} SSE endpoint: /sse{{/if}}{{#if (includes transports 'streamable')}} streamable endpoint: /mcp{{/if}}`)
 }
+{{/if}}

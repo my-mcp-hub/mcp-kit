@@ -1,16 +1,14 @@
-name: npm-publish
+name: build
 
 on:
-  release:
-    types: [created]
+  push:
+    branches:
+      - main
 
 jobs:
   build:
-    if: github.repository == '{{PROJECT_NAME}}'
+    if: github.repository == '{{projectName}}'
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      id-token: write
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -21,7 +19,6 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 22
-          registry-url: https://registry.npmjs.org/
           cache: npm
 
       - name: Install Package
@@ -33,7 +30,8 @@ jobs:
       - name: Build Package
         run: npm run build
 
-      - name: Publish NPM Package
-        run: npm publish --provenance --access public
-        env:
-          NODE_AUTH_TOKEN: ${{secrets.npm_token}}
+      - name: Test Package
+        run: npm run coverage
+
+      - name: Coveralls
+        uses: coverallsapp/github-action@v2
