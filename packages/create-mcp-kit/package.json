@@ -49,6 +49,7 @@
     "@clack/prompts": "^0.11.0",
     "@mcp-tool-kit/shared": "workspace:^",
     "gradient-string": "^3.0.0",
+    "handlebars": "^4.7.8",
     "picocolors": "^1.1.1"
   },
   "devDependencies": {

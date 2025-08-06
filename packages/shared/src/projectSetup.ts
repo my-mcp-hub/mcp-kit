@@ -1,7 +1,11 @@
 import { setTimeout as sleep } from 'timers/promises'
-import { readdir, readFile, rename, stat, writeFile, cp, mkdir } from 'fs/promises'
-import path from 'path'
+import { readdir, readFile, rename, stat, writeFile, cp, mkdir, unlink } from 'fs/promises'
+import { join } from 'path'
 import { spawn } from 'child_process'
+import Handlebars from 'handlebars'
+import { registerHandlebarsHelpers } from '@/handlebars/register'
+
+registerHandlebarsHelpers()
 
 async function renameFiles(currentDir: string) {
   const renameMap = {
@@ -18,31 +22,39 @@ async function renameFiles(currentDir: string) {
     if (!(item in renameMap)) {
       continue
     }
-    await rename(path.join(currentDir, item), path.join(currentDir, renameMap[item as keyof typeof renameMap]))
+    await rename(join(currentDir, item), join(currentDir, renameMap[item as keyof typeof renameMap]))
   }
 }
 
-async function replaceVariables(
+async function compileTemplateFiles(
   currentDir: string,
-  replacements: {
+  templateData: {
     projectName: string
+    year: string
+    transports: string[]
+    plugins: string[]
+    components: string[]
   },
 ) {
-  const variables = {
-    '{{PROJECT_NAME}}': replacements.projectName,
-    '{{YEAR}}': new Date().getFullYear().toString(),
-  }
   const items = await readdir(currentDir, { recursive: true })
   for (const item of items) {
-    const itemPath = path.join(currentDir, item)
+    const itemPath = join(currentDir, item)
     const itemStat = await stat(itemPath)
     if (itemStat.isDirectory()) {
       continue
     }
-    for (const [key, value] of Object.entries(variables)) {
-      const content = await readFile(itemPath, 'utf-8')
-      const regex = new RegExp(key, 'g')
-      const newContent = content.replace(regex, value)
+    const content = await readFile(itemPath, 'utf-8')
+    const template = Handlebars.compile(content)
+    const newContent = template(templateData)
+    if (newContent.trim() === '') {
+      await unlink(itemPath)
+      continue
+    }
+    if (itemPath.endsWith('.hbs')) {
+      const newItemPath = itemPath.slice(0, -4)
+      await writeFile(newItemPath, newContent, 'utf-8')
+      await unlink(itemPath)
+    } else {
       await writeFile(itemPath, newContent, 'utf-8')
     }
   }
@@ -70,14 +82,52 @@ export function installDependencies(currentDir: string) {
 export async function createProject(
   targetPath: string,
   templatePath: string,
-  replacements: {
+  templateData: {
     projectName: string
+    year: string
+    transports: string[]
+    plugins: string[]
+    components: string[]
   },
 ) {
   await mkdir(targetPath, { recursive: true })
-  await cp(templatePath, targetPath, { recursive: true })
+  await cp(templatePath, targetPath, {
+    recursive: true,
+    filter: () => {
+      // const relativePath = relative(templatePath, src)
+      // const fileName = basename(src)
+      // console.log('relativePath', relativePath)
+      // console.log('fileName', fileName)
+      // if (plugins === null) {
+      //   return true
+      // }
+      // if (!plugins.includes('github-action') && relativePath.startsWith('_github')) {
+      //   return false
+      // }
+      // if (
+      //   !plugins.includes('vitest') &&
+      //   (relativePath.startsWith('tests') ||
+      //     ['vitest.config.js', 'vitest.setup.js', 'vitest.config.ts', 'vitest.setup.ts'].includes(relativePath))
+      // ) {
+      //   return false
+      // }
+      // if (
+      //   !plugins.includes('style') &&
+      //   ['eslint.config.js', '_prettierrc', 'lint-staged.config.js', '_husky/pre-commit'].includes(relativePath)
+      // ) {
+      //   return false
+      // }
+      // if (!plugins.includes('commitlint') && ['commitlint.config.js', '_husky/commit-msg'].includes(relativePath)) {
+      //   return false
+      // }
+      // if (!plugins.includes('changelog') && ['changelog-option.js'].includes(relativePath)) {
+      //   return false
+      // }
+      return true
+    },
+  })
   await renameFiles(targetPath)
-  await replaceVariables(targetPath, replacements)
+  await compileTemplateFiles(targetPath, templateData)
 }
 
 export { sleep }

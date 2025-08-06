@@ -41,5 +41,7 @@
   "bugs": {
     "url": "https://github.com/my-mcp-hub/mcp-kit/issues"
   },
-  "dependencies": {}
+  "dependencies": {
+    "handlebars": "^4.7.8"
+  }
 }

@@ -19,5 +19,5 @@ export default defineConfig({
   //   },
   // },
   plugins: [isProd && terser(), typescript()],
-  external: ['fs/promises', 'timers/promises', 'path', 'child_process'],
+  external: ['fs/promises', 'timers/promises', 'path', 'child_process', 'handlebars'],
 })
