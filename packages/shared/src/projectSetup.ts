@@ -9,11 +9,7 @@ registerHandlebarsHelpers()
 
 async function renameFiles(currentDir: string) {
   const renameMap = {
-    _env: '.env',
-    _gitignore: '.gitignore',
     _git: '.git',
-    _nvmrc: '.nvmrc',
-    _prettierrc: '.prettierrc',
     _husky: '.husky',
     _github: '.github',
   } as const
