@@ -12,7 +12,7 @@ import { getOptions } from './utils/index.js'
 import 'dotenv/config'
 import pkg from '../package.json' with { type: 'json' }
 
-const name = 'node-mcp-server'
+const name = '{{projectName}}'
 
 const argv = await yargs()
   .scriptName(name)

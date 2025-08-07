@@ -1,13 +1,18 @@
+{{#if (includes plugins 'style')}}
 import importPlugin from 'eslint-plugin-import'
 import prettierPlugin from 'eslint-plugin-prettier'
 import globals from 'globals'
 
 export default [
   {
-    ignores: ['**/build', '**/node_modules', '**/.*', '**/*.d.ts', '.husky/'],
+    ignores: ['**/build', '**/node_modules', '**/.*', '.husky/'],
   },
   {
+  {{#if (includes plugins 'vitest')}}
     files: ['src/**/*.js', 'tests/**/*.js'],
+  {{else}}
+    files: ['src/**/*.js'],
+  {{/if}}
   },
   {
     languageOptions: {
@@ -40,3 +45,4 @@ export default [
     },
   },
 ]
+{{/if}}

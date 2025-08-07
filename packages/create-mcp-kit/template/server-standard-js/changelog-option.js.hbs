@@ -1,3 +1,4 @@
+{{#if (includes plugins 'changelog')}}
 import compareFunc from 'compare-func'
 
 export default {
@@ -85,3 +86,4 @@ export default {
     notesSort: compareFunc,
   },
 }
+{{/if}}

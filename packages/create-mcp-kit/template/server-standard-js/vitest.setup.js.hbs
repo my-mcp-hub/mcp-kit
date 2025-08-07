@@ -1,3 +1,4 @@
+{{#if (includes plugins 'vitest')}}
 import 'dotenv/config'
 import { Client } from '@modelcontextprotocol/sdk/client/index.js'
 import { StdioClientTransport } from '@modelcontextprotocol/sdk/client/stdio.js'
@@ -17,3 +18,4 @@ const client = new Client({
 await client.connect(serverParams)
 
 global.client = client
+{{/if}}

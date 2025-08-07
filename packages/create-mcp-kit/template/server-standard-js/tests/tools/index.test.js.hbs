@@ -1,3 +1,4 @@
+{{#if (includes plugins 'vitest')}}
 import { describe, expect, test } from 'vitest'
 
 describe('getDataTool', () => {
@@ -40,3 +41,4 @@ describe('getDataTool', () => {
     })
   })
 })
+{{/if}}

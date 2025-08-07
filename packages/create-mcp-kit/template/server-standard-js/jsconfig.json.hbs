@@ -12,6 +12,10 @@
       "@/*": ["./src/*"]
     }
   },
+{{#if (includes plugins 'vitest')}}
   "include": ["src", "tests", "vitest.setup.js", "vitest.config.js"],
+{{else}}
+  "include": ["src"],
+{{/if}}
   "exclude": ["node_modules"]
 }
