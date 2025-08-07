@@ -1,16 +1,22 @@
 import path from 'path'
 import { fileURLToPath } from 'url'
 import { promises as fs } from 'fs'
+{{#if (includes plugins 'inspector')}}
 import { spawn } from 'child_process'
+{{/if}}
 import { rimraf } from 'rimraf'
+{{#if (includes plugins 'inspector')}}
 import kill from 'tree-kill'
+{{/if}}
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 const isProd = process.env.NODE_ENV === 'production'
 const isDev = process.env.NODE_ENV === 'local'
+{{#if (includes plugins 'inspector')}}
 let inspectorProcess = null
 let webProcess = null
 let autoOpenBrowser = true
+{{/if}}
 
 /** @type {import('esbuild').BuildOptions} */
 export const config = {
@@ -53,11 +59,10 @@ const after = async result => {
     } else {
       console.error('❌ Rebuild failed')
     }
-
+{{#if (includes plugins 'inspector')}}
     console.log('🚀 Starting @modelcontextprotocol/inspector...')
     if (inspectorProcess) {
       kill(inspectorProcess.pid, 'SIGINT')
-      // inspectorProcess.kill('SIGINT')
     }
     inspectorProcess = spawn('npx', ['@modelcontextprotocol/inspector', 'build/index.js'], {
       stdio: 'inherit',
@@ -78,5 +83,6 @@ const after = async result => {
         stdio: 'inherit',
       })
     }
+{{/if}}
   }
 }

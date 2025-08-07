@@ -12,7 +12,7 @@ import { getOptions } from './utils'
 import 'dotenv/config'
 import pkg from '../package.json' with { type: 'json' }
 
-const name = 'node-mcp-server'
+const name = '{{projectName}}'
 
 const argv = await yargs()
   .scriptName(name)
@@ -58,19 +58,19 @@ async function startServer(mode: string, argv: ArgumentsCamelCase) {
     name,
     version: pkg.version,
   })
-  {{#if (and (includes transports 'stdio') (or (includes transports 'streamable') (includes transports 'sse')))}}
+{{#if (and (includes transports 'stdio') (or (includes transports 'streamable') (includes transports 'sse')))}}
   if (mode === 'stdio') {
     startStdioServer(options).catch(console.error)
   } else if (mode === 'web') {
     startWebServer(options).catch(console.error)
   }
-  {{else if (includes transports 'stdio')}}
+{{else if (includes transports 'stdio')}}
   if (mode === 'stdio') {
     startStdioServer(options).catch(console.error)
   }
-  {{else}}
+{{else}}
   if (mode === 'web') {
     startWebServer(options).catch(console.error)
   }
-  {{/if}}
+{{/if}}
 }

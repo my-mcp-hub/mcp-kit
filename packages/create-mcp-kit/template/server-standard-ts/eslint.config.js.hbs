@@ -1,3 +1,4 @@
+{{#if (includes plugins 'style')}}
 import tsParser from '@typescript-eslint/parser'
 import tsPlugin from '@typescript-eslint/eslint-plugin'
 import importPlugin from 'eslint-plugin-import'
@@ -9,7 +10,11 @@ export default [
     ignores: ['**/build', '**/node_modules', '**/.*', '**/*.d.ts', '.husky/'],
   },
   {
+  {{#if (includes plugins 'vitest')}}
     files: ['src/**/*.{js,ts}', 'tests/**/*.{js,ts}'],
+  {{else}}
+    files: ['src/**/*.{js,ts}'],
+  {{/if}}
   },
   {
     languageOptions: {
@@ -47,3 +52,4 @@ export default [
     },
   },
 ]
+{{/if}}

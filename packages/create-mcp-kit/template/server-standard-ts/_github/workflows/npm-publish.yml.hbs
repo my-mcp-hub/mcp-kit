@@ -1,3 +1,4 @@
+{{#if (includes plugins 'github-action')}}
 name: npm-publish
 
 on:
@@ -37,3 +38,4 @@ jobs:
         run: npm publish --provenance --access public
         env:
           NODE_AUTH_TOKEN: ${{secrets.npm_token}}
+{{/if}}

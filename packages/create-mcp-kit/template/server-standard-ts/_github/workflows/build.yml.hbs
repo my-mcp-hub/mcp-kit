@@ -1,3 +1,4 @@
+{{#if (includes plugins 'github-action')}}
 name: build
 
 on:
@@ -35,3 +36,4 @@ jobs:
 
       - name: Coveralls
         uses: coverallsapp/github-action@v2
+{{/if}}

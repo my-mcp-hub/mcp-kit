@@ -1,3 +1,4 @@
+{{#if (includes plugins 'vitest')}}
 import { describe, expect, test } from 'vitest'
 
 describe('searchResource', () => {
@@ -16,3 +17,4 @@ describe('searchResource', () => {
     })
   })
 })
+{{/if}}

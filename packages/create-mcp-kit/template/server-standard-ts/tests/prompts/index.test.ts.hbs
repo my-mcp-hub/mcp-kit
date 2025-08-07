@@ -1,3 +1,4 @@
+{{#if (includes plugins 'vitest')}}
 import { describe, expect, test } from 'vitest'
 
 describe('echoPrompt', () => {
@@ -22,3 +23,4 @@ describe('echoPrompt', () => {
     })
   })
 })
+{{/if}}
