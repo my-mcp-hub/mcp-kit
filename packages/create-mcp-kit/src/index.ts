@@ -52,6 +52,18 @@ const group = await clack.group(
           // { value: 'custom', label: pc.blue('Custom') },
         ],
       }),
+    transports: () => {
+      return clack.multiselect({
+        message: 'Project Transport Type:',
+        required: true,
+        initialValues: ['stdio'],
+        options: [
+          { value: 'stdio', label: pc.magenta('STDIO') },
+          { value: 'streamable', label: pc.blue('Streamable HTTP') },
+          { value: 'sse', label: pc.yellow('SSE') },
+        ],
+      })
+    },
     install: () =>
       clack.confirm({
         message: 'Do you want to install dependencies?',
@@ -88,6 +100,10 @@ try {
   try {
     await createProject(targetPath, templatePath, {
       projectName: group.name as string,
+      year: new Date().getFullYear().toString(),
+      transports: group.transports as string[],
+      plugins: [],
+      components: [],
     })
   } catch (error) {
     createSpinner.stop('Failed to create project')
