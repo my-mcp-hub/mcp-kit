@@ -1,7 +1,7 @@
-{{#if (includes transports 'streamable')}}
-import { nanoid } from 'nanoid'
-{{/if}}
 {{#if (or (includes transports 'streamable') (includes transports 'sse'))}}
+{{#if (includes transports 'streamable')}}
+  import { nanoid } from 'nanoid'
+{{/if}}
 import express from 'express'
 {{#if (includes transports 'streamable')}}
 import { isInitializeRequest } from '@modelcontextprotocol/sdk/types.js'

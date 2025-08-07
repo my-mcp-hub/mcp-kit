@@ -1,17 +1,30 @@
-import { nanoid } from 'nanoid'
+{{#if (or (includes transports 'streamable') (includes transports 'sse'))}}
+{{#if (includes transports 'streamable')}}
+  import { nanoid } from 'nanoid'
+{{/if}}
 import express from 'express'
+{{#if (includes transports 'streamable')}}
 import { isInitializeRequest } from '@modelcontextprotocol/sdk/types.js'
 import { StreamableHTTPServerTransport } from '@modelcontextprotocol/sdk/server/streamableHttp.js'
+{{/if}}
+{{#if (includes transports 'sse')}}
 import { SSEServerTransport } from '@modelcontextprotocol/sdk/server/sse.js'
+{{/if}}
 
 export async function webServer(server, options) {
   const app = express()
   app.use(express.json())
 
   const transports = {
+{{#if (includes transports 'streamable')}}
     streamable: {},
+{{/if}}
+{{#if (includes transports 'sse')}}
     sse: {},
+{{/if}}
   }
+{{#if (includes transports 'streamable')}}
+
   app.post('/mcp', async (req, res) => {
     const sessionId = req.headers['mcp-session-id']
     let transport
@@ -61,6 +74,8 @@ export async function webServer(server, options) {
   app.get('/mcp', handleSessionRequest)
 
   app.delete('/mcp', handleSessionRequest)
+{{/if}}
+{{#if (includes transports 'sse')}}
 
   app.get('/sse', async (req, res) => {
     const transport = new SSEServerTransport('/messages', res)
@@ -83,6 +98,8 @@ export async function webServer(server, options) {
     }
   })
 
+{{/if}}
   app.listen(options.port)
-  console.log(`MCP server started on port ${options.port}. SSE endpoint: /sse, streamable endpoint: /mcp`)
+  console.log(`MCP server started on port ${options.port}.{{#if (includes transports 'sse')}} SSE endpoint: /sse{{/if}}{{#if (includes transports 'streamable')}} streamable endpoint: /mcp{{/if}}`)
 }
+{{/if}}

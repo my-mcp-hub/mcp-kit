@@ -1,7 +1,13 @@
 #!/usr/bin/env node
 import yargs from 'yargs'
 import { hideBin } from 'yargs/helpers'
+{{#if (and (includes transports 'stdio') (or (includes transports 'streamable') (includes transports 'sse')))}}
 import { startWebServer, startStdioServer } from './services/index.js'
+{{else if (includes transports 'stdio')}}
+import { startStdioServer } from './services/index.js'
+{{else}}
+import { startWebServer } from './services/index.js'
+{{/if}}
 import { getOptions } from './utils/index.js'
 import 'dotenv/config'
 import pkg from '../package.json' with { type: 'json' }
@@ -11,18 +17,23 @@ const name = 'node-mcp-server'
 const argv = await yargs()
   .scriptName(name)
   .usage('$0 <command> [options]')
+{{#if (includes transports 'stdio')}}
   .command(
     'stdio',
     'Start the server using the stdio transport protocol.',
     () => {},
     argv => startServer('stdio', argv),
   )
+{{/if}}
+{{#if (or (includes transports 'streamable') (includes transports 'sse'))}}
   .command(
     'web',
     'Start the web server transport protocol.',
     () => {},
     argv => startServer('web', argv),
   )
+{{/if}}
+{{#if (or (includes transports 'streamable') (includes transports 'sse'))}}
   .options({
     port: {
       describe: 'Specify the port for SSE or streamable transport (default: 8401)',
@@ -30,11 +41,16 @@ const argv = await yargs()
       default: process.env.PORT || '8401',
     },
   })
+{{/if}}
   .help()
   .parse(hideBin(process.argv))
 
 if (!argv._[0]) {
+{{#if (includes transports 'stdio')}}
   startServer('stdio', argv)
+{{else}}
+  startServer('web', argv)
+{{/if}}
 }
 
 async function startServer(mode, argv) {
@@ -42,9 +58,19 @@ async function startServer(mode, argv) {
     name,
     version: pkg.version,
   })
+  {{#if (and (includes transports 'stdio') (or (includes transports 'streamable') (includes transports 'sse')))}}
   if (mode === 'stdio') {
     startStdioServer(options).catch(console.error)
   } else if (mode === 'web') {
     startWebServer(options).catch(console.error)
   }
+  {{else if (includes transports 'stdio')}}
+  if (mode === 'stdio') {
+    startStdioServer(options).catch(console.error)
+  }
+  {{else}}
+  if (mode === 'web') {
+    startWebServer(options).catch(console.error)
+  }
+  {{/if}}
 }

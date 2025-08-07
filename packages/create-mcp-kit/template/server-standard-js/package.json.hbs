@@ -1,12 +1,12 @@
 {
-  "name": "{{PROJECT_NAME}}",
+  "name": "{{projectName}}",
   "version": "0.0.0",
-  "description": "{{PROJECT_NAME}}",
+  "description": "{{projectName}}",
   "author": "zhensherlock",
   "type": "module",
   "license": "MIT",
   "bin": {
-    "{{PROJECT_NAME}}": "./build/index.js"
+    "{{projectName}}": "./build/index.js"
   },
   "files": [
     "build",
@@ -18,20 +18,27 @@
     "prepare": "husky",
     "lint": "npx eslint \"src/**/*.js\"",
     "build": "cross-env NODE_ENV=production node scripts/build.js",
+{{#if (and (includes transports 'stdio') (or (includes transports 'streamable') (includes transports 'sse')))}}
     "dev": "npm run dev:stdio",
     "dev:stdio": "cross-env NODE_ENV=local node scripts/dev.js",
+{{else if (includes transports 'web')}}
+    "dev": "npm run dev:stdio",
+    "dev:stdio": "cross-env NODE_ENV=local node scripts/dev.js",
+{{else}}
+    "dev": "npm run dev:web",
     "dev:web": "cross-env NODE_ENV=local TRANSPORT=web node scripts/dev.js",
+{{/if}}
     "test": "vitest run",
     "coverage": "rimraf coverage && npm run test && c8 report --reporter=lcov --reporter=html",
     "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0 -n changelog-option.js"
   },
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.17.1",
-    "cors": "^2.8.5",
     "dotenv": "^17.2.1",
+{{#if (or (includes transports 'streamable') (includes transports 'sse'))}}
     "express": "^5.1.0",
     "nanoid": "^5.1.5",
-    "node-fetch": "^3.3.2",
+{{/if}}
     "yargs": "^17.7.2",
     "zod": "^3.25.76"
   },
