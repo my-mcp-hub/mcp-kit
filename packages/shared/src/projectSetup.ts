@@ -1,5 +1,5 @@
 import { setTimeout as sleep } from 'timers/promises'
-import { readdir, readFile, rename, stat, writeFile, cp, mkdir, unlink } from 'fs/promises'
+import { readdir, readFile, rename, stat, writeFile, cp, mkdir, unlink, rmdir, access, constants } from 'fs/promises'
 import { join } from 'path'
 import { spawn } from 'child_process'
 import Handlebars from 'handlebars'
@@ -56,6 +56,31 @@ async function compileTemplateFiles(
   }
 }
 
+async function removeEmptyDirectories(currentDir: string) {
+  const items = await readdir(currentDir, { recursive: true, withFileTypes: true })
+  const directories = items
+    .filter(item => item.isDirectory())
+    .map(item => join(item.parentPath || currentDir, item.name))
+    .sort((a, b) => b.split('/').length - a.split('/').length)
+  for (const dirPath of directories) {
+    try {
+      const dirItems = await readdir(dirPath)
+      if (dirItems.length === 0) {
+        await rmdir(dirPath)
+      }
+    } catch {}
+  }
+}
+
+export async function fileExists(path: string) {
+  try {
+    await access(path, constants.F_OK)
+    return true
+  } catch {
+    return false
+  }
+}
+
 export function installDependencies(currentDir: string) {
   return new Promise<void>((resolve, reject) => {
     const npm = spawn('npm', ['install'], {
@@ -89,41 +114,10 @@ export async function createProject(
   await mkdir(targetPath, { recursive: true })
   await cp(templatePath, targetPath, {
     recursive: true,
-    filter: () => {
-      // const relativePath = relative(templatePath, src)
-      // const fileName = basename(src)
-      // console.log('relativePath', relativePath)
-      // console.log('fileName', fileName)
-      // if (plugins === null) {
-      //   return true
-      // }
-      // if (!plugins.includes('github-action') && relativePath.startsWith('_github')) {
-      //   return false
-      // }
-      // if (
-      //   !plugins.includes('vitest') &&
-      //   (relativePath.startsWith('tests') ||
-      //     ['vitest.config.js', 'vitest.setup.js', 'vitest.config.ts', 'vitest.setup.ts'].includes(relativePath))
-      // ) {
-      //   return false
-      // }
-      // if (
-      //   !plugins.includes('style') &&
-      //   ['eslint.config.js', '_prettierrc', 'lint-staged.config.js', '_husky/pre-commit'].includes(relativePath)
-      // ) {
-      //   return false
-      // }
-      // if (!plugins.includes('commitlint') && ['commitlint.config.js', '_husky/commit-msg'].includes(relativePath)) {
-      //   return false
-      // }
-      // if (!plugins.includes('changelog') && ['changelog-option.js'].includes(relativePath)) {
-      //   return false
-      // }
-      return true
-    },
   })
   await renameFiles(targetPath)
   await compileTemplateFiles(targetPath, templateData)
+  await removeEmptyDirectories(targetPath)
 }
 
 export { sleep }
