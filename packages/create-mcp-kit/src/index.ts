@@ -1,11 +1,10 @@
 #!/usr/bin/env node
 import { fileURLToPath } from 'url'
 import { dirname, join, resolve } from 'path'
-import { stat } from 'fs/promises'
 import * as clack from '@clack/prompts'
 import pc from 'picocolors'
 import gradient from 'gradient-string'
-import { sleep, createProject, installDependencies } from '@mcp-tool-kit/shared'
+import { sleep, createProject, installDependencies, fileExists } from '@mcp-tool-kit/shared'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
@@ -49,7 +48,7 @@ const group = await clack.group(
         message: 'Project template:',
         options: [
           { value: 'standard', label: pc.magenta('Standard (recommended)') },
-          // { value: 'custom', label: pc.blue('Custom') },
+          { value: 'custom', label: pc.blue('Custom') },
         ],
       }),
     transports: () => {
@@ -61,6 +60,23 @@ const group = await clack.group(
           { value: 'stdio', label: pc.magenta('STDIO') },
           { value: 'streamable', label: pc.blue('Streamable HTTP') },
           { value: 'sse', label: pc.yellow('SSE') },
+        ],
+      })
+    },
+    plugins: ({ results }) => {
+      if (results.template !== 'custom') {
+        return Promise.resolve(['github-action', 'vitest', 'inspector', 'style', 'commitlint', 'changelog'])
+      }
+      return clack.multiselect({
+        message: 'Project plugins:',
+        required: false,
+        options: [
+          { value: 'github-action', label: pc.magenta('GitHub Action') },
+          { value: 'vitest', label: pc.green('Vitest') },
+          { value: 'inspector', label: pc.blue('Inspector') },
+          { value: 'style', label: pc.white('ESLint + Prettier + Lint-staged') },
+          { value: 'commitlint', label: pc.gray('Commitlint') },
+          { value: 'changelog', label: pc.blueBright('Changelog') },
         ],
       })
     },
@@ -80,18 +96,15 @@ const group = await clack.group(
 const templatePath = join(__dirname, '../template', `${group.type}-${group.template}-${group.language}`)
 const targetPath = resolve(process.cwd(), group.name as string)
 
-try {
-  await stat(templatePath)
-} catch {
+if (!(await fileExists(templatePath))) {
   clack.log.error(`Template not found: ${templatePath}`)
   process.exit(1)
 }
 
-try {
-  await stat(targetPath)
+if (await fileExists(targetPath)) {
   clack.log.error(`Directory ${group.name} already exists`)
   process.exit(1)
-} catch {}
+}
 
 {
   const createSpinner = clack.spinner()
@@ -102,7 +115,7 @@ try {
       projectName: group.name as string,
       year: new Date().getFullYear().toString(),
       transports: group.transports as string[],
-      plugins: [],
+      plugins: group.plugins as string[],
       components: [],
     })
   } catch (error) {
