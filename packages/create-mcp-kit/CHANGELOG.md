@@ -1,5 +1,36 @@
 # create-mcp-kit
 
+## 0.0.4
+
+### Patch Changes
+
+- [`99cb7ed`](https://github.com/my-mcp-hub/mcp-kit/commit/99cb7ed3d332a8b68f1001c103d9d66b9b59bbf9) Thanks [@zhensherlock](https://github.com/zhensherlock)! - test: update test configurations and inputs
+
+- [`86ac76f`](https://github.com/my-mcp-hub/mcp-kit/commit/86ac76fc680f214a774ff6fb44be33b734de2801) Thanks [@zhensherlock](https://github.com/zhensherlock)! - feat: update standard template label
+
+- [`a92f54f`](https://github.com/my-mcp-hub/mcp-kit/commit/a92f54fdbf7ae71d143e588696ec9cd727f0ef12) Thanks [@zhensherlock](https://github.com/zhensherlock)! - feat: add gradient-string dependency for colorful intro
+
+- [`74d9f2f`](https://github.com/my-mcp-hub/mcp-kit/commit/74d9f2f7a7596a39f706c57fae422b9b166936c7) Thanks [@zhensherlock](https://github.com/zhensherlock)! - feat: add transport type selection to project setup
+
+- [`4bfbb69`](https://github.com/my-mcp-hub/mcp-kit/commit/4bfbb691cb09208fd118ecf059907c6125188a33) Thanks [@zhensherlock](https://github.com/zhensherlock)! - feat: update server-standard-ts template with stdio and web transports
+
+- [`906dfda`](https://github.com/my-mcp-hub/mcp-kit/commit/906dfdaa6e9143e054664940dc246371e28d5484) Thanks [@zhensherlock](https://github.com/zhensherlock)! - feat: update server-standard-js template with conditional plugin support
+
+- [`6615c9b`](https://github.com/my-mcp-hub/mcp-kit/commit/6615c9bcdabc3a29f18e5ffff05a7b2d18bff170) Thanks [@zhensherlock](https://github.com/zhensherlock)! - feat: update server-standard-js template
+
+- [`b16f5a6`](https://github.com/my-mcp-hub/mcp-kit/commit/b16f5a622d6c03106131133811e6aa8feff65fed) Thanks [@zhensherlock](https://github.com/zhensherlock)! - refactor: update external dependencies in template files
+
+- [`6a8b796`](https://github.com/my-mcp-hub/mcp-kit/commit/6a8b7969a77a3a05265531cc34dd73ebe680b544) Thanks [@zhensherlock](https://github.com/zhensherlock)! - feat: add custom template and plugins selection
+
+- [`b30c300`](https://github.com/my-mcp-hub/mcp-kit/commit/b30c30048fedff0be244e6833d4a8220e5b2afb1) Thanks [@zhensherlock](https://github.com/zhensherlock)! - refactor: simplify file rename mapping in project setup
+
+- [`00b0e28`](https://github.com/my-mcp-hub/mcp-kit/commit/00b0e28bdd67fff08472058ab874a7c81be8bbec) Thanks [@zhensherlock](https://github.com/zhensherlock)! - feat: update server-standard-ts template with conditional plugin support
+
+- [`20f3480`](https://github.com/my-mcp-hub/mcp-kit/commit/20f3480160d20cdcf871024214381f2b090b4932) Thanks [@zhensherlock](https://github.com/zhensherlock)! - feat: add server-standard templates for js and ts projects
+
+- Updated dependencies [[`d344aee`](https://github.com/my-mcp-hub/mcp-kit/commit/d344aee6d306b26f4e0b588a04c69b89a155b14e), [`99cb7ed`](https://github.com/my-mcp-hub/mcp-kit/commit/99cb7ed3d332a8b68f1001c103d9d66b9b59bbf9), [`113c2f2`](https://github.com/my-mcp-hub/mcp-kit/commit/113c2f2df932148a9cef7d0746c15f6fe9d25ab5)]:
+  - @mcp-tool-kit/shared@0.0.5
+
 ## 0.0.3
 
 ### Patch Changes
