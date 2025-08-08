@@ -1,5 +1,15 @@
 # @mcp-tool-kit/shared
 
+## 0.0.5
+
+### Patch Changes
+
+- [`d344aee`](https://github.com/my-mcp-hub/mcp-kit/commit/d344aee6d306b26f4e0b588a04c69b89a155b14e) Thanks [@zhensherlock](https://github.com/zhensherlock)! - feat: add utility to remove empty directories and check file existence
+
+- [`99cb7ed`](https://github.com/my-mcp-hub/mcp-kit/commit/99cb7ed3d332a8b68f1001c103d9d66b9b59bbf9) Thanks [@zhensherlock](https://github.com/zhensherlock)! - test: update test configurations and inputs
+
+- [`113c2f2`](https://github.com/my-mcp-hub/mcp-kit/commit/113c2f2df932148a9cef7d0746c15f6fe9d25ab5) Thanks [@zhensherlock](https://github.com/zhensherlock)! - feat: add handlebars support for template compilation
+
 ## 0.0.4
 
 ### Patch Changes
