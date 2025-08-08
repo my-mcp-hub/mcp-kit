@@ -8,7 +8,7 @@ describe('test index cli', () => {
   test('should create project', async () => {
     const testDir = join(tmpdir(), `test-cli-${Date.now()}`)
     mkdirSync(testDir, { recursive: true })
-    const userInput = ['\x0D', '\x0D', '\x0D', '\x0D', 'y\x0D']
+    const userInput = ['\x0D', '\x0D', '\x0D', '\x0D', '\x0D', 'y\x0D']
     const scriptPath = resolve('./packages/create-mcp-kit/src/index.ts')
     const subprocess = execa('c8', ['--reporter=lcov', '--reporter=text', 'tsx', scriptPath], {
       // stdio: ['pipe', 'inherit', 'inherit'],
