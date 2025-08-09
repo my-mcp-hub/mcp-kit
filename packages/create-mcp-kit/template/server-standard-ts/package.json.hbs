@@ -39,7 +39,7 @@
     "prepare": "husky"
   },
   "dependencies": {
-    "@modelcontextprotocol/sdk": "^1.17.1",
+    "@modelcontextprotocol/sdk": "^1.17.2",
     "dotenv": "^17.2.1",
 {{#if (or (includes transports 'streamable') (includes transports 'sse'))}}
     "express": "^5.1.0",
@@ -79,14 +79,14 @@
     "cross-env": "^10.0.0",
     "esbuild": "^0.25.8",
 {{#if (includes plugins 'style')}}
-    "eslint": "^9.32.0",
+    "eslint": "^9.33.0",
     "eslint-plugin-import": "^2.32.0",
     "eslint-plugin-prettier": "^5.5.3",
     "globals": "^16.3.0",
 {{/if}}
     "husky": "^9.1.7",
 {{#if (includes plugins 'style')}}
-    "lint-staged": "^16.1.4",
+    "lint-staged": "^16.1.5",
 {{/if}}
 {{#if (includes plugins 'vitest')}}
     "nyc": "^17.1.0",
