@@ -43,14 +43,6 @@ const group = await clack.group(
           { value: 'js', label: pc.blue('JavaScript') },
         ],
       }),
-    template: () =>
-      clack.select({
-        message: 'Project template:',
-        options: [
-          { value: 'standard', label: pc.magenta('Standard (recommended)') },
-          { value: 'custom', label: pc.blue('Custom') },
-        ],
-      }),
     transports: () => {
       return clack.multiselect({
         message: 'Project Transport Type:',
@@ -63,6 +55,14 @@ const group = await clack.group(
         ],
       })
     },
+    template: () =>
+      clack.select({
+        message: 'Project template:',
+        options: [
+          { value: 'standard', label: pc.magenta('Standard (recommended)') },
+          { value: 'custom', label: pc.blue('Custom') },
+        ],
+      }),
     plugins: ({ results }) => {
       if (results.template !== 'custom') {
         return Promise.resolve(['github-action', 'vitest', 'inspector', 'style', 'commitlint', 'changelog'])
@@ -93,7 +93,7 @@ const group = await clack.group(
   },
 )
 
-const templatePath = join(__dirname, '../template', `${group.type}-${group.template}-${group.language}`)
+const templatePath = join(__dirname, '../template', `${group.type}-${group.language}`)
 const targetPath = resolve(process.cwd(), group.name as string)
 
 if (!(await fileExists(templatePath))) {
