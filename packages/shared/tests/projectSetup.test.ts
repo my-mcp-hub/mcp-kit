@@ -9,7 +9,7 @@ describe('test project setup file', () => {
     const projectName = 'test'
     const testDir = join(tmpdir(), `test-shared-${Date.now()}`)
     mkdirSync(testDir, { recursive: true })
-    const templatePath = join(__dirname, '../../create-mcp-kit/template', 'server-standard-ts')
+    const templatePath = join(__dirname, '../../create-mcp-kit/template', 'server-ts')
     await createProject(testDir, templatePath, {
       projectName,
       year: new Date().getFullYear().toString(),
