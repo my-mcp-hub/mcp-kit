@@ -1,5 +1,18 @@
 # create-mcp-kit
 
+## 0.0.5
+
+### Patch Changes
+
+- [`f14d671`](https://github.com/my-mcp-hub/mcp-kit/commit/f14d671a60f2f140d529ec2408e75bebfafaea31) Thanks [@zhensherlock](https://github.com/zhensherlock)! - feat: reorder template selection and simplify template path
+
+- [`459a436`](https://github.com/my-mcp-hub/mcp-kit/commit/459a436c31ad19669d064fb41ea89bf2e59184c4) Thanks [@zhensherlock](https://github.com/zhensherlock)! - feat: update template package.json
+
+- [`06f6161`](https://github.com/my-mcp-hub/mcp-kit/commit/06f616188c1310b6cdf0fb41ee9e87bf425beb63) Thanks [@zhensherlock](https://github.com/zhensherlock)! - feat: update server template files for js and ts projects
+
+- Updated dependencies [[`5911f5b`](https://github.com/my-mcp-hub/mcp-kit/commit/5911f5b8ca5b0e7edc3974bad3e404f52b62fc0c)]:
+  - @mcp-tool-kit/shared@0.0.6
+
 ## 0.0.4
 
 ### Patch Changes
