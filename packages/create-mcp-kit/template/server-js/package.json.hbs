@@ -31,7 +31,8 @@
 {{/if}}
 {{#if (includes plugins 'vitest')}}
     "test": "vitest run",
-    "coverage": "rimraf coverage && npm run test && c8 report --reporter=lcov --reporter=html",
+    "report": "c8 report --reporter=lcov --reporter=html",
+    "coverage": "rimraf coverage && npm run test && npm run report",
 {{/if}}
 {{#if (includes plugins 'changelog')}}
     "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0 -n changelog-option.js",

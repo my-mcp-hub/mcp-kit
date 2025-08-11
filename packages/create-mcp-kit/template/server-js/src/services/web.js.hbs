@@ -1,6 +1,6 @@
 {{#if (or (includes transports 'streamable') (includes transports 'sse'))}}
   {{#if (includes transports 'streamable')}}
-  import { nanoid } from 'nanoid'
+import { nanoid } from 'nanoid'
   {{/if}}
 import express from 'express'
   {{#if (includes transports 'streamable')}}
