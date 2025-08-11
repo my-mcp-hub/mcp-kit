@@ -3,10 +3,22 @@ import { defineConfig } from 'vitest/config'
 
 export default defineConfig({
   test: {
+  {{#if (or (includes transports 'streamable') (includes transports 'sse'))}}
+    globalSetup: ['./vitest.global.ts'],
+  {{/if}}
     setupFiles: ['./vitest.setup.ts'],
     coverage: {
       include: ['src/**/*.ts'],
     },
+  {{#if (or (includes transports 'streamable') (includes transports 'sse'))}}
+    pool: 'threads',
+    poolOptions: {
+      threads: {
+        maxThreads: 1,
+        minThreads: 1,
+      },
+    },
+  {{/if}}
   },
 })
 {{/if}}
