@@ -1,5 +1,20 @@
 # create-mcp-kit
 
+## 0.0.6
+
+### Patch Changes
+
+- [`d63e9e6`](https://github.com/my-mcp-hub/mcp-kit/commit/d63e9e67e01fa0125b6cbd4e0a8d2d5d2143bbbe) Thanks [@zhensherlock](https://github.com/zhensherlock)! - feat: update dependencies in js template
+
+- [`28ef6e5`](https://github.com/my-mcp-hub/mcp-kit/commit/28ef6e5b69d24f71f81f6670fbdf47e2695f5f41) Thanks [@zhensherlock](https://github.com/zhensherlock)! - feat: add vitest global setup and improve test configuration in ts template
+
+- [`0bc6bad`](https://github.com/my-mcp-hub/mcp-kit/commit/0bc6bad1525cadbe848ce9647b2e64f7b42a44ad) Thanks [@zhensherlock](https://github.com/zhensherlock)! - feat: update dependencies in ts template
+
+- [`ab4ce8a`](https://github.com/my-mcp-hub/mcp-kit/commit/ab4ce8affd015d9e558a2eb5be28d20211d293d0) Thanks [@zhensherlock](https://github.com/zhensherlock)! - feat: add vitest global setup and improve test configuration in js template
+
+- Updated dependencies [[`5fc4fd3`](https://github.com/my-mcp-hub/mcp-kit/commit/5fc4fd33ab45d3aaeaec78b277768fd498ee3586)]:
+  - @mcp-tool-kit/shared@0.0.7
+
 ## 0.0.5
 
 ### Patch Changes
