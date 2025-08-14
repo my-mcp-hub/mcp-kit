@@ -11,6 +11,9 @@
     "test": "cross-env NODE_V8_COVERAGE=./coverage/tmp vitest run",
     "coverage": "rimraf coverage && cross-env NODE_V8_COVERAGE=./coverage/tmp vitest run && npm run report",
     "report": "c8 report --reporter=lcov --reporter=html",
+    "docs:dev": "pnpm -r --aggregate-output --filter=./docs dev",
+    "docs:build": "pnpm -r --aggregate-output --filter=./docs build",
+    "docs:serve": "pnpm -r --aggregate-output --filter=./docs serve",
     "changeset": "changeset",
     "version": "changeset version"
   },
@@ -55,7 +58,7 @@
     "prettier": "^3.6.2",
     "rimraf": "^6.0.1",
     "rolldown": "1.0.0-beta.27",
-    "tsx": "^4.20.3",
+    "tsx": "^4.20.4",
     "typescript": "^5.9.2",
     "vitest": "^3.2.4"
   }
