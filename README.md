@@ -1,4 +1,4 @@
-# create-mcp-kit
+# Create-MCP-Kit
 A CLI tool to create MCP (Model Context Protocol) applications with ease.
 
 [![][npm-release-shield]][npm-release-link]

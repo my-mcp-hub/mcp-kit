@@ -33,6 +33,14 @@ export default defineConfig({
 
     sidebar: [
       {
+        text: 'Introduction',
+        items: [
+          { text: 'What is MCP?', link: '/guide/what-is-mcp' },
+          { text: 'What is MCP Kit?', link: '/guide/what-is-mcp-kit' },
+          { text: 'Getting Started', link: '/en/guide/getting-started' },
+        ]
+      },
+      {
         text: 'Examples',
         items: [
           { text: 'Markdown Examples', link: '/markdown-examples' },

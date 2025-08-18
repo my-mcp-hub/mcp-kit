@@ -2,6 +2,7 @@
   "name": "@mcp-kit/docs",
   "version": "0.0.0",
   "private": true,
+  "type": "module",
   "description": "mcp kit docs",
   "scripts": {
     "dev": "vitepress dev",
@@ -11,9 +12,8 @@
   "keywords": [],
   "author": "zhensherlock",
   "license": "MIT",
-  "dependencies": {
-  },
+  "dependencies": {},
   "devDependencies": {
-    "vitepress": "^2.0.0-alpha.10"
+    "vitepress": "^2.0.0-alpha.11"
   }
 }
