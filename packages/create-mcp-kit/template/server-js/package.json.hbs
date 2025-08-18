@@ -22,6 +22,7 @@
 {{#if (and (includes transports 'stdio') (or (includes transports 'streamable') (includes transports 'sse')))}}
     "dev": "npm run dev:stdio",
     "dev:stdio": "cross-env NODE_ENV=local node scripts/dev.js",
+    "dev:web": "cross-env NODE_ENV=local TRANSPORT=web node scripts/dev.js",
 {{else if (includes transports 'web')}}
     "dev": "npm run dev:stdio",
     "dev:stdio": "cross-env NODE_ENV=local node scripts/dev.js",
@@ -40,7 +41,7 @@
     "prepare": "husky"
   },
   "dependencies": {
-    "@modelcontextprotocol/sdk": "^1.17.2",
+    "@modelcontextprotocol/sdk": "^1.17.3",
     "dotenv": "^17.2.1",
 {{#if (or (includes transports 'streamable') (includes transports 'sse'))}}
     "express": "^5.1.0",
@@ -55,7 +56,7 @@
     "@commitlint/config-conventional": "^19.8.1",
 {{/if}}
 {{#if (includes plugins 'inspector')}}
-    "@modelcontextprotocol/inspector": "^0.16.3",
+    "@modelcontextprotocol/inspector": "^0.16.4",
 {{/if}}
 {{#if (includes plugins 'vitest')}}
     "@vitest/coverage-v8": "^3.2.4",
@@ -70,7 +71,7 @@
     "conventional-changelog-cli": "^5.0.0",
 {{/if}}
     "cross-env": "^10.0.0",
-    "esbuild": "^0.25.8",
+    "esbuild": "^0.25.9",
 {{#if (includes plugins 'style')}}
     "eslint": "^9.33.0",
     "eslint-plugin-import": "^2.32.0",
