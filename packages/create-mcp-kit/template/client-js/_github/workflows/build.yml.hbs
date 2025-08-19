@@ -1,0 +1,39 @@
+{{#if (includes plugins 'github-action')}}
+name: build
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    if: github.repository == '{{projectName}}'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Install Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install Package
+        run: npm i
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Build Package
+        run: npm run build
+
+      - name: Test Package
+        run: npm run coverage
+
+      - name: Coveralls
+        uses: coverallsapp/github-action@v2
+{{/if}}

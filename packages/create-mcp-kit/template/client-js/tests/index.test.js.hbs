@@ -1,0 +1,22 @@
+{{#if (includes plugins 'vitest')}}
+import { describe, test } from 'vitest'
+import { {{#each transports}} {{~#if (eq this "stdio")}}testStdioTransport{{/if}} {{~#if (eq this "streamable")}}testStreamableHttpTransport{{/if}} {{~#if (eq this "sse")}}testSSETransport{{/if}}{{~#unless @last}}, {{/unless}}{{/each}} } from '@/index.js'
+
+describe('MCP client', () => {
+  {{#if (includes transports 'stdio')}}
+  test('stdio transport', async () => {
+    await testStdioTransport()
+  })
+  {{/if}}
+  {{#if (includes transports 'streamable')}}
+  test('streamable http transport', async () => {
+    await testStreamableHttpTransport()
+  })
+  {{/if}}
+  {{#if (includes transports 'sse')}}
+  test('sse transport', async () => {
+    await testSSETransport()
+  })
+  {{/if}}
+})
+{{/if}}

@@ -1,0 +1,27 @@
+{{#if (includes plugins 'vitest')}}
+import { defineConfig } from 'vitest/config'
+
+export default defineConfig({
+  resolve: {
+    alias: {
+      '@': '/src',
+    },
+  },
+  test: {
+  {{#if (or (includes transports 'streamable') (includes transports 'sse'))}}
+    globalSetup: ['./vitest.global.js'],
+  {{/if}}
+    coverage: {
+      include: ['src/**/*.js'],
+      reporter: ['text', 'lcov', 'html'],
+    },
+    pool: 'threads',
+    poolOptions: {
+      threads: {
+        maxThreads: 1,
+        minThreads: 1,
+      },
+    },
+  },
+})
+{{/if}}

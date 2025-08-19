@@ -1,0 +1,21 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "outDir": "./build",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "paths": {
+      "@/*": ["./src/*"]
+    }
+  },
+{{#if (includes plugins 'vitest')}}
+  "include": ["src", "tests", "vitest.config.js", "vitest.global.js"],
+{{else}}
+  "include": ["src"],
+{{/if}}
+  "exclude": ["node_modules"]
+}
