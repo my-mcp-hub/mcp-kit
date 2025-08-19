@@ -24,9 +24,9 @@ const group = await clack.group(
       clack.select({
         message: 'Project type:',
         options: [
-          { value: 'server', label: pc.magenta('MCP Server') },
-          // { value: 'client', label: pc.blue('MCP Client') },
-          // { value: 'host', label: pc.green('MCP Host') },
+          { value: 'server', label: pc.magentaBright('MCP Server') },
+          { value: 'client', label: pc.greenBright('MCP Client') },
+          // { value: 'host', label: pc.yellowBright('MCP Host') },
         ],
       }),
     name: ({ results }) =>
@@ -39,8 +39,8 @@ const group = await clack.group(
       clack.select({
         message: 'Project language:',
         options: [
-          { value: 'ts', label: pc.magenta('TypeScript') },
-          { value: 'js', label: pc.blue('JavaScript') },
+          { value: 'ts', label: pc.magentaBright('TypeScript') },
+          { value: 'js', label: pc.greenBright('JavaScript') },
         ],
       }),
     transports: () => {
@@ -49,9 +49,9 @@ const group = await clack.group(
         required: true,
         initialValues: ['stdio'],
         options: [
-          { value: 'stdio', label: pc.magenta('STDIO') },
-          { value: 'streamable', label: pc.blue('Streamable HTTP') },
-          { value: 'sse', label: pc.yellow('SSE') },
+          { value: 'stdio', label: pc.magentaBright('STDIO') },
+          { value: 'streamable', label: pc.greenBright('Streamable HTTP') },
+          { value: 'sse', label: pc.yellowBright('SSE') },
         ],
       })
     },
@@ -59,23 +59,30 @@ const group = await clack.group(
       clack.select({
         message: 'Project template:',
         options: [
-          { value: 'standard', label: pc.magenta('Standard (recommended)') },
-          { value: 'custom', label: pc.blue('Custom') },
+          { value: 'standard', label: pc.magentaBright('Standard (recommended)') },
+          { value: 'custom', label: pc.greenBright('Custom') },
         ],
       }),
     plugins: ({ results }) => {
       if (results.template !== 'custom') {
-        return Promise.resolve(['github-action', 'vitest', 'inspector', 'style', 'commitlint', 'changelog'])
+        return Promise.resolve([
+          'github-action',
+          'vitest',
+          ...(results.type === 'server' ? ['inspector'] : []),
+          'style',
+          'commitlint',
+          'changelog',
+        ])
       }
       return clack.multiselect({
         message: 'Project plugins:',
         required: false,
         options: [
-          { value: 'github-action', label: pc.magenta('GitHub Action') },
-          { value: 'vitest', label: pc.green('Vitest') },
-          { value: 'inspector', label: pc.blue('Inspector') },
-          { value: 'style', label: pc.white('ESLint + Prettier + Lint-staged') },
-          { value: 'commitlint', label: pc.gray('Commitlint') },
+          { value: 'github-action', label: pc.magentaBright('GitHub Action') },
+          { value: 'vitest', label: pc.greenBright('Vitest') },
+          ...(results.type === 'server' ? [{ value: 'inspector', label: pc.cyanBright('Inspector') }] : []),
+          { value: 'style', label: pc.yellowBright('ESLint + Prettier + Lint-staged') },
+          { value: 'commitlint', label: pc.redBright('Commitlint') },
           { value: 'changelog', label: pc.blueBright('Changelog') },
         ],
       })
