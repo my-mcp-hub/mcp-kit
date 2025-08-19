@@ -1,7 +1,7 @@
 {
   "name": "mcp-kit",
   "version": "1.0.0",
-  "description": "mcp tool kit",
+  "description": "A CLI tool to create MCP (Model Context Protocol) applications with ease.",
   "type": "module",
   "scripts": {
     "prepare": "husky",
@@ -27,11 +27,16 @@
     "mcp",
     "mcp server",
     "mcp client",
+    "mcp host",
     "mcp kit",
     "mcp tool kit",
+    "mcp cli",
+    "cli",
+    "cli tool",
     "create mcp",
     "create mcp server",
     "create mcp client",
+    "create mcp host",
     "modelcontextprotocol",
     "typescript"
   ],
