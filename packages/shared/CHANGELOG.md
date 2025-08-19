@@ -1,5 +1,11 @@
 # @mcp-tool-kit/shared
 
+## 0.0.8
+
+### Patch Changes
+
+- [`f5ff550`](https://github.com/my-mcp-hub/mcp-kit/commit/f5ff550f4df761d9a779dc2aa5890f5cf1bf10c1) Thanks [@zhensherlock](https://github.com/zhensherlock)! - feat: simplify helper functions and add eq helper
+
 ## 0.0.7
 
 ### Patch Changes
