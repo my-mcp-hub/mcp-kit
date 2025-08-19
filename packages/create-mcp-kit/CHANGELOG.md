@@ -1,5 +1,30 @@
 # create-mcp-kit
 
+## 0.0.7
+
+### Patch Changes
+
+- [`2d5c46d`](https://github.com/my-mcp-hub/mcp-kit/commit/2d5c46d2661b171581e89e8eec081b0f67ee403d) Thanks [@zhensherlock](https://github.com/zhensherlock)! - feat: add client-js template
+
+- [`1b3d18d`](https://github.com/my-mcp-hub/mcp-kit/commit/1b3d18d584ac4c185e3960c74965b4f527b4c3b3) Thanks [@zhensherlock](https://github.com/zhensherlock)! - feat: update ts server template files
+
+- [`9384c4c`](https://github.com/my-mcp-hub/mcp-kit/commit/9384c4c968eb6870467376415cd3463d9ce5a337) Thanks [@zhensherlock](https://github.com/zhensherlock)! - feat: update client-ts template
+
+- [`8fdc0a1`](https://github.com/my-mcp-hub/mcp-kit/commit/8fdc0a1a8eaf1cb0a1fe28dbedeef661b9fe3b66) Thanks [@zhensherlock](https://github.com/zhensherlock)! - feat: update server-ts template
+
+- [`55a1d6a`](https://github.com/my-mcp-hub/mcp-kit/commit/55a1d6a746aecd637d820a59f8ab05d8e6a96e70) Thanks [@zhensherlock](https://github.com/zhensherlock)! - feat: add client-ts template with config files and scripts
+
+- [`cc21c42`](https://github.com/my-mcp-hub/mcp-kit/commit/cc21c427c45360f812edffc6b4b5627195bfc451) Thanks [@zhensherlock](https://github.com/zhensherlock)! - feat: update js server template files
+
+- [`c71c0ec`](https://github.com/my-mcp-hub/mcp-kit/commit/c71c0ec14684025684a8b356c83af7cca2e3ce14) Thanks [@zhensherlock](https://github.com/zhensherlock)! - style: update color scheme and conditional plugin options
+
+- [`8b193ba`](https://github.com/my-mcp-hub/mcp-kit/commit/8b193badfcd6040fd4faa8a519502c3a22667830) Thanks [@zhensherlock](https://github.com/zhensherlock)! - feat: update client-ts template
+
+- [`a6c0963`](https://github.com/my-mcp-hub/mcp-kit/commit/a6c0963e3e2c31008a702c971f6055649d05d3e7) Thanks [@zhensherlock](https://github.com/zhensherlock)! - feat: update server-js template
+
+- Updated dependencies [[`f5ff550`](https://github.com/my-mcp-hub/mcp-kit/commit/f5ff550f4df761d9a779dc2aa5890f5cf1bf10c1)]:
+  - @mcp-tool-kit/shared@0.0.8
+
 ## 0.0.6
 
 ### Patch Changes
