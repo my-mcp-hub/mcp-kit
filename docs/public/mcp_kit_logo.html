@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>mcp-kit — Logo</title>
+  <style>
+    :root{
+      --fg:#000000;
+      --accent:#58e1a7;
+      --accent-2:#6b7cff;
+    }
+    body{
+      margin:0; background:transparent; color:var(--fg);
+      font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif;
+      display:grid; place-items:center; height:100vh;
+    }
+    .wrap{display:flex; flex-direction:column; align-items:center; gap:20px;}
+    .logo-box{ width:164px; height:164px; display:grid; place-items:center; }
+    .logo{ width:140px; height:140px;transform: rotate(-10deg); }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="logo-box" aria-label="mcp-kit logo">
+      <svg class="logo" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg" role="img">
+        <title>mcp-kit Logo</title>
+        <!-- 外框，透明填充 + 渐变边框 -->
+        <rect x="10" y="10" width="180" height="180" rx="28" ry="28"
+              fill="transparent" stroke="url(#borderGrad)" stroke-width="6"/>
+        <!-- 艺术化的 "M" -->
+        <g stroke-linecap="round" stroke-linejoin="round" stroke-width="22">
+          <path d="M55 135 L55 65 L100 135 L145 65 L145 135" stroke="url(#gradL)"/>
+        </g>
+        <defs>
+          <linearGradient id="borderGrad" x1="10" y1="10" x2="190" y2="190" gradientUnits="userSpaceOnUse">
+            <stop offset="0" stop-color="var(--accent)"/>
+            <stop offset="1" stop-color="var(--accent-2)"/>
+          </linearGradient>
+          <linearGradient id="gradL" x1="55" y1="135" x2="145" y2="65" gradientUnits="userSpaceOnUse">
+            <stop offset="0" stop-color="var(--accent)"/>
+            <stop offset="1" stop-color="var(--accent-2)"/>
+          </linearGradient>
+        </defs>
+      </svg>
+    </div>
+  </div>
+</body>
+</html>

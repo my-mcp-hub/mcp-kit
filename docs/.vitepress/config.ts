@@ -6,7 +6,7 @@ export default defineConfig({
   description: 'A CLI tool to create MCP (Model Context Protocol) applications with ease',
   base: '/mcp-kit/',
   head: [
-    ['link', { rel: 'shortcut icon', href: '/mcp-kit/favicons/favicon-64x64.png' }],
+    ['link', { rel: 'shortcut icon', href: '/mcp-kit/favicons/favicon.png' }],
     ['link', { rel: 'apple-touch-icon', sizes: '180x180', href: '/mcp-kit/favicons/apple-touch-icon.png' }],
   ],
   themeConfig: {

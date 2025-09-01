@@ -5,6 +5,9 @@ hero:
   name: "MCP Kit"
   text: "Model Context Protocol Toolkit"
   tagline: A CLI tool to create MCP applications with ease
+  image:
+    src: /logo.png
+    alt: MCP Kit
   actions:
     - theme: brand
       text: Get Started 👆
