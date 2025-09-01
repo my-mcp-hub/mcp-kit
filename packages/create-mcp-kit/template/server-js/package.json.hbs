@@ -41,7 +41,7 @@
     "prepare": "husky"
   },
   "dependencies": {
-    "@modelcontextprotocol/sdk": "^1.17.3",
+    "@modelcontextprotocol/sdk": "^1.17.4",
     "dotenv": "^17.2.1",
 {{#if (or (includes transports 'streamable') (includes transports 'sse'))}}
     "express": "^5.1.0",
@@ -65,7 +65,6 @@
 {{#if (includes plugins 'changelog')}}
     "compare-func": "^2.0.0",
 {{/if}}
-    "concurrently": "^9.2.0",
 {{#if (includes plugins 'changelog')}}
     "conventional-changelog-angular": "^8.0.0",
     "conventional-changelog-cli": "^5.0.0",
@@ -73,7 +72,7 @@
     "cross-env": "^10.0.0",
     "esbuild": "^0.25.9",
 {{#if (includes plugins 'style')}}
-    "eslint": "^9.33.0",
+    "eslint": "^9.34.0",
     "eslint-plugin-import": "^2.32.0",
     "eslint-plugin-prettier": "^5.5.3",
     "globals": "^16.3.0",
