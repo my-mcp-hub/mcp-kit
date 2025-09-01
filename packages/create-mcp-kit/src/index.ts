@@ -114,8 +114,6 @@ if (await fileExists(targetPath)) {
 }
 
 {
-  const createSpinner = clack.spinner()
-  createSpinner.start('Creating project...')
   await sleep(100)
   try {
     await createProject(targetPath, templatePath, {
@@ -126,11 +124,9 @@ if (await fileExists(targetPath)) {
       components: [],
     })
   } catch (error) {
-    createSpinner.stop('Failed to create project')
     clack.log.error((error as Error).message)
     process.exit(1)
   }
-  createSpinner.stop(pc.green('Project created!'))
 }
 
 if (group.install) {
@@ -140,12 +136,10 @@ if (group.install) {
   spinner.stop(pc.green('Dependencies installed!'))
 }
 
-clack.outro(`
-${pc.green('✓')} Project created successfully!
+clack.outro(`${pc.green('✓')} Project created successfully!
 
 ${pc.cyan('Next steps:')}
   ${pc.dim('cd')} ${group.name}
   ${group.install ? '' : `${pc.dim('npm install')}\n  `}${pc.dim('npm run dev')}
 
-Enjoy coding! 🎉
-  `)
+Enjoy coding! 🎉`)
