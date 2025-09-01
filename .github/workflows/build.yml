@@ -35,6 +35,15 @@ jobs:
       - name: Build Package
         run: pnpm run build
 
+      - name: Build Docs Package
+        run: pnpm run docs:build
+
+      - name: Deploy Docs
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: docs/.vitepress/dist
+
       - name: Test Package
         run: pnpm run coverage
 
