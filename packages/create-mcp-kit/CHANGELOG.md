@@ -1,5 +1,24 @@
 # create-mcp-kit
 
+## 0.0.8
+
+### Patch Changes
+
+- [`dee5474`](https://github.com/my-mcp-hub/mcp-kit/commit/dee5474138245415d6a28405bae5f2c6b482e06b) Thanks [@zhensherlock](https://github.com/zhensherlock)! - feat: update server-js template
+
+- [`8dc03de`](https://github.com/my-mcp-hub/mcp-kit/commit/8dc03ded00d2cea61c9865dd280d652a7229ba2e) Thanks [@zhensherlock](https://github.com/zhensherlock)! - feat: update client-js template
+
+- [`1a0782c`](https://github.com/my-mcp-hub/mcp-kit/commit/1a0782c278456b2343af61a16819808527ed7435) Thanks [@zhensherlock](https://github.com/zhensherlock)! - chore: update dependencies
+
+- [`2b5aff4`](https://github.com/my-mcp-hub/mcp-kit/commit/2b5aff472bccb84315e6c72fc7a8c1f755d2e45c) Thanks [@zhensherlock](https://github.com/zhensherlock)! - feat: remove spinner and improve outro formatting
+
+- [`6e985c3`](https://github.com/my-mcp-hub/mcp-kit/commit/6e985c3f48f4a80c821307b7b85744d5abae6fa8) Thanks [@zhensherlock](https://github.com/zhensherlock)! - feat: update server-ts template
+
+- [`1b30b8b`](https://github.com/my-mcp-hub/mcp-kit/commit/1b30b8b4bfd55a315815d20f40e79fce101d5b65) Thanks [@zhensherlock](https://github.com/zhensherlock)! - feat: update client-ts template
+
+- Updated dependencies [[`1a0782c`](https://github.com/my-mcp-hub/mcp-kit/commit/1a0782c278456b2343af61a16819808527ed7435)]:
+  - @mcp-tool-kit/shared@0.0.9
+
 ## 0.0.7
 
 ### Patch Changes
