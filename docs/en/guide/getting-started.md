@@ -87,7 +87,7 @@ The generated file structure depends on the project type you selected.
 │   │   ├── stdio.ts    # STDIO transport implementation
 │   │   └── web.ts      # Streamable HTTP and SSE transport implementation
 │   └── index.ts        # Entry point
-├── tests/              # Test files
+├── tests/              # Test files (optional)
 ├── scripts/            # Build and development scripts
 ├── .github/            # GitHub Actions workflows (optional)
 ├── .husky/             # Git hooks (optional)
@@ -99,7 +99,7 @@ The generated file structure depends on the project type you selected.
 ```
 ├── src/
 │   └── index.ts        # Entry point with transport implementations
-├── tests/              # Test files
+├── tests/              # Test files (optional)
 ├── scripts/            # Build and development scripts
 ├── .github/            # GitHub Actions workflows (optional)
 ├── .husky/             # Git hooks (optional)
