@@ -11,7 +11,7 @@ hero:
   actions:
     - theme: brand
       text: Get Started 👆
-      link: /markdown-examples
+      link: /guide/what-is-mcp
     - theme: alt
       text: View on GitHub
       link: https://github.com/my-mcp-hub/mcp-kit
@@ -19,7 +19,7 @@ hero:
 features:
   - title: Quick Scaffolding
     icon: 🚀
-    details: Generate MCP server projects instantly with pre-configured TypeScript setup and development tools.
+    details: Quickly scaffold MCP server and client projects with pre-configured TypeScript setup and developer tools.
   - title: TypeScript First
     icon: 📦
     details: Built-in TypeScript support with full type safety, modern ES modules, and excellent developer experience.

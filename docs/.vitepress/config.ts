@@ -4,6 +4,9 @@ import { defineConfig } from 'vitepress'
 export default defineConfig({
   title: 'MCP Kit',
   description: 'A CLI tool to create MCP (Model Context Protocol) applications with ease',
+  rewrites: {
+    'en/:rest*': ':rest*',
+  },
   base: '/mcp-kit/',
   head: [
     ['link', { rel: 'shortcut icon', href: '/mcp-kit/favicons/favicon.png' }],
@@ -17,11 +20,9 @@ export default defineConfig({
     ],
     nav: [
       { text: 'Home', link: '/' },
-      { text: 'Guide', link: '/guide/what-is-this', activeMatch: '/guide/' },
-      { text: 'Configs', link: '/config/', activeMatch: '/config/' },
-      { text: 'Examples', link: '/guide/examples', activeMatch: '/guide/examples' },
+      { text: 'Guide', link: '/guide/what-is-mcp', activeMatch: '/guide/' },
       {
-        text: '0.0.6',
+        text: '0.0.7',
         items: [
           {
             text: 'Changelog',
@@ -37,16 +38,9 @@ export default defineConfig({
         items: [
           { text: 'What is MCP?', link: '/guide/what-is-mcp' },
           { text: 'What is MCP Kit?', link: '/guide/what-is-mcp-kit' },
-          { text: 'Getting Started', link: '/en/guide/getting-started' },
-        ]
+          { text: 'Getting Started', link: '/guide/getting-started' },
+        ],
       },
-      {
-        text: 'Examples',
-        items: [
-          { text: 'Markdown Examples', link: '/markdown-examples' },
-          { text: 'Runtime API Examples', link: '/api-examples' }
-        ]
-      }
     ],
   }
 })
