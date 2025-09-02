@@ -47,21 +47,21 @@ Create an MCP server that provides tools, resources, and prompts for MCP clients
 The generated server project will have the following structure:
 
 ├── src/
-│   ├── tools/          # MCP tools implementation
-│   │   ├── index.ts    # Tools registration
+│   ├── tools/           # MCP tools implementation
+│   │   ├── index.ts     # Tools registration
 │   │   └── register*.ts # Individual tool implementations
-│   ├── resources/      # MCP resources implementation
-│   │   └── index.ts    # Resources registration
-│   ├── prompts/        # MCP prompts implementation
-│   │   └── index.ts    # Prompts registration
-│   ├── services/       # Server implementations
-│   │   ├── stdio.ts    # STDIO transport implementation
-│   │   └── web.ts      # Streamable HTTP and SSE transport implementation
-│   └── index.ts        # Entry point
-├── tests/              # Test files (optional)
-├── scripts/            # Build and development scripts
-├── .github/            # GitHub Actions workflows (optional)
-├── .husky/             # Git hooks (optional)
+│   ├── resources/       # MCP resources implementation
+│   │   └── index.ts     # Resources registration
+│   ├── prompts/         # MCP prompts implementation
+│   │   └── index.ts     # Prompts registration
+│   ├── services/        # Server implementations
+│   │   ├── stdio.ts     # STDIO transport implementation
+│   │   └── web.ts       # Streamable HTTP and SSE transport implementation
+│   └── index.ts         # Entry point
+├── tests/               # Test files (optional)
+├── scripts/             # Build and development scripts
+├── .github/             # GitHub Actions workflows (optional)
+├── .husky/              # Git hooks (optional)
 └── package.json
 ```
 
