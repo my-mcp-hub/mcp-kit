@@ -12,7 +12,13 @@ jobs:
     if: github.repository == 'my-mcp-hub/mcp-kit'
     runs-on: ubuntu-latest
     steps:
-      - uses: ./.github/actions/setup-pnpm
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup PNPM
+        uses: ./.github/actions/setup-pnpm
         with:
           node-version: 22
 
@@ -29,7 +35,13 @@ jobs:
     if: github.repository == 'my-mcp-hub/mcp-kit'
     runs-on: ubuntu-latest
     steps:
-      - uses: ./.github/actions/setup-pnpm
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup PNPM
+        uses: ./.github/actions/setup-pnpm
         with:
           node-version: 22
 
