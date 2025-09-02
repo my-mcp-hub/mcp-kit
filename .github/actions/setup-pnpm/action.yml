@@ -7,10 +7,14 @@ inputs:
     required: true
     default: "22"
 
-    pnpm-version:
-      description: "PNPM version"
-      required: false
-      default: "latest"
+  pnpm-version:
+    description: "PNPM version"
+    required: false
+    default: "latest"
+
+  npm-token:
+    description: "NPM token"
+    required: false
 
 runs:
   using: "composite"
@@ -26,7 +30,7 @@ runs:
       shell: bash
 
     - name: Setup npmrc
-      run: echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > .npmrc
+      run: echo "//registry.npmjs.org/:_authToken=${{ inputs.npm-token }}" > .npmrc
       shell: bash
 
     - name: Setup pnpm config
