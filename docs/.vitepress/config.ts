@@ -1,4 +1,5 @@
 import { defineConfig } from 'vitepress'
+import pkg from '../../packages/create-mcp-kit/package.json' with { type: 'json' }
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
@@ -26,7 +27,7 @@ export default defineConfig({
       { text: 'Home', link: '/' },
       { text: 'Guide', link: '/guide/what-is-mcp', activeMatch: '/guide/' },
       {
-        text: '0.0.8',
+        text: pkg.version,
         items: [
           {
             text: 'Changelog',
@@ -46,5 +47,14 @@ export default defineConfig({
         ],
       },
     ],
+
+    search: {
+      provider: 'algolia',
+      options: {
+        appId: 'V6CF28P0PS',
+        apiKey: '692752b7b3c6f794997d8ae22aed79fa',
+        indexName: 'create-mcp-kit',
+      },
+    },
   },
 })
