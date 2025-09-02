@@ -24,22 +24,11 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Install Node
-        uses: actions/setup-node@v4
+      - name: Setup PNPM
+        uses: ./.github/actions/setup-pnpm
         with:
           node-version: 22
-
-      - name: Install PNPM
-        run: npm i pnpm@latest -g
-
-      - name: Setup npmrc
-        run: echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > .npmrc
-
-      - name: setup pnpm config
-        run: pnpm config set store-dir $PNPM_CACHE_FOLDER
-
-      - name: Install Package
-        run: pnpm install
+          npm-token: ${{ secrets.NPM_TOKEN }}
 
       - name: Build Package
         run: pnpm run build
@@ -52,4 +41,4 @@ jobs:
           cd packages/$PACKAGE_NAME
           pnpm publish --no-git-checks --provenance --access public
         env:
-          NODE_AUTH_TOKEN: ${{secrets.npm_token}}
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
