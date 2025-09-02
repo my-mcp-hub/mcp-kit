@@ -11,7 +11,7 @@ hero:
   actions:
     - theme: brand
       text: 开始使用 👆
-      link: /guide/what-is-mcp
+      link: /guide/getting-started
     - theme: alt
       text: 查看 GitHub
       link: https://github.com/my-mcp-hub/mcp-kit
