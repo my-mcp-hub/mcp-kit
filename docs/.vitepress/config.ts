@@ -12,6 +12,10 @@ export default defineConfig({
     ['link', { rel: 'shortcut icon', href: '/mcp-kit/favicons/favicon.png' }],
     ['link', { rel: 'apple-touch-icon', sizes: '180x180', href: '/mcp-kit/favicons/apple-touch-icon.png' }],
   ],
+  locales: {
+    root: { label: 'English', lang: 'en-US', dir: 'ltr' },
+    zh: { label: '简体中文', lang: 'zh-Hans', dir: 'ltr' },
+  },
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     logo: '/logo.png',
@@ -22,14 +26,14 @@ export default defineConfig({
       { text: 'Home', link: '/' },
       { text: 'Guide', link: '/guide/what-is-mcp', activeMatch: '/guide/' },
       {
-        text: '0.0.7',
+        text: '0.0.8',
         items: [
           {
             text: 'Changelog',
             link: 'https://github.com/my-mcp-hub/mcp-kit/blob/main/packages/create-mcp-kit/CHANGELOG.md'
           },
-        ]
-      }
+        ],
+      },
     ],
 
     sidebar: [
@@ -42,5 +46,5 @@ export default defineConfig({
         ],
       },
     ],
-  }
+  },
 })
