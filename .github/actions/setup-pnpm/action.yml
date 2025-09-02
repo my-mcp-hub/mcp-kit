@@ -1,0 +1,43 @@
+name: "Setup Node with PNPM"
+description: "Checkout, setup Node, configure PNPM and install dependencies"
+
+inputs:
+  node-version:
+    description: "Node.js version"
+    required: true
+    default: "22"
+
+    pnpm-version:
+      description: "PNPM version"
+      required: false
+      default: "latest"
+
+runs:
+  using: "composite"
+  steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+
+    - name: Install Node
+      uses: actions/setup-node@v4
+      with:
+        node-version: ${{ inputs.node-version }}
+        cache: 'pnpm'
+
+    - name: Install PNPM
+      run: npm i pnpm@latest -g
+      shell: bash
+
+    - name: Setup npmrc
+      run: echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > .npmrc
+      shell: bash
+
+    - name: Setup pnpm config
+      run: pnpm config set store-dir $PNPM_CACHE_FOLDER
+      shell: bash
+
+    - name: Install Package
+      run: pnpm install
+      shell: bash

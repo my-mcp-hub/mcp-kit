@@ -12,30 +12,26 @@ jobs:
     if: github.repository == 'my-mcp-hub/mcp-kit'
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-
-      - name: Install Node
-        uses: actions/setup-node@v4
+      - uses: ./.github/actions/setup-pnpm
         with:
           node-version: 22
 
-      - name: Install PNPM
-        run: npm i pnpm@latest -g
-
-      - name: Setup npmrc
-        run: echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > .npmrc
-
-      - name: setup pnpm config
-        run: pnpm config set store-dir $PNPM_CACHE_FOLDER
-
-      - name: Install Package
-        run: pnpm install
-
       - name: Build Package
         run: pnpm run build
+
+      - name: Test Package
+        run: pnpm run coverage
+
+      - name: Coveralls
+        uses: coverallsapp/github-action@v2
+
+  doc:
+    if: github.repository == 'my-mcp-hub/mcp-kit'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: ./.github/actions/setup-pnpm
+        with:
+          node-version: 22
 
       - name: Build Docs Package
         run: pnpm run docs:build
@@ -46,8 +42,12 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: docs/.vitepress/dist
 
-      - name: Test Package
-        run: pnpm run coverage
-
-      - name: Coveralls
-        uses: coverallsapp/github-action@v2
+      - name: Get the content of algolia.json as config
+        id: algolia_config
+        run: echo "config=$(cat docs/crawlerConfig.json | jq -r tostring)" >> $GITHUB_OUTPUT
+      - name: Push indices to Algolia
+        uses: signcl/docsearch-scraper-action@master
+        env:
+          APPLICATION_ID: ${{ secrets.ALGOLIA_APPLICATION_ID }}
+          API_KEY: ${{ secrets.ALGOLIA_API_KEY }}
+          CONFIG: ${{ steps.algolia_config.outputs.config }}
