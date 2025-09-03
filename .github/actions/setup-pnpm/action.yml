@@ -7,11 +7,6 @@ inputs:
     required: true
     default: "22"
 
-  pnpm-version:
-    description: "PNPM version"
-    required: false
-    default: "latest"
-
   npm-token:
     description: "NPM token"
     required: false
@@ -30,6 +25,14 @@ runs:
         node-version: ${{ inputs.node-version }}
         cache: 'pnpm'
         cache-dependency-path: '**/pnpm-lock.yaml'
+        registry-url: 'https://registry.npmjs.org'
+        always-auth: true
+
+    - name: Configure npm authentication
+      if: ${{ inputs.npm-token != '' }}
+      shell: bash
+      run: |
+        echo "//registry.npmjs.org/:_authToken=${{ inputs.npm-token }}" >> ~/.npmrc
 
 #    - name: Get pnpm store directory
 #      shell: bash
