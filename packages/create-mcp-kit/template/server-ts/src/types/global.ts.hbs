@@ -1,3 +1,7 @@
+export interface OptionsType {
+  name: string
+  version: string
 {{#if (or (includes transports 'streamable') (includes transports 'sse'))}}
-PORT=8401
+  port: number
 {{/if}}
+}

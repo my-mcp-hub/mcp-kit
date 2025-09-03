@@ -11,6 +11,8 @@ export function getOptions(
   return {
     name: pkg.name,
     version: pkg.version,
+{{#if (or (includes transports 'streamable') (includes transports 'sse'))}}
     port: argv.port,
+{{/if}}
   } as OptionsType
 }
