@@ -9,7 +9,7 @@ import{_ as i,c as a,o as n,ah as t}from"./chunks/framework.QWunQcuv.js";const o
 <span class="line"><span style="--shiki-light:#28a745;--shiki-dark:#34d058;">◇</span><span style="--shiki-light:#24292e;--shiki-dark:#e1e4e8;">  Project language:</span></span>
 <span class="line"><span style="--shiki-light:#959da5;--shiki-dark:#959da5;">│</span><span style="--shiki-light:#24292e80;--shiki-dark:#e1e4e880;">  TypeScript</span></span>
 <span class="line"><span style="--shiki-light:#959da5;--shiki-dark:#959da5;">│</span></span>
-<span class="line"><span style="--shiki-light:#28a745;--shiki-dark:#34d058;">◇</span><span style="--shiki-light:#24292e;--shiki-dark:#e1e4e8;">  Project Transport Type:</span></span>
+<span class="line"><span style="--shiki-light:#28a745;--shiki-dark:#34d058;">◇</span><span style="--shiki-light:#24292e;--shiki-dark:#e1e4e8;">  Project transport type:</span></span>
 <span class="line"><span style="--shiki-light:#959da5;--shiki-dark:#959da5;">│</span><span style="--shiki-light:#24292e80;--shiki-dark:#e1e4e880;">  STDIO</span></span>
 <span class="line"><span style="--shiki-light:#959da5;--shiki-dark:#959da5;">│</span></span>
 <span class="line"><span style="--shiki-light:#28a745;--shiki-dark:#34d058;">◇</span><span style="--shiki-light:#24292e;--shiki-dark:#e1e4e8;">  Project template:</span></span>
@@ -18,28 +18,40 @@ import{_ as i,c as a,o as n,ah as t}from"./chunks/framework.QWunQcuv.js";const o
 <span class="line"><span style="--shiki-light:#28a745;--shiki-dark:#34d058;">◇</span><span style="--shiki-light:#24292e;--shiki-dark:#e1e4e8;">  Do you want to install dependencies?</span></span>
 <span class="line"><span style="--shiki-light:#959da5;--shiki-dark:#959da5;">│</span><span style="--shiki-light:#24292e80;--shiki-dark:#e1e4e880;">  Yes</span></span>
 <span class="line"><span style="--shiki-light:#959da5;--shiki-dark:#959da5;">│</span></span>
-<span class="line"><span style="--shiki-light:#959da5;--shiki-dark:#959da5;">└</span><span style="--shiki-light:#24292e;--shiki-dark:#e1e4e8;">  Project created successfully!</span></span></code></pre></div><ol><li><p>首先，系统会提示您选择 <strong>Project type</strong>:</p><ul><li><strong>MCP Server</strong>: 创建一个为 MCP 客户端提供工具、资源和提示的服务器</li><li><strong>MCP Client</strong>: 创建一个连接到 MCP 服务器的客户端</li></ul></li><li><p>接下来，系统会要求您提供<strong>Project name</strong> (默认为 <code>mcp-[type]-starter</code>)</p></li><li><p>选择您偏好的 <strong>Project language</strong>:</p><ul><li><strong>TypeScript</strong> (recommended)</li><li><strong>JavaScript</strong></li></ul></li><li><p>选择 <strong>Project Transport Type</strong> （可以选择多个选项）:</p><ul><li><strong>STDIO</strong>: 通过标准输入/输出流进行通信</li><li><strong>Streamable HTTP</strong>: 具有流式功能的 RESTful API</li><li><strong>SSE</strong>: 用于实时通信的服务器发送事件</li></ul></li><li><p>选择 <strong>Project template</strong>:</p><ul><li><strong>Standard</strong>: 包含推荐的插件和配置</li><li><strong>Custom</strong>: 允许您选择特定的插件</li></ul></li><li><p>如果您选择了 <strong>Custom</strong> 模板, 系统会提示您选择 <strong>Project plugins</strong>:</p><ul><li><strong>GitHub Action</strong>: CI/CD 工作流</li><li><strong>Vitest</strong>: 测试框架</li><li><strong>Inspector</strong>: 调试工具（仅限服务器项目）</li><li><strong>ESLint + Prettier + Lint-staged</strong>: 代码质量工具</li><li><strong>Commitlint</strong>: 提交消息检查</li><li><strong>Changelog</strong>: 自动生成变更日志</li></ul></li><li><p>最后，系统会询问您是否要自动 <strong>install dependencies</strong></p></li></ol><p>完成这些步骤后，MCP Kit 将使用所选配置创建您的项目。</p><h2 id="文件结构" tabindex="-1">文件结构 <a class="header-anchor" href="#文件结构" aria-label="Permalink to “文件结构”">​</a></h2><p>生成的文件结构取决于您选择的项目类型。</p><h3 id="mcp-服务器项目结构" tabindex="-1">MCP 服务器项目结构 <a class="header-anchor" href="#mcp-服务器项目结构" aria-label="Permalink to “MCP 服务器项目结构”">​</a></h3><div class="language-"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre class="shiki shiki-themes github-light github-dark" style="--shiki-light:#24292e;--shiki-dark:#e1e4e8;--shiki-light-bg:#fff;--shiki-dark-bg:#24292e;" tabindex="0" dir="ltr"><code><span class="line"><span>├── src/</span></span>
-<span class="line"><span>│   ├── tools/           # MCP 工具实现</span></span>
-<span class="line"><span>│   │   ├── index.ts     # 工具注册</span></span>
-<span class="line"><span>│   │   └── register*.ts # 单个工具实现</span></span>
-<span class="line"><span>│   ├── resources/       # MCP 资源实现</span></span>
-<span class="line"><span>│   │   └── index.ts     # 资源注册</span></span>
-<span class="line"><span>│   ├── prompts/         # MCP 提示实现</span></span>
-<span class="line"><span>│   │   └── index.ts     # 提示注册</span></span>
-<span class="line"><span>│   ├── services/        # 服务器实现</span></span>
-<span class="line"><span>│   │   ├── stdio.ts     # STDIO 传输实现</span></span>
-<span class="line"><span>│   │   └── web.ts       # 可流式 HTTP 和 SSE 传输实现</span></span>
-<span class="line"><span>│   └── index.ts         # 入口点</span></span>
-<span class="line"><span>├── tests/               # 测试文件（可选）</span></span>
-<span class="line"><span>├── scripts/             # 构建和开发脚本</span></span>
-<span class="line"><span>├── .github/             # GitHub Actions 工作流（可选）</span></span>
-<span class="line"><span>├── .husky/              # Git 钩子（可选）</span></span>
+<span class="line"><span style="--shiki-light:#959da5;--shiki-dark:#959da5;">└</span><span style="--shiki-light:#24292e;--shiki-dark:#e1e4e8;">  Project created successfully!</span></span></code></pre></div><ol><li><p>首先，系统会提示您选择 <strong>Project type</strong>:</p><ul><li><strong>MCP Server</strong>: 创建一个为 MCP 客户端提供工具、资源和提示的服务器</li><li><strong>MCP Client</strong>: 创建一个连接到 MCP 服务器的客户端</li></ul></li><li><p>接下来，系统会要求您提供<strong>Project name</strong> (默认为 <code>mcp-[type]-starter</code>)</p></li><li><p>选择您偏好的 <strong>Project language</strong>:</p><ul><li><strong>TypeScript</strong> (recommended)</li><li><strong>JavaScript</strong></li></ul></li><li><p>选择 <strong>Project transport type</strong> （可以选择多个选项）:</p><ul><li><strong>STDIO</strong>: 通过标准输入/输出流进行通信</li><li><strong>Streamable HTTP</strong>: 具有流式功能的 RESTful API</li><li><strong>SSE</strong>: 用于实时通信的服务器发送事件</li></ul></li><li><p>选择 <strong>Project template</strong>:</p><ul><li><strong>Standard</strong>: 包含推荐的插件和配置</li><li><strong>Custom</strong>: 允许您选择特定的插件</li></ul></li><li><p>如果您选择了 <strong>Custom</strong> 模板, 系统会提示您选择 <strong>Project plugins</strong>:</p><ul><li><strong>GitHub Action</strong>: CI/CD 工作流</li><li><strong>Vitest</strong>: 测试框架</li><li><strong>Inspector</strong>: 调试工具（仅限服务器项目）</li><li><strong>ESLint + Prettier + Lint-staged</strong>: 代码质量工具</li><li><strong>Commitlint</strong>: 提交消息检查</li><li><strong>Changelog</strong>: 自动生成变更日志</li></ul></li><li><p>最后，系统会询问您是否要自动 <strong>install dependencies</strong></p></li></ol><p>完成这些步骤后，MCP Kit 将使用所选配置创建您的项目。</p><h2 id="文件结构" tabindex="-1">文件结构 <a class="header-anchor" href="#文件结构" aria-label="Permalink to “文件结构”">​</a></h2><p>生成的文件结构取决于您选择的项目类型。</p><h3 id="mcp-服务器项目结构" tabindex="-1">MCP 服务器项目结构 <a class="header-anchor" href="#mcp-服务器项目结构" aria-label="Permalink to “MCP 服务器项目结构”">​</a></h3><div class="language-"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre class="shiki shiki-themes github-light github-dark" style="--shiki-light:#24292e;--shiki-dark:#e1e4e8;--shiki-light-bg:#fff;--shiki-dark-bg:#24292e;" tabindex="0" dir="ltr"><code><span class="line"><span>├── src/</span></span>
+<span class="line"><span>│   ├── tools/             # MCP 工具实现</span></span>
+<span class="line"><span>│   │   ├── index.ts       # 工具注册</span></span>
+<span class="line"><span>│   │   └── register*.ts   # 单个工具实现</span></span>
+<span class="line"><span>│   ├── resources/         # MCP 资源实现</span></span>
+<span class="line"><span>│   │   └── index.ts       # 资源注册</span></span>
+<span class="line"><span>│   ├── prompts/           # MCP 提示实现</span></span>
+<span class="line"><span>│   │   └── index.ts       # 提示注册</span></span>
+<span class="line"><span>│   ├── services/          # 服务器实现</span></span>
+<span class="line"><span>│   │   ├── stdio.ts       # STDIO 传输实现</span></span>
+<span class="line"><span>│   │   └── web.ts         # 可流式 HTTP 和 SSE 传输实现</span></span>
+<span class="line"><span>│   └── index.ts           # 入口点</span></span>
+<span class="line"><span>├── tests/                 # 测试文件（可选）</span></span>
+<span class="line"><span>├── scripts/               # 构建和开发脚本</span></span>
+<span class="line"><span>├── .github/               # GitHub Actions 工作流（可选）</span></span>
+<span class="line"><span>├── .husky/                # Git 钩子（可选）</span></span>
+<span class="line"><span>├── .prettierrc            # Prettier 配置（可选）</span></span>
+<span class="line"><span>├── changelog-option.js    # 约定式变更日志配置（可选）</span></span>
+<span class="line"><span>├── commitlint.config.js   # 提交消息检查规则（可选）</span></span>
+<span class="line"><span>├── eslint.config.js       # ESLint 配置（可选）</span></span>
+<span class="line"><span>├── lint-staged.config.js  # Lint-staged 配置（可选）</span></span>
+<span class="line"><span>├── vitest.*.ts            # Vitest 配置（可选）</span></span>
 <span class="line"><span>└── package.json</span></span></code></pre></div><h3 id="mcp-客户端项目结构" tabindex="-1">MCP 客户端项目结构 <a class="header-anchor" href="#mcp-客户端项目结构" aria-label="Permalink to “MCP 客户端项目结构”">​</a></h3><div class="language-"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre class="shiki shiki-themes github-light github-dark" style="--shiki-light:#24292e;--shiki-dark:#e1e4e8;--shiki-light-bg:#fff;--shiki-dark-bg:#24292e;" tabindex="0" dir="ltr"><code><span class="line"><span>├── src/</span></span>
-<span class="line"><span>│   └── index.ts        # 带有传输实现的入口点</span></span>
-<span class="line"><span>├── tests/              # 测试文件（可选）</span></span>
-<span class="line"><span>├── scripts/            # 构建和开发脚本</span></span>
-<span class="line"><span>├── .github/            # GitHub Actions 工作流（可选）</span></span>
-<span class="line"><span>├── .husky/             # Git 钩子（可选）</span></span>
+<span class="line"><span>│   └── index.ts           # 带有传输实现的入口点</span></span>
+<span class="line"><span>├── tests/                 # 测试文件（可选）</span></span>
+<span class="line"><span>├── scripts/               # 构建和开发脚本</span></span>
+<span class="line"><span>├── .github/               # GitHub Actions 工作流（可选）</span></span>
+<span class="line"><span>├── .husky/                # Git 钩子（可选）</span></span>
+<span class="line"><span>├── .prettierrc            # Prettier 配置（可选）</span></span>
+<span class="line"><span>├── changelog-option.js    # 约定式变更日志配置（可选）</span></span>
+<span class="line"><span>├── commitlint.config.js   # 提交消息检查规则（可选）</span></span>
+<span class="line"><span>├── eslint.config.js       # ESLint 配置（可选）</span></span>
+<span class="line"><span>├── lint-staged.config.js  # Lint-staged 配置（可选）</span></span>
+<span class="line"><span>├── vitest.*.ts            # Vitest 配置（可选）</span></span>
 <span class="line"><span>└── package.json</span></span></code></pre></div><div class="tip custom-block"><p class="custom-block-title custom-block-title-default">TIP</p><p>项目结构设计为模块化和可扩展的。您可以根据自己的需求进行自定义。</p></div><h2 id="启动和运行" tabindex="-1">启动和运行 <a class="header-anchor" href="#启动和运行" aria-label="Permalink to “启动和运行”">​</a></h2><p>创建项目后，您可以使用以下 npm 脚本来开发、测试和构建您的应用程序：</p><h3 id="mcp-服务器开发脚本" tabindex="-1">MCP 服务器开发脚本 <a class="header-anchor" href="#mcp-服务器开发脚本" aria-label="Permalink to “MCP 服务器开发脚本”">​</a></h3><div class="language-json"><button title="Copy Code" class="copy"></button><span class="lang">json</span><pre class="shiki shiki-themes github-light github-dark" style="--shiki-light:#24292e;--shiki-dark:#e1e4e8;--shiki-light-bg:#fff;--shiki-dark-bg:#24292e;" tabindex="0" dir="ltr"><code><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">{</span></span>
 <span class="line"><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">  &quot;scripts&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: {</span></span>
 <span class="line"><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">    &quot;dev&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;以 stdio 模式启动开发服务器&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">,</span></span>
