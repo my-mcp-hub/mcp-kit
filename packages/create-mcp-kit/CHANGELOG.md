@@ -1,5 +1,22 @@
 # create-mcp-kit
 
+## 0.0.9
+
+### Patch Changes
+
+- [`7aa59c8`](https://github.com/my-mcp-hub/mcp-kit/commit/7aa59c88eb54d036aea353a47c991b82bd0282d5) Thanks [@zhensherlock](https://github.com/zhensherlock)! - feat: update server-ts template
+
+- [`2e8cb77`](https://github.com/my-mcp-hub/mcp-kit/commit/2e8cb77dfaa37d66a618216ca386104c96704131) Thanks [@zhensherlock](https://github.com/zhensherlock)! - feat: update client-ts template
+
+- [`e681f94`](https://github.com/my-mcp-hub/mcp-kit/commit/e681f94a455b876004733986621463c52429ceca) Thanks [@zhensherlock](https://github.com/zhensherlock)! - feat: update client-js template
+
+- [`0493813`](https://github.com/my-mcp-hub/mcp-kit/commit/0493813804148f7eaffa436a01ef8f7b233455d2) Thanks [@zhensherlock](https://github.com/zhensherlock)! - style: standardize transport type prompt casing
+
+- [`93532df`](https://github.com/my-mcp-hub/mcp-kit/commit/93532df69912791b1b626798881331612c52e883) Thanks [@zhensherlock](https://github.com/zhensherlock)! - feat: update server-js template
+
+- Updated dependencies [[`e194475`](https://github.com/my-mcp-hub/mcp-kit/commit/e1944751859d5a7a4070a5afd3230b4af005aab5)]:
+  - @mcp-tool-kit/shared@0.0.10
+
 ## 0.0.8
 
 ### Patch Changes
