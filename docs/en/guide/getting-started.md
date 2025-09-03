@@ -47,7 +47,7 @@ When you run the create command, MCP Kit will launch an interactive setup wizard
    - **TypeScript** (recommended)
    - **JavaScript**
 
-4. Select **Project Transport Type** (multiple options can be selected):
+4. Select **Project transport type** (multiple options can be selected):
    - **STDIO**: Communication through standard input/output streams
    - **Streamable HTTP**: RESTful API with streaming capabilities
    - **SSE**: Server-Sent Events for real-time communication
@@ -76,21 +76,27 @@ The generated file structure depends on the project type you selected.
 
 ```
 ├── src/
-│   ├── tools/           # MCP tools implementation
-│   │   ├── index.ts     # Tools registration
-│   │   └── register*.ts # Individual tool implementations
-│   ├── resources/       # MCP resources implementation
-│   │   └── index.ts     # Resources registration
-│   ├── prompts/         # MCP prompts implementation
-│   │   └── index.ts     # Prompts registration
-│   ├── services/        # Server implementations
-│   │   ├── stdio.ts     # STDIO transport implementation
-│   │   └── web.ts       # Streamable HTTP and SSE transport implementation
-│   └── index.ts         # Entry point
-├── tests/               # Test files (optional)
-├── scripts/             # Build and development scripts
-├── .github/             # GitHub Actions workflows (optional)
-├── .husky/              # Git hooks (optional)
+│   ├── tools/             # MCP tools implementation
+│   │   ├── index.ts       # Tools registration
+│   │   └── register*.ts   # Individual tool implementations
+│   ├── resources/         # MCP resources implementation
+│   │   └── index.ts       # Resources registration
+│   ├── prompts/           # MCP prompts implementation
+│   │   └── index.ts       # Prompts registration
+│   ├── services/          # Server implementations
+│   │   ├── stdio.ts       # STDIO transport implementation
+│   │   └── web.ts         # Streamable HTTP and SSE transport implementation
+│   └── index.ts           # Entry point
+├── tests/                 # Test files (optional)
+├── scripts/               # Build and development scripts
+├── .github/               # GitHub Actions workflows (optional)
+├── .husky/                # Git hooks (optional)
+├── .prettierrc            # Prettier configuration (optional)
+├── changelog-option.js    # Conventional changelog config (optional)
+├── commitlint.config.js   # Commit message lint rules (optional)
+├── eslint.config.js       # ESLint configuration (optional)
+├── lint-staged.config.js  # Lint-staged configuration (optional)
+├── vitest.*.ts            # Vitest configuration (optional)
 └── package.json
 ```
 
@@ -98,11 +104,17 @@ The generated file structure depends on the project type you selected.
 
 ```
 ├── src/
-│   └── index.ts        # Entry point with transport implementations
-├── tests/              # Test files (optional)
-├── scripts/            # Build and development scripts
-├── .github/            # GitHub Actions workflows (optional)
-├── .husky/             # Git hooks (optional)
+│   └── index.ts           # Entry point with transport implementations
+├── tests/                 # Test files (optional)
+├── scripts/               # Build and development scripts
+├── .github/               # GitHub Actions workflows (optional)
+├── .husky/                # Git hooks (optional)
+├── .prettierrc            # Prettier configuration (optional)
+├── changelog-option.js    # Conventional changelog config (optional)
+├── commitlint.config.js   # Commit message lint rules (optional)
+├── eslint.config.js       # ESLint configuration (optional)
+├── lint-staged.config.js  # Lint-staged configuration (optional)
+├── vitest.*.ts            # Vitest configuration (optional)
 └── package.json
 ```
 

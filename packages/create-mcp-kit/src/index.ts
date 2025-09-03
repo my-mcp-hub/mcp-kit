@@ -45,7 +45,7 @@ const group = await clack.group(
       }),
     transports: () => {
       return clack.multiselect({
-        message: 'Project Transport Type:',
+        message: 'Project transport type:',
         required: true,
         initialValues: ['stdio'],
         options: [

@@ -47,7 +47,7 @@ MCP Kit 是一个仅支持 ESM 的包。它需要 Node.js 版本 18 或更高，
    - **TypeScript** (recommended)
    - **JavaScript**
 
-4. 选择 **Project Transport Type** （可以选择多个选项）:
+4. 选择 **Project transport type** （可以选择多个选项）:
    - **STDIO**: 通过标准输入/输出流进行通信
    - **Streamable HTTP**: 具有流式功能的 RESTful API
    - **SSE**: 用于实时通信的服务器发送事件
@@ -76,21 +76,27 @@ MCP Kit 是一个仅支持 ESM 的包。它需要 Node.js 版本 18 或更高，
 
 ```
 ├── src/
-│   ├── tools/           # MCP 工具实现
-│   │   ├── index.ts     # 工具注册
-│   │   └── register*.ts # 单个工具实现
-│   ├── resources/       # MCP 资源实现
-│   │   └── index.ts     # 资源注册
-│   ├── prompts/         # MCP 提示实现
-│   │   └── index.ts     # 提示注册
-│   ├── services/        # 服务器实现
-│   │   ├── stdio.ts     # STDIO 传输实现
-│   │   └── web.ts       # 可流式 HTTP 和 SSE 传输实现
-│   └── index.ts         # 入口点
-├── tests/               # 测试文件（可选）
-├── scripts/             # 构建和开发脚本
-├── .github/             # GitHub Actions 工作流（可选）
-├── .husky/              # Git 钩子（可选）
+│   ├── tools/             # MCP 工具实现
+│   │   ├── index.ts       # 工具注册
+│   │   └── register*.ts   # 单个工具实现
+│   ├── resources/         # MCP 资源实现
+│   │   └── index.ts       # 资源注册
+│   ├── prompts/           # MCP 提示实现
+│   │   └── index.ts       # 提示注册
+│   ├── services/          # 服务器实现
+│   │   ├── stdio.ts       # STDIO 传输实现
+│   │   └── web.ts         # 可流式 HTTP 和 SSE 传输实现
+│   └── index.ts           # 入口点
+├── tests/                 # 测试文件（可选）
+├── scripts/               # 构建和开发脚本
+├── .github/               # GitHub Actions 工作流（可选）
+├── .husky/                # Git 钩子（可选）
+├── .prettierrc            # Prettier 配置（可选）
+├── changelog-option.js    # 约定式变更日志配置（可选）
+├── commitlint.config.js   # 提交消息检查规则（可选）
+├── eslint.config.js       # ESLint 配置（可选）
+├── lint-staged.config.js  # Lint-staged 配置（可选）
+├── vitest.*.ts            # Vitest 配置（可选）
 └── package.json
 ```
 
@@ -98,11 +104,17 @@ MCP Kit 是一个仅支持 ESM 的包。它需要 Node.js 版本 18 或更高，
 
 ```
 ├── src/
-│   └── index.ts        # 带有传输实现的入口点
-├── tests/              # 测试文件（可选）
-├── scripts/            # 构建和开发脚本
-├── .github/            # GitHub Actions 工作流（可选）
-├── .husky/             # Git 钩子（可选）
+│   └── index.ts           # 带有传输实现的入口点
+├── tests/                 # 测试文件（可选）
+├── scripts/               # 构建和开发脚本
+├── .github/               # GitHub Actions 工作流（可选）
+├── .husky/                # Git 钩子（可选）
+├── .prettierrc            # Prettier 配置（可选）
+├── changelog-option.js    # 约定式变更日志配置（可选）
+├── commitlint.config.js   # 提交消息检查规则（可选）
+├── eslint.config.js       # ESLint 配置（可选）
+├── lint-staged.config.js  # Lint-staged 配置（可选）
+├── vitest.*.ts            # Vitest 配置（可选）
 └── package.json
 ```
 
