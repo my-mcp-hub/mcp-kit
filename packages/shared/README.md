@@ -47,21 +47,27 @@ Create an MCP server that provides tools, resources, and prompts for MCP clients
 The generated server project will have the following structure:
 
 ├── src/
-│   ├── tools/           # MCP tools implementation
-│   │   ├── index.ts     # Tools registration
-│   │   └── register*.ts # Individual tool implementations
-│   ├── resources/       # MCP resources implementation
-│   │   └── index.ts     # Resources registration
-│   ├── prompts/         # MCP prompts implementation
-│   │   └── index.ts     # Prompts registration
-│   ├── services/        # Server implementations
-│   │   ├── stdio.ts     # STDIO transport implementation
-│   │   └── web.ts       # Streamable HTTP and SSE transport implementation
-│   └── index.ts         # Entry point
-├── tests/               # Test files (optional)
-├── scripts/             # Build and development scripts
-├── .github/             # GitHub Actions workflows (optional)
-├── .husky/              # Git hooks (optional)
+│   ├── tools/             # MCP tools implementation
+│   │   ├── index.ts       # Tools registration
+│   │   └── register*.ts   # Individual tool implementations
+│   ├── resources/         # MCP resources implementation
+│   │   └── index.ts       # Resources registration
+│   ├── prompts/           # MCP prompts implementation
+│   │   └── index.ts       # Prompts registration
+│   ├── services/          # Server implementations
+│   │   ├── stdio.ts       # STDIO transport implementation
+│   │   └── web.ts         # Streamable HTTP and SSE transport implementation
+│   └── index.ts           # Entry point
+├── tests/                 # Test files (optional)
+├── scripts/               # Build and development scripts
+├── .github/               # GitHub Actions workflows (optional)
+├── .husky/                # Git hooks (optional)
+├── .prettierrc            # Prettier configuration (optional)
+├── changelog-option.js    # Conventional changelog config (optional)
+├── commitlint.config.js   # Commit message lint rules (optional)
+├── eslint.config.js       # ESLint configuration (optional)
+├── lint-staged.config.js  # Lint-staged configuration (optional)
+├── vitest.*.ts            # Vitest configuration (optional)
 └── package.json
 ```
 
@@ -84,11 +90,17 @@ Create an MCP client that connects to MCP servers and uses their tools, resource
 The generated client project will have the following structure:
 
 ├── src/
-│   └── index.ts        # Entry point with transport implementations
-├── tests/              # Test files (optional)
-├── scripts/            # Build and development scripts
-├── .github/            # GitHub Actions workflows (optional)
-├── .husky/             # Git hooks (optional)
+│   └── index.ts           # Entry point with transport implementations
+├── tests/                 # Test files (optional)
+├── scripts/               # Build and development scripts
+├── .github/               # GitHub Actions workflows (optional)
+├── .husky/                # Git hooks (optional)
+├── .prettierrc            # Prettier configuration (optional)
+├── changelog-option.js    # Conventional changelog config (optional)
+├── commitlint.config.js   # Commit message lint rules (optional)
+├── eslint.config.js       # ESLint configuration (optional)
+├── lint-staged.config.js  # Lint-staged configuration (optional)
+├── vitest.*.ts            # Vitest configuration (optional)
 └── package.json
 ```
 
