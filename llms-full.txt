@@ -1,0 +1,511 @@
+---
+url: /mcp-kit/en/guide/getting-started.md
+---
+
+# Getting Started
+
+## Installation
+
+### Prerequisites
+
+* [Node.js](https://nodejs.org/) version 18 or higher.
+* Terminal for accessing MCP Kit via its command line interface (CLI).
+
+MCP Kit can be used to create new MCP (Model Context Protocol) applications. You can install and use it with any of the following package managers:
+
+::: code-group
+
+```sh [npm]
+$ npm create mcp-kit@latest
+```
+
+```sh [pnpm]
+$ pnpm create mcp-kit
+```
+
+```sh [yarn]
+$ yarn create mcp-kit
+```
+
+```bash [bun]
+$ bun create mcp-kit
+```
+
+```bash [deno]
+$ deno init --npm mcp-kit
+```
+
+:::
+
+::: tip NOTE
+MCP Kit is an ESM-only package. It requires Node.js version 18 or higher and uses modern JavaScript features.
+:::
+
+## Setup Wizard
+
+When you run the create command, MCP Kit will launch an interactive setup wizard that guides you through creating a new project:
+
+<<< @/snippets/init.ansi
+
+1. First, you'll be prompted to select a **Project type**:
+   * **MCP Server**: Creates a server that provides tools, resources, and prompts for MCP clients
+   * **MCP Client**: Creates a client that connects to MCP servers
+
+2. Next, you'll be asked to provide a **Project name** (defaults to `mcp-[type]-starter`)
+
+3. Choose your preferred **Project language**:
+   * **TypeScript** (recommended)
+   * **JavaScript**
+
+4. Select **Project transport type** (multiple options can be selected):
+   * **STDIO**: Communication through standard input/output streams
+   * **Streamable HTTP**: RESTful API with streaming capabilities
+   * **SSE**: Server-Sent Events for real-time communication
+
+5. Choose a **Project template**:
+   * **Standard**: Includes recommended plugins and configurations
+   * **Custom**: Allows you to select specific plugins
+
+6. If you selected **Custom** template, you'll be prompted to select **Project plugins**:
+   * **GitHub Action**: CI/CD workflows
+   * **Vitest**: Testing framework
+   * **Inspector**: Debugging tools (server projects only)
+   * **ESLint + Prettier + Lint-staged**: Code quality tools
+   * **Commitlint**: Commit message linting
+   * **Changelog**: Automated changelog generation
+
+7. Finally, you'll be asked if you want to **install dependencies** automatically
+
+After completing these steps, MCP Kit will create your project with the selected configuration.
+
+## File Structure
+
+The generated file structure depends on the project type you selected.
+
+### MCP Server Project Structure
+
+```
+├── src/
+│   ├── tools/             # MCP tools implementation
+│   │   ├── index.ts       # Tools registration
+│   │   └── register*.ts   # Individual tool implementations
+│   ├── resources/         # MCP resources implementation
+│   │   └── index.ts       # Resources registration
+│   ├── prompts/           # MCP prompts implementation
+│   │   └── index.ts       # Prompts registration
+│   ├── services/          # Server implementations
+│   │   ├── stdio.ts       # STDIO transport implementation
+│   │   └── web.ts         # Streamable HTTP and SSE transport implementation
+│   └── index.ts           # Entry point
+├── tests/                 # Test files (optional)
+├── scripts/               # Build and development scripts
+├── .github/               # GitHub Actions workflows (optional)
+├── .husky/                # Git hooks (optional)
+├── .prettierrc            # Prettier configuration (optional)
+├── changelog-option.js    # Conventional changelog config (optional)
+├── commitlint.config.js   # Commit message lint rules (optional)
+├── eslint.config.js       # ESLint configuration (optional)
+├── lint-staged.config.js  # Lint-staged configuration (optional)
+├── vitest.*.ts            # Vitest configuration (optional)
+└── package.json
+```
+
+### MCP Client Project Structure
+
+```
+├── src/
+│   └── index.ts           # Entry point with transport implementations
+├── tests/                 # Test files (optional)
+├── scripts/               # Build and development scripts
+├── .github/               # GitHub Actions workflows (optional)
+├── .husky/                # Git hooks (optional)
+├── .prettierrc            # Prettier configuration (optional)
+├── changelog-option.js    # Conventional changelog config (optional)
+├── commitlint.config.js   # Commit message lint rules (optional)
+├── eslint.config.js       # ESLint configuration (optional)
+├── lint-staged.config.js  # Lint-staged configuration (optional)
+├── vitest.*.ts            # Vitest configuration (optional)
+└── package.json
+```
+
+::: tip
+The project structure is designed to be modular and extensible. You can customize it according to your needs.
+:::
+
+## Up and Running
+
+After creating your project, you can use the following npm scripts to develop, test, and build your application:
+
+### MCP Server Development Scripts
+
+```json [package.json]
+{
+  "scripts": {
+    "dev": "Start the development server in stdio mode",
+    "dev:web": "Start the development server in web mode",
+    "build": "Build the project",
+    "test": "Run tests (if vitest plugin is selected)",
+    "coverage": "Generate test coverage report (if vitest plugin is selected)",
+    "lint": "Run linting (if style plugin is selected)"
+  }
+}
+```
+
+To start the development server, run:
+
+::: code-group
+
+```sh [npm]
+$ npm run dev
+```
+
+```sh [pnpm]
+$ pnpm run dev
+```
+
+```sh [yarn]
+$ yarn dev
+```
+
+:::
+
+### MCP Client Development Scripts
+
+The client project includes similar scripts for development, testing, and building:
+
+```json [package.json]
+{
+  "scripts": {
+    "dev": "Start the client in development mode",
+    "build": "Build the project",
+    "test": "Run tests (if vitest plugin is selected)",
+    "coverage": "Generate test coverage report (if vitest plugin is selected)",
+    "lint": "Run linting (if style plugin is selected)"
+  }
+}
+```
+
+---
+
+---
+url: /mcp-kit/en/guide/what-is-mcp-kit.md
+---
+
+# What is MCP Kit?
+
+MCP Kit is a toolkit for creating MCP (Model Context Protocol) applications with ease, enabling developers to build MCP-compliant servers and client applications.
+
+## What MCP Kit Provides
+
+MCP Kit offers a complete set of tools and frameworks to help developers quickly set up MCP applications:
+
+* **Quick project scaffolding**: Create project structures through simple CLI commands
+* **TypeScript support**: Out-of-the-box TypeScript configuration
+* **Built-in development tools**: Including testing, building, and code quality tools
+* **Configurable project templates**: Adaptable to different development needs
+* **Multiple transport modes**: Support for stdio, streamable-http, and SSE communication methods
+* **Comprehensive APIs**: Rich interfaces supporting various functionality implementations
+
+## Core Features of MCP Kit
+
+MCP Kit supports creating two types of projects:
+
+### MCP Server
+
+Create an MCP server that provides tools, resources, and prompts for MCP clients. Servers can:
+
+* Implement custom tools for client use
+* Define resources accessible by clients
+* Create reusable prompt templates
+* Support multiple transport modes (stdio, HTTP, SSE)
+
+### MCP Client
+
+Create client applications that connect to MCP servers and use their tools, resources, and prompts. Clients can:
+
+* Connect to servers using various transport modes
+* Call tools provided by servers
+* Access resources defined by servers
+* Use prompt templates created by servers
+
+## Why Choose MCP Kit?
+
+MCP Kit allows developers to focus on business logic rather than underlying implementation details. Through standardized interfaces and tools, it simplifies the development process for MCP applications, making it easier and more efficient to create high-quality AI applications.
+
+Whether you want to create an MCP server providing specific functionality or need a client application that leverages these capabilities, MCP Kit provides the tools and frameworks needed to quickly achieve your goals.
+
+---
+
+---
+url: /mcp-kit/en/guide/what-is-mcp.md
+---
+
+# What is MCP?
+
+The Model Context Protocol (MCP) is an open protocol that standardizes how applications provide context to large language models (LLMs). Think of MCP like a USB-C port for AI applications. Just as USB-C provides a standardized way to connect your devices to various peripherals and accessories, MCP provides a standardized way to connect AI models to different data sources and tools. MCP enables you to build agents and complex workflows on top of LLMs and connects your models with the world.
+
+MCP provides:
+
+* **A growing list of pre-built integrations** that your LLM can directly plug into
+* **A standardized way** to build custom integrations for AI applications
+* **An open protocol** that everyone is free to implement and use
+* **The flexibility to change** between different apps and take your context with you
+
+For more information, please visit the official MCP website: <https://modelcontextprotocol.io/>
+
+---
+
+---
+url: /mcp-kit/zh/guide/what-is-mcp-kit.md
+---
+
+# 什么是 MCP Kit？
+
+MCP Kit 是一个用于创建 MCP（Model Context Protocol）应用程序的工具集，它让开发者能够轻松地构建符合 MCP 标准的服务器和客户端应用。
+
+## MCP Kit 提供什么？
+
+MCP Kit 提供了一套完整的工具和框架，帮助开发者快速搭建 MCP 应用：
+
+* **快速项目脚手架**: 通过简单的命令行工具创建项目结构
+* **TypeScript 支持**: 开箱即用的 TypeScript 配置
+* **内置开发工具**: 包含测试、构建和代码质量工具
+* **可配置的项目模板**: 适应不同开发需求
+* **多种传输模式**: 支持 stdio、streamable-http 和 SSE 等通信方式
+* **全面的 API**: 丰富的接口支持各种功能实现
+
+## MCP Kit 的核心功能
+
+MCP Kit 支持创建两种类型的项目：
+
+### MCP 服务器
+
+创建 MCP 服务器，为 MCP 客户端提供工具、资源和提示。服务器可以：
+
+* 实现自定义工具供客户端调用
+* 定义可被客户端访问的资源
+* 创建可重用的提示模板
+* 支持多种传输模式（stdio、HTTP、SSE）
+
+### MCP 客户端
+
+创建连接到 MCP 服务器的客户端应用，使用服务器提供的工具、资源和提示。客户端可以：
+
+* 通过多种传输模式连接到服务器
+* 调用服务器提供的工具
+* 访问服务器定义的资源
+* 使用服务器创建的提示模板
+
+## 为什么选择 MCP Kit？
+
+MCP Kit 让开发者能够专注于业务逻辑而不是底层实现细节。通过标准化的接口和工具，它简化了 MCP 应用的开发流程，使得创建高质量的 AI 应用变得更加容易和高效。
+
+无论你是想创建一个提供特定功能的 MCP 服务器，还是需要一个能够利用这些功能的客户端应用，MCP Kit 都能提供所需的工具和框架，帮助你快速实现目标。
+
+---
+
+---
+url: /mcp-kit/zh/guide/what-is-mcp.md
+---
+
+# 什么是 MCP？
+
+模型上下文协议（Model Context Protocol，MCP）是一个开放协议，它标准化了应用程序如何向大型语言模型（LLMs）提供上下文。可以将 MCP 想象成 AI 应用程序的 USB-C 接口。就像 USB-C 为连接设备与各种外设和配件提供了标准化方式一样，MCP 为连接 AI 模型与不同数据源和工具提供了标准化方式。MCP 使您能够在 LLMs 之上构建代理和复杂工作流，并将您的模型与世界连接起来。
+
+MCP 提供：
+
+* **不断增长的预构建集成列表**，您的 LLM 可以直接插入使用
+* **构建 AI 应用程序自定义集成的标准化方式**
+* **一个人人都可以自由实现和使用的开放协议**
+* **在不同应用程序之间切换的灵活性**，并且可以随身携带您的上下文
+
+如果想了解更多，请访问 MCP 官网：<https://modelcontextprotocol.io/>
+
+---
+
+---
+url: /mcp-kit/zh/guide/getting-started.md
+---
+
+# 入门指南
+
+## 安装
+
+### 前提条件
+
+* [Node.js](https://nodejs.org/) 版本 18 或更高。
+* 通过命令行界面（CLI）访问 MCP Kit 的终端。
+
+MCP Kit 可用于创建新的 MCP（模型上下文协议）应用程序。您可以使用以下任何包管理器安装和使用它：
+
+::: code-group
+
+```sh [npm]
+$ npm create mcp-kit@latest
+```
+
+```sh [pnpm]
+$ pnpm create mcp-kit
+```
+
+```sh [yarn]
+$ yarn create mcp-kit
+```
+
+```bash [bun]
+$ bun create mcp-kit
+```
+
+```bash [deno]
+$ deno init --npm mcp-kit
+```
+
+:::
+
+::: tip NOTE
+MCP Kit 是一个仅支持 ESM 的包。它需要 Node.js 版本 18 或更高，并使用现代 JavaScript 特性。
+:::
+
+## 设置向导
+
+当您运行创建命令时，MCP Kit 将启动一个交互式设置向导，引导您创建一个新项目：
+
+<<< @/snippets/init.ansi
+
+1. 首先，系统会提示您选择 **Project type**:
+   * **MCP Server**: 创建一个为 MCP 客户端提供工具、资源和提示的服务器
+   * **MCP Client**: 创建一个连接到 MCP 服务器的客户端
+
+2. 接下来，系统会要求您提供**Project name** (默认为 `mcp-[type]-starter`)
+
+3. 选择您偏好的 **Project language**:
+   * **TypeScript** (recommended)
+   * **JavaScript**
+
+4. 选择 **Project transport type** （可以选择多个选项）:
+   * **STDIO**: 通过标准输入/输出流进行通信
+   * **Streamable HTTP**: 具有流式功能的 RESTful API
+   * **SSE**: 用于实时通信的服务器发送事件
+
+5. 选择 **Project template**:
+   * **Standard**: 包含推荐的插件和配置
+   * **Custom**: 允许您选择特定的插件
+
+6. 如果您选择了 **Custom** 模板, 系统会提示您选择 **Project plugins**:
+   * **GitHub Action**: CI/CD 工作流
+   * **Vitest**: 测试框架
+   * **Inspector**: 调试工具（仅限服务器项目）
+   * **ESLint + Prettier + Lint-staged**: 代码质量工具
+   * **Commitlint**: 提交消息检查
+   * **Changelog**: 自动生成变更日志
+
+7. 最后，系统会询问您是否要自动 **install dependencies**
+
+完成这些步骤后，MCP Kit 将使用所选配置创建您的项目。
+
+## 文件结构
+
+生成的文件结构取决于您选择的项目类型。
+
+### MCP 服务器项目结构
+
+```
+├── src/
+│   ├── tools/             # MCP 工具实现
+│   │   ├── index.ts       # 工具注册
+│   │   └── register*.ts   # 单个工具实现
+│   ├── resources/         # MCP 资源实现
+│   │   └── index.ts       # 资源注册
+│   ├── prompts/           # MCP 提示实现
+│   │   └── index.ts       # 提示注册
+│   ├── services/          # 服务器实现
+│   │   ├── stdio.ts       # STDIO 传输实现
+│   │   └── web.ts         # 可流式 HTTP 和 SSE 传输实现
+│   └── index.ts           # 入口点
+├── tests/                 # 测试文件（可选）
+├── scripts/               # 构建和开发脚本
+├── .github/               # GitHub Actions 工作流（可选）
+├── .husky/                # Git 钩子（可选）
+├── .prettierrc            # Prettier 配置（可选）
+├── changelog-option.js    # 约定式变更日志配置（可选）
+├── commitlint.config.js   # 提交消息检查规则（可选）
+├── eslint.config.js       # ESLint 配置（可选）
+├── lint-staged.config.js  # Lint-staged 配置（可选）
+├── vitest.*.ts            # Vitest 配置（可选）
+└── package.json
+```
+
+### MCP 客户端项目结构
+
+```
+├── src/
+│   └── index.ts           # 带有传输实现的入口点
+├── tests/                 # 测试文件（可选）
+├── scripts/               # 构建和开发脚本
+├── .github/               # GitHub Actions 工作流（可选）
+├── .husky/                # Git 钩子（可选）
+├── .prettierrc            # Prettier 配置（可选）
+├── changelog-option.js    # 约定式变更日志配置（可选）
+├── commitlint.config.js   # 提交消息检查规则（可选）
+├── eslint.config.js       # ESLint 配置（可选）
+├── lint-staged.config.js  # Lint-staged 配置（可选）
+├── vitest.*.ts            # Vitest 配置（可选）
+└── package.json
+```
+
+::: tip
+项目结构设计为模块化和可扩展的。您可以根据自己的需求进行自定义。
+:::
+
+## 启动和运行
+
+创建项目后，您可以使用以下 npm 脚本来开发、测试和构建您的应用程序：
+
+### MCP 服务器开发脚本
+
+```json [package.json]
+{
+  "scripts": {
+    "dev": "以 stdio 模式启动开发服务器",
+    "dev:web": "以 web 模式启动开发服务器",
+    "build": "构建项目",
+    "test": "运行测试（如果选择了 vitest 插件）",
+    "coverage": "生成测试覆盖率报告（如果选择了 vitest 插件）",
+    "lint": "运行代码检查（如果选择了 style 插件）"
+  }
+}
+```
+
+要启动开发服务器，请运行：
+
+::: code-group
+
+```sh [npm]
+$ npm run dev
+```
+
+```sh [pnpm]
+$ pnpm run dev
+```
+
+```sh [yarn]
+$ yarn dev
+```
+
+:::
+
+### MCP 客户端开发脚本
+
+客户端项目包含类似的脚本，用于开发、测试和构建：
+
+```json [package.json]
+{
+  "scripts": {
+    "dev": "以开发模式启动客户端",
+    "build": "构建项目",
+    "test": "运行测试（如果选择了 vitest 插件）",
+    "coverage": "生成测试覆盖率报告（如果选择了 vitest 插件）",
+    "lint": "运行代码检查（如果选择了 style 插件）"
+  }
+}
+```
