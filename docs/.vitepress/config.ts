@@ -1,4 +1,6 @@
 import { defineConfig } from 'vitepress'
+import llmstxt from 'vitepress-plugin-llms'
+import { groupIconMdPlugin, groupIconVitePlugin } from 'vitepress-plugin-group-icons'
 import pkg from '../../packages/create-mcp-kit/package.json' with { type: 'json' }
 
 // https://vitepress.dev/reference/site-config
@@ -7,6 +9,7 @@ export default defineConfig({
   description: 'A CLI tool to create MCP (Model Context Protocol) applications with ease',
   rewrites: {
     'en/:rest*': ':rest*',
+    'en/index.md': 'index.md',
   },
   base: '/mcp-kit/',
   head: [
@@ -56,5 +59,54 @@ export default defineConfig({
         indexName: 'create-mcp-kit',
       },
     },
+  },
+  markdown: {
+    config(md) {
+      md.use(groupIconMdPlugin)
+    },
+  },
+  vite: {
+    plugins: [
+      llmstxt({
+        ignoreFiles: ['en/index.md', 'zh/index.md'],
+        description: 'A CLI tool to create MCP applications with ease',
+        sidebar: [
+          {
+            text: 'Introduction',
+            base: '',
+            items: [
+              { text: 'What is MCP?', link: '/en/guide/what-is-mcp' },
+              { text: 'What is MCP Kit?', link: '/en/guide/what-is-mcp-kit' },
+              { text: 'Getting Started', link: '/en/guide/getting-started' },
+            ],
+          },
+          {
+            text: '简介',
+            base: '',
+            items: [
+              { text: '什么是MCP？', link: '/zh/guide/what-is-mcp' },
+              { text: '什么是MCP Kit？', link: '/zh/guide/what-is-mcp-kit' },
+              { text: '快速开始', link: '/zh/guide/getting-started' },
+            ],
+          },
+        ],
+        details: `\
+- 🚀 Quick Scaffolding
+- 📦️ TypeScript First
+- 🛠️️ Development Tools
+- 🔧 Configurable Templates
+- 🌐️ Multiple Transport Modes
+- 📚️ Comprehensive APIs
+
+MCP Kit is a toolkit for creating MCP (Model Context Protocol) applications with ease, enabling developers to build MCP-compliant servers and client applications. It consists of two major parts:
+
+- A scaffolding system that quickly generates MCP server and client projects with [pre-configured TypeScript setup](https://my-mcp-hub.github.io/mcp-kit/guide/what-is-mcp-kit.html) and built-in developer tools for rapid development.
+
+- Project templates that provide standardized structure for both [MCP servers and clients](https://my-mcp-hub.github.io/mcp-kit/guide/what-is-mcp.html), pre-configured to follow Model Context Protocol specifications.
+
+In addition, MCP Kit streamlines the development workflow with [getting started guides](https://my-mcp-hub.github.io/mcp-kit/guide/getting-started.html) and best practices with full TypeScript support.`,
+      }),
+      groupIconVitePlugin(),
+    ],
   },
 })

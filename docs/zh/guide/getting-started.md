@@ -19,11 +19,19 @@ $ npm create mcp-kit@latest
 ```
 
 ```sh [pnpm]
-$ pnpm create mcp-kit@latest
+$ pnpm create mcp-kit
 ```
 
 ```sh [yarn]
-$ yarn create mcp-kit@latest
+$ yarn create mcp-kit
+```
+
+```bash [bun]
+$ bun create mcp-kit
+```
+
+```bash [deno]
+$ deno init --npm mcp-kit
 ```
 :::
 
