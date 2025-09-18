@@ -1,7 +1,4 @@
 {{#if (or (includes transports 'streamable') (includes transports 'sse'))}}
-  {{#if (includes transports 'streamable')}}
-import { nanoid } from 'nanoid'
-  {{/if}}
 import express from 'express'
   {{#if (includes transports 'streamable')}}
 import { isInitializeRequest } from '@modelcontextprotocol/sdk/types.js'
@@ -9,6 +6,9 @@ import { StreamableHTTPServerTransport } from '@modelcontextprotocol/sdk/server/
   {{/if}}
   {{#if (includes transports 'sse')}}
 import { SSEServerTransport } from '@modelcontextprotocol/sdk/server/sse.js'
+  {{/if}}
+  {{#if (includes transports 'streamable')}}
+import { generateSessionId } from '@/utils'
   {{/if}}
 import type { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js'
 import type { OptionsType } from '@/types'
@@ -35,7 +35,7 @@ export async function webServer(server: McpServer, options: OptionsType) {
       transport = transports.streamable[sessionId]
     } else if (!sessionId && isInitializeRequest(req.body)) {
       transport = new StreamableHTTPServerTransport({
-        sessionIdGenerator: () => nanoid(),
+        sessionIdGenerator: () => generateSessionId(),
         onsessioninitialized: sessionId => {
           transports.streamable[sessionId] = transport
         },
