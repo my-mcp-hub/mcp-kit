@@ -1,3 +1,9 @@
+import { nanoid } from 'nanoid'
+
+export function generateSessionId() {
+  return nanoid()
+}
+
 export function getOptions(argv, pkg) {
   return {
     name: pkg.name,
