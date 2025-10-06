@@ -45,8 +45,6 @@ MCP Kit is an ESM-only package. It requires Node.js version 18 or higher and use
 
 When you run the create command, MCP Kit will launch an interactive setup wizard that guides you through creating a new project:
 
-<<< @/snippets/init.ansi
-
 1. First, you'll be prompted to select a **Project type**:
    * **MCP Server**: Creates a server that provides tools, resources, and prompts for MCP clients
    * **MCP Client**: Creates a client that connects to MCP servers
