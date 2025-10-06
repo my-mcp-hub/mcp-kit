@@ -41,8 +41,8 @@
     "prepare": "husky"
   },
   "dependencies": {
-    "@modelcontextprotocol/sdk": "^1.18.1",
-    "dotenv": "^17.2.2",
+    "@modelcontextprotocol/sdk": "^1.19.1",
+    "dotenv": "^17.2.3",
 {{#if (or (includes transports 'streamable') (includes transports 'sse'))}}
     "express": "^5.1.0",
     "nanoid": "^5.1.6",
@@ -63,8 +63,8 @@
 {{/if}}
     "@types/yargs": "^17.0.33",
 {{#if (includes plugins 'style')}}
-    "@typescript-eslint/eslint-plugin": "^8.44.1",
-    "@typescript-eslint/parser": "^8.44.1",
+    "@typescript-eslint/eslint-plugin": "^8.45.0",
+    "@typescript-eslint/parser": "^8.45.0",
 {{/if}}
 {{#if (includes plugins 'vitest')}}
     "@vitest/coverage-v8": "^3.2.4",
@@ -78,17 +78,17 @@
     "conventional-changelog-angular": "^8.0.0",
     "conventional-changelog-cli": "^5.0.0",
 {{/if}}
-    "cross-env": "^10.0.0",
+    "cross-env": "^10.1.0",
     "esbuild": "^0.25.10",
 {{#if (includes plugins 'style')}}
-    "eslint": "^9.35.0",
+    "eslint": "^9.37.0",
     "eslint-plugin-import": "^2.32.0",
     "eslint-plugin-prettier": "^5.5.3",
     "globals": "^16.4.0",
 {{/if}}
     "husky": "^9.1.7",
 {{#if (includes plugins 'style')}}
-    "lint-staged": "^16.2.0",
+    "lint-staged": "^16.2.3",
 {{/if}}
 {{#if (includes plugins 'vitest')}}
     "nyc": "^17.1.0",
@@ -99,8 +99,8 @@
 {{#if (includes plugins 'inspector')}}
     "tree-kill": "^1.2.2",
 {{/if}}
-    "tsx": "^4.20.5",
-    "typescript": "^5.8.3",
+    "tsx": "^4.20.6",
+    "typescript": "^5.9.3",
 {{#if (includes plugins 'vitest')}}
     "vitest": "^3.2.4",
 {{/if}}
