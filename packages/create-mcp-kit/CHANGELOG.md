@@ -1,5 +1,20 @@
 # create-mcp-kit
 
+## 0.1.1
+
+### Patch Changes
+
+- [`4edc2a8`](https://github.com/my-mcp-hub/mcp-kit/commit/4edc2a8dbb2b39d16dde7b471ddf7bed4f2f594f) Thanks [@zhensherlock](https://github.com/zhensherlock)! - feat: update server-ts template
+
+- [`76e2b60`](https://github.com/my-mcp-hub/mcp-kit/commit/76e2b60271da5801e99a04c19796f104a5ee1fbf) Thanks [@zhensherlock](https://github.com/zhensherlock)! - feat: update client-js template
+
+- [`c237cb7`](https://github.com/my-mcp-hub/mcp-kit/commit/c237cb74773b54e0c40eb0d5f090bcb7bf8f1d43) Thanks [@zhensherlock](https://github.com/zhensherlock)! - feat: update server-js template
+
+- [`398e330`](https://github.com/my-mcp-hub/mcp-kit/commit/398e330ea0bd58579b9e831d2b5aa5aac878617b) Thanks [@zhensherlock](https://github.com/zhensherlock)! - feat: update client-ts template
+
+- Updated dependencies [[`45c7b2a`](https://github.com/my-mcp-hub/mcp-kit/commit/45c7b2a041c61b8ec901304761d3356a59daab6c)]:
+  - @mcp-tool-kit/shared@0.1.1
+
 ## 0.1.0
 
 ### Minor Changes
