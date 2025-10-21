@@ -65,6 +65,7 @@
     "rolldown": "1.0.0-beta.27",
     "tsx": "^4.20.6",
     "typescript": "^5.9.3",
+    "typescript-eslint": "^8.46.2",
     "vitest": "^3.2.4"
   }
 }
