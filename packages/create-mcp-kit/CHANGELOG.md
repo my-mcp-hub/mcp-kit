@@ -1,5 +1,26 @@
 # create-mcp-kit
 
+## 0.1.2
+
+### Patch Changes
+
+- [`6a5f411`](https://github.com/my-mcp-hub/mcp-kit/commit/6a5f4119e4b728fe465fa2fa8286f44bff4bdbf3) Thanks [@zhensherlock](https://github.com/zhensherlock)! - chore: add .gitattributes for consistent line endings in js/ts files
+
+- [`24122d0`](https://github.com/my-mcp-hub/mcp-kit/commit/24122d0299a0491e28b03eb9bbb618255028dd29) Thanks [@zhensherlock](https://github.com/zhensherlock)! - feat: update client-js template
+
+- [`ea237e7`](https://github.com/my-mcp-hub/mcp-kit/commit/ea237e70ec1d9574848376e4a1e62ff37229c936) Thanks [@zhensherlock](https://github.com/zhensherlock)! - feat: update client-ts template
+
+- [`8d2f961`](https://github.com/my-mcp-hub/mcp-kit/commit/8d2f961450804e29f2feb26fbd6287a72a0b07d7) Thanks [@zhensherlock](https://github.com/zhensherlock)! - feat: update server-ts template
+
+- [`d347bea`](https://github.com/my-mcp-hub/mcp-kit/commit/d347beaf7f43da65cbe0612f5af9d71b887a4ab5) Thanks [@zhensherlock](https://github.com/zhensherlock)! - chore: update dependencies
+
+- [`37d3fd5`](https://github.com/my-mcp-hub/mcp-kit/commit/37d3fd531c3f678c26903305da67794fe6d213a6) Thanks [@zhensherlock](https://github.com/zhensherlock)! - build: update typescript-eslint to use recommended config
+
+- [`da29066`](https://github.com/my-mcp-hub/mcp-kit/commit/da29066985712726be8a192ad0e7c6f295b51af4) Thanks [@zhensherlock](https://github.com/zhensherlock)! - feat: update server-js template
+
+- Updated dependencies [[`d347bea`](https://github.com/my-mcp-hub/mcp-kit/commit/d347beaf7f43da65cbe0612f5af9d71b887a4ab5), [`37d3fd5`](https://github.com/my-mcp-hub/mcp-kit/commit/37d3fd531c3f678c26903305da67794fe6d213a6)]:
+  - @mcp-tool-kit/shared@0.1.2
+
 ## 0.1.1
 
 ### Patch Changes
