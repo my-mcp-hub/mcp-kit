@@ -1,5 +1,13 @@
 # @mcp-tool-kit/shared
 
+## 0.1.2
+
+### Patch Changes
+
+- [`d347bea`](https://github.com/my-mcp-hub/mcp-kit/commit/d347beaf7f43da65cbe0612f5af9d71b887a4ab5) Thanks [@zhensherlock](https://github.com/zhensherlock)! - chore: update dependencies
+
+- [`37d3fd5`](https://github.com/my-mcp-hub/mcp-kit/commit/37d3fd531c3f678c26903305da67794fe6d213a6) Thanks [@zhensherlock](https://github.com/zhensherlock)! - build: update typescript-eslint to use recommended config
+
 ## 0.1.1
 
 ### Patch Changes
