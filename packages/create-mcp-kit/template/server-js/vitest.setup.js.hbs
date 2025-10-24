@@ -21,7 +21,7 @@ const stdioClientTransport = new StdioClientTransport({
   command: 'c8',
   args: ['--reporter=lcov', '--reporter=text', 'node', './src/index.js'],
   env: {
-    ...process.env,
+    ...(process.env),
     NODE_V8_COVERAGE: './coverage/tmp',
   },
 })

@@ -17,12 +17,7 @@ export default defineConfig({
     },
   {{#if (or (includes transports 'streamable') (includes transports 'sse'))}}
     pool: 'threads',
-    poolOptions: {
-      threads: {
-        maxThreads: 1,
-        minThreads: 1,
-      },
-    },
+    maxWorkers: 1,
   {{/if}}
   },
 })
