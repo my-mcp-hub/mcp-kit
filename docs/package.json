@@ -14,7 +14,7 @@
   "license": "MIT",
   "devDependencies": {
     "vitepress": "^2.0.0-alpha.12",
-    "vitepress-plugin-group-icons": "^1.6.3",
+    "vitepress-plugin-group-icons": "^1.6.4",
     "vitepress-plugin-llms": "^1.8.0"
   }
 }
