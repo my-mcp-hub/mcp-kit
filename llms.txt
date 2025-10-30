@@ -19,5 +19,15 @@ In addition, MCP Kit streamlines the development workflow with [getting started 
 
 ## Table of Contents
 
+### Introduction
 
+- [What is MCP?](/mcp-kit/en/guide/what-is-mcp.md)
+- [What is MCP Kit?](/mcp-kit/en/guide/what-is-mcp-kit.md)
+- [Getting Started](/mcp-kit/en/guide/getting-started.md)
+
+### 简介
+
+- [什么是 MCP？](/mcp-kit/zh/guide/what-is-mcp.md)
+- [什么是 MCP Kit？](/mcp-kit/zh/guide/what-is-mcp-kit.md)
+- [入门指南](/mcp-kit/zh/guide/getting-started.md)
 
