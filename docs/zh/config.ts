@@ -1,4 +1,4 @@
-import { type DefaultTheme, defineAdditionalConfig } from 'vitepress'
+import { defineAdditionalConfig, type DefaultTheme } from 'vitepress'
 import pkg from '../../packages/create-mcp-kit/package.json' with { type: 'json' }
 
 // https://vitepress.dev/reference/site-config
@@ -13,7 +13,7 @@ export default defineAdditionalConfig({
         items: [
           {
             text: 'Changelog',
-            link: 'https://github.com/my-mcp-hub/mcp-kit/blob/main/packages/create-mcp-kit/CHANGELOG.md'
+            link: 'https://github.com/my-mcp-hub/mcp-kit/blob/main/packages/create-mcp-kit/CHANGELOG.md',
           },
         ],
       },
@@ -33,7 +33,6 @@ export default defineAdditionalConfig({
     search: { options: searchOptions() },
   },
 })
-
 
 function searchOptions(): Partial<DefaultTheme.AlgoliaSearchOptions> {
   return {
