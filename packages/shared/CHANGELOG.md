@@ -1,5 +1,13 @@
 # @mcp-tool-kit/shared
 
+## 0.1.3
+
+### Patch Changes
+
+- [`b774ffb`](https://github.com/my-mcp-hub/mcp-kit/commit/b774ffbb6bbcf463123dec6ec3d42ccea5d0e46d) Thanks [@zhensherlock](https://github.com/zhensherlock)! - chore: update dependencies
+
+- [`07b0ccf`](https://github.com/my-mcp-hub/mcp-kit/commit/07b0ccf9acc8cecf66e0389c200285d3ae0b2e52) Thanks [@zhensherlock](https://github.com/zhensherlock)! - chore: update dependencies
+
 ## 0.1.2
 
 ### Patch Changes
