@@ -1,5 +1,30 @@
 # create-mcp-kit
 
+## 0.1.3
+
+### Patch Changes
+
+- [`dc77ec5`](https://github.com/my-mcp-hub/mcp-kit/commit/dc77ec55267693cc92e6e3c4fdcbdbd4414fd7bb) Thanks [@zhensherlock](https://github.com/zhensherlock)! - feat: update client-js template
+
+- [`4ca3f66`](https://github.com/my-mcp-hub/mcp-kit/commit/4ca3f662bad5e08468e6bedf90a22aa03e5afcb1) Thanks [@zhensherlock](https://github.com/zhensherlock)! - feat: update client-js template
+
+- [`8b97e3d`](https://github.com/my-mcp-hub/mcp-kit/commit/8b97e3d0cfc5a833896115cb4827884ab052bfde) Thanks [@zhensherlock](https://github.com/zhensherlock)! - feat: update server-ts template
+
+- [`adf7401`](https://github.com/my-mcp-hub/mcp-kit/commit/adf74019b7e0dc12f0b10629a60462d947127ef1) Thanks [@zhensherlock](https://github.com/zhensherlock)! - feat: update server-js template
+
+- [`0ca3cff`](https://github.com/my-mcp-hub/mcp-kit/commit/0ca3cffc7bccaff25f286635dc6c29809a6d5fd2) Thanks [@zhensherlock](https://github.com/zhensherlock)! - feat: update server-js template
+
+- [`b8f4f19`](https://github.com/my-mcp-hub/mcp-kit/commit/b8f4f1992af802f701c7846333a5aff6459c544f) Thanks [@zhensherlock](https://github.com/zhensherlock)! - feat: update server-ts template
+
+- [`9ca54a1`](https://github.com/my-mcp-hub/mcp-kit/commit/9ca54a132b8b429b44e9f4cbcf948492621070be) Thanks [@zhensherlock](https://github.com/zhensherlock)! - feat: update client-ts template
+
+- [`07b0ccf`](https://github.com/my-mcp-hub/mcp-kit/commit/07b0ccf9acc8cecf66e0389c200285d3ae0b2e52) Thanks [@zhensherlock](https://github.com/zhensherlock)! - chore: update dependencies
+
+- [`1e0dce7`](https://github.com/my-mcp-hub/mcp-kit/commit/1e0dce7773b168d0dbad8a211e1739b64021520f) Thanks [@zhensherlock](https://github.com/zhensherlock)! - feat: update client-ts template
+
+- Updated dependencies [[`b774ffb`](https://github.com/my-mcp-hub/mcp-kit/commit/b774ffbb6bbcf463123dec6ec3d42ccea5d0e46d), [`07b0ccf`](https://github.com/my-mcp-hub/mcp-kit/commit/07b0ccf9acc8cecf66e0389c200285d3ae0b2e52)]:
+  - @mcp-tool-kit/shared@0.1.3
+
 ## 0.1.2
 
 ### Patch Changes
