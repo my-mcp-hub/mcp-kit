@@ -45,6 +45,31 @@ MCP Kit 是一个仅支持 ESM 的包。它需要 Node.js 版本 18 或更高，
 
 当您运行创建命令时，MCP Kit 将启动一个交互式设置向导，引导您创建一个新项目：
 
+```ansi
+[90m┌[39m  [1m[36mMCP Kit - The Modern Context Protocol Builder[0m
+[90m│[39m
+[32m◇[39m  Project type:
+[90m│[39m  [2mMCP Server[0m
+[90m│[39m
+[32m◇[39m  Project name:
+[90m│[39m  [2mmcp-server-starter[0m
+[90m│[39m
+[32m◇[39m  Project language:
+[90m│[39m  [2mTypeScript[0m
+[90m│[39m
+[32m◇[39m  Project transport type:
+[90m│[39m  [2mSTDIO[0m
+[90m│[39m
+[32m◇[39m  Project template:
+[90m│[39m  [2mStandard (recommended)[0m
+[90m│[39m
+[32m◇[39m  Do you want to install dependencies?
+[90m│[39m  [2mYes[0m
+[90m│[39m
+[90m└[39m  Project created successfully!
+
+```
+
 1. 首先，系统会提示您选择 **Project type**:
    * **MCP Server**: 创建一个为 MCP 客户端提供工具、资源和提示的服务器
    * **MCP Client**: 创建一个连接到 MCP 服务器的客户端

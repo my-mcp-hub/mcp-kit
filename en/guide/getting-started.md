@@ -45,6 +45,31 @@ MCP Kit is an ESM-only package. It requires Node.js version 18 or higher and use
 
 When you run the create command, MCP Kit will launch an interactive setup wizard that guides you through creating a new project:
 
+```ansi
+[90m┌[39m  [1m[36mMCP Kit - The Modern Context Protocol Builder[0m
+[90m│[39m
+[32m◇[39m  Project type:
+[90m│[39m  [2mMCP Server[0m
+[90m│[39m
+[32m◇[39m  Project name:
+[90m│[39m  [2mmcp-server-starter[0m
+[90m│[39m
+[32m◇[39m  Project language:
+[90m│[39m  [2mTypeScript[0m
+[90m│[39m
+[32m◇[39m  Project transport type:
+[90m│[39m  [2mSTDIO[0m
+[90m│[39m
+[32m◇[39m  Project template:
+[90m│[39m  [2mStandard (recommended)[0m
+[90m│[39m
+[32m◇[39m  Do you want to install dependencies?
+[90m│[39m  [2mYes[0m
+[90m│[39m
+[90m└[39m  Project created successfully!
+
+```
+
 1. First, you'll be prompted to select a **Project type**:
    * **MCP Server**: Creates a server that provides tools, resources, and prompts for MCP clients
    * **MCP Client**: Creates a client that connects to MCP servers
