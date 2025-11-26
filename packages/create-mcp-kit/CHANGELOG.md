@@ -1,5 +1,26 @@
 # create-mcp-kit
 
+## 0.1.4
+
+### Patch Changes
+
+- [`c9a9d74`](https://github.com/my-mcp-hub/mcp-kit/commit/c9a9d74d424e92bdde37ea339f09873c1c53bcc2) Thanks [@zhensherlock](https://github.com/zhensherlock)! - chore: update dependencies
+
+- [`675612f`](https://github.com/my-mcp-hub/mcp-kit/commit/675612fe9be34f0e7d7c6ee9f88009a609b56482) Thanks [@zhensherlock](https://github.com/zhensherlock)! - feat: update client-js template
+
+- [`1fbf92c`](https://github.com/my-mcp-hub/mcp-kit/commit/1fbf92c8891da69062bc716a5d4d58e1db7f932a) Thanks [@zhensherlock](https://github.com/zhensherlock)! - feat: update server-js template
+
+- [`1335be9`](https://github.com/my-mcp-hub/mcp-kit/commit/1335be9adc67ffd291041b40a68c41c690b15578) Thanks [@zhensherlock](https://github.com/zhensherlock)! - feat: update server-ts template
+
+- [`2a839d7`](https://github.com/my-mcp-hub/mcp-kit/commit/2a839d71cc875e4c8bdbf25bd516dffd62dd9a2c) Thanks [@zhensherlock](https://github.com/zhensherlock)! - feat: export createServer and add ping interval to SSE
+
+- [`836dc4c`](https://github.com/my-mcp-hub/mcp-kit/commit/836dc4c37744aebd76884c9e8733b69c05adc8e5) Thanks [@zhensherlock](https://github.com/zhensherlock)! - chore: update dependencies
+
+- [`d9cd934`](https://github.com/my-mcp-hub/mcp-kit/commit/d9cd934cb6dbf76869fa087a74984acce2c4b0f2) Thanks [@zhensherlock](https://github.com/zhensherlock)! - feat: update client-ts template
+
+- Updated dependencies [[`c9a9d74`](https://github.com/my-mcp-hub/mcp-kit/commit/c9a9d74d424e92bdde37ea339f09873c1c53bcc2), [`836dc4c`](https://github.com/my-mcp-hub/mcp-kit/commit/836dc4c37744aebd76884c9e8733b69c05adc8e5)]:
+  - @mcp-tool-kit/shared@0.1.4
+
 ## 0.1.3
 
 ### Patch Changes
