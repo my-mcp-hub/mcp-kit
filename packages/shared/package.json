@@ -1,6 +1,6 @@
 {
   "name": "@mcp-tool-kit/shared",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "A CLI tool to create MCP (Model Context Protocol) applications with ease.",
   "type": "module",
   "author": "zhensherlock",
