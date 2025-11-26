@@ -6,6 +6,7 @@ import { StreamableHTTPServerTransport } from '@modelcontextprotocol/sdk/server/
   {{/if}}
   {{#if (includes transports 'sse')}}
 import { SSEServerTransport } from '@modelcontextprotocol/sdk/server/sse.js'
+import { createServer } from '@/services'
   {{/if}}
   {{#if (includes transports 'streamable')}}
 import { generateSessionId } from '@/utils'
@@ -83,10 +84,16 @@ export async function webServer(server: McpServer, options: OptionsType) {
     const transport = new SSEServerTransport('/messages', res)
     transports.sse[transport.sessionId] = transport
 
+    const interval = setInterval(() => {
+      res.raw.write(`event: ping\ndata: {"time":"${new Date().toISOString()}"}\n\n`)
+    }, 15000)
+
     res.on('close', () => {
       delete transports.sse[transport.sessionId]
+      clearInterval(interval)
     })
 
+    const server = createServer(options)
     await server.connect(transport)
   })
 

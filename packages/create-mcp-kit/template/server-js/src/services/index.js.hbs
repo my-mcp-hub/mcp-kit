@@ -9,7 +9,7 @@ import { stdioServer } from './stdio.js'
 import { webServer } from './web.js'
 {{/if}}
 
-const createServer = options => {
+export const createServer = options => {
   const server = new McpServer({
     name: options.name,
     version: options.version,
