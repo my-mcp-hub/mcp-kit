@@ -1,7 +1,7 @@
 {
   "mcpServers": {
     "mcp-stdio": {
-      "type": "node",
+      "command": "node",
       "args": ["build/index.js"],
       "env": {}
     },
