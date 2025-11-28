@@ -27,7 +27,7 @@
     "prepare": "husky"
   },
   "dependencies": {
-    "@modelcontextprotocol/sdk": "^1.21.0",
+    "@modelcontextprotocol/sdk": "^1.23.0",
     "dotenv": "^17.2.3"
   },
   "devDependencies": {
@@ -36,11 +36,11 @@
     "@commitlint/config-conventional": "^20.0.0",
 {{/if}}
 {{#if (includes plugins 'style')}}
-    "@typescript-eslint/eslint-plugin": "^8.46.2",
-    "@typescript-eslint/parser": "^8.46.2",
+    "@typescript-eslint/eslint-plugin": "^8.48.0",
+    "@typescript-eslint/parser": "^8.48.0",
 {{/if}}
 {{#if (includes plugins 'vitest')}}
-    "@vitest/coverage-v8": "^4.0.6",
+    "@vitest/coverage-v8": "^4.0.14",
 {{/if}}
 {{#if (includes plugins 'changelog')}}
     "compare-func": "^2.0.0",
@@ -66,7 +66,7 @@
     "tsx": "^4.20.6",
     "typescript": "^5.9.3",
 {{#if (includes plugins 'vitest')}}
-    "vitest": "^4.0.6",
+    "vitest": "^4.0.14",
 {{/if}}
     "rimraf": "^6.1.0"
   }
