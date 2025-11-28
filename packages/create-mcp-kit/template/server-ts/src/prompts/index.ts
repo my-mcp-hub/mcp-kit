@@ -1,5 +1,5 @@
-import { z } from 'zod'
 import type { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js'
+import { z } from 'zod'
 
 export const registerPrompts = (server: McpServer) => {
   server.registerPrompt(
