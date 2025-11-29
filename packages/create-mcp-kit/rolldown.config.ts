@@ -1,6 +1,6 @@
 import terser from '@rollup/plugin-terser'
-import { defineConfig } from 'rolldown'
 import typescript from '@rollup/plugin-typescript'
+import { defineConfig } from 'rolldown'
 
 const isProd = process.env.NODE_ENV === 'production'
 const isDev = process.env.NODE_ENV === 'local'
@@ -14,11 +14,8 @@ export default defineConfig({
   },
   plugins: [isProd && terser(), typescript()],
   external: [
-    'path',
-    'url',
-    'fs/promises',
-    'timers/promises',
-    'child_process',
+    ...builtinModules,
+    ...builtinModules.map(m => `node:${m}`),
     '@clack/prompts',
     'picocolors',
     'handlebars',
