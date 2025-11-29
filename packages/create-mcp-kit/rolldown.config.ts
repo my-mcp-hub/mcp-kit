@@ -1,3 +1,4 @@
+import { builtinModules } from 'node:module'
 import terser from '@rollup/plugin-terser'
 import typescript from '@rollup/plugin-typescript'
 import { defineConfig } from 'rolldown'

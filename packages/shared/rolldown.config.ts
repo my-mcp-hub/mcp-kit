@@ -1,6 +1,7 @@
+import { builtinModules } from 'node:module'
 import terser from '@rollup/plugin-terser'
-import { defineConfig } from 'rolldown'
 import typescript from '@rollup/plugin-typescript'
+import { defineConfig } from 'rolldown'
 
 const isProd = process.env.NODE_ENV === 'production'
 
@@ -19,5 +20,5 @@ export default defineConfig({
   //   },
   // },
   plugins: [isProd && terser(), typescript()],
-  external: ['fs/promises', 'timers/promises', 'path', 'child_process', 'handlebars'],
+  external: [...builtinModules, ...builtinModules.map(m => `node:${m}`), 'handlebars'],
 })
