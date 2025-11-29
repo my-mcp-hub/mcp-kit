@@ -1,7 +1,19 @@
-import { setTimeout as sleep } from 'timers/promises'
-import { readdir, readFile, rename, stat, writeFile, cp, mkdir, unlink, rmdir, access, constants } from 'fs/promises'
-import { join } from 'path'
-import { spawn } from 'child_process'
+import { spawn } from 'node:child_process'
+import {
+  access,
+  constants,
+  cp,
+  mkdir,
+  readdir,
+  readFile,
+  rename,
+  rmdir,
+  stat,
+  unlink,
+  writeFile,
+} from 'node:fs/promises'
+import { join } from 'node:path'
+import { setTimeout as sleep } from 'node:timers/promises'
 import Handlebars from 'handlebars'
 import { registerHandlebarsHelpers } from '@/handlebars/register'
 

@@ -1,8 +1,8 @@
-import { tmpdir } from 'os'
-import { join, resolve } from 'path'
-import { mkdirSync, rmSync } from 'fs'
-import { describe, test, expect } from 'vitest'
+import { mkdirSync, rmSync } from 'node:fs'
+import { tmpdir } from 'node:os'
+import { join, resolve } from 'node:path'
 import { execa } from 'execa'
+import { describe, expect, test } from 'vitest'
 
 describe('test index cli', () => {
   test('should create project', async () => {

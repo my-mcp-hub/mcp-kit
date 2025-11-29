@@ -1,6 +1,6 @@
 import { defineConfig } from 'vitepress'
-import llmstxt from 'vitepress-plugin-llms'
 import { groupIconMdPlugin, groupIconVitePlugin } from 'vitepress-plugin-group-icons'
+import llmstxt from 'vitepress-plugin-llms'
 import pkg from '../../packages/create-mcp-kit/package.json' with { type: 'json' }
 
 // https://vitepress.dev/reference/site-config
@@ -23,9 +23,7 @@ export default defineConfig({
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     logo: '/logo.png',
-    socialLinks: [
-      { icon: 'github', link: 'https://github.com/my-mcp-hub/mcp-kit' }
-    ],
+    socialLinks: [{ icon: 'github', link: 'https://github.com/my-mcp-hub/mcp-kit' }],
     nav: [
       { text: 'Home', link: '/' },
       { text: 'Guide', link: '/guide/what-is-mcp', activeMatch: '/guide/' },
@@ -34,7 +32,7 @@ export default defineConfig({
         items: [
           {
             text: 'Changelog',
-            link: 'https://github.com/my-mcp-hub/mcp-kit/blob/main/packages/create-mcp-kit/CHANGELOG.md'
+            link: 'https://github.com/my-mcp-hub/mcp-kit/blob/main/packages/create-mcp-kit/CHANGELOG.md',
           },
         ],
       },

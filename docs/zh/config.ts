@@ -1,4 +1,4 @@
-import { defineAdditionalConfig, type DefaultTheme } from 'vitepress'
+import { type DefaultTheme, defineAdditionalConfig } from 'vitepress'
 import pkg from '../../packages/create-mcp-kit/package.json' with { type: 'json' }
 
 // https://vitepress.dev/reference/site-config

@@ -1,7 +1,8 @@
 #!/usr/bin/env node
-import { fileURLToPath } from 'url'
-import { dirname, join, resolve } from 'path'
+import { join, resolve } from 'node:path'
 import * as clack from '@clack/prompts'
+import { createProject, fileExists, installDependencies, sleep } from '@mcp-tool-kit/shared'
+import gradient from 'gradient-string'
 import pc from 'picocolors'
 
 const dirname = import.meta.dirname

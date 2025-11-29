@@ -1,6 +1,6 @@
-import { tmpdir } from 'os'
-import { join } from 'path'
-import { mkdirSync, rmSync } from 'fs'
+import { mkdirSync, rmSync } from 'node:fs'
+import { tmpdir } from 'node:os'
+import { join } from 'node:path'
 import { describe, test } from 'vitest'
 import { createProject, installDependencies } from '../src'
 

@@ -30,12 +30,7 @@
     "access": "public"
   },
   "license": "MIT",
-  "files": [
-    "dist",
-    "template",
-    "LICENSE",
-    "README.md"
-  ],
+  "files": ["dist", "template", "LICENSE", "README.md"],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/my-mcp-hub/mcp-kit.git"

@@ -20,12 +20,7 @@
       "global": true
     }
   },
-  "selectors_exclude": [
-    "aside",
-    ".page-footer",
-    ".next-and-prev-link",
-    ".table-of-contents"
-  ],
+  "selectors_exclude": ["aside", ".page-footer", ".next-and-prev-link", ".table-of-contents"],
   "custom_settings": {
     "attributesForFaceting": ["lang", "tags"]
   },
