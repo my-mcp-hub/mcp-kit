@@ -3,11 +3,8 @@ import { fileURLToPath } from 'url'
 import { dirname, join, resolve } from 'path'
 import * as clack from '@clack/prompts'
 import pc from 'picocolors'
-import gradient from 'gradient-string'
-import { sleep, createProject, installDependencies, fileExists } from '@mcp-tool-kit/shared'
 
-const __filename = fileURLToPath(import.meta.url)
-const __dirname = dirname(__filename)
+const dirname = import.meta.dirname
 
 clack.intro(
   gradient([
@@ -100,7 +97,7 @@ const group = await clack.group(
   },
 )
 
-const templatePath = join(__dirname, '../template', `${group.type}-${group.language}`)
+const templatePath = join(dirname, '../template', `${group.type}-${group.language}`)
 const targetPath = resolve(process.cwd(), group.name as string)
 
 if (!(await fileExists(templatePath))) {
