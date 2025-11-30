@@ -1,5 +1,19 @@
 # @mcp-tool-kit/shared
 
+## 0.1.5
+
+### Patch Changes
+
+- [`bfd07be`](https://github.com/my-mcp-hub/mcp-kit/commit/bfd07be48ff494a8d5a9ba70978e517111c8216b) Thanks [@zhensherlock](https://github.com/zhensherlock)! - chore: update dependencies
+
+- [`3df871a`](https://github.com/my-mcp-hub/mcp-kit/commit/3df871a9c5024b2a29af0d93086e370d4b8cd763) Thanks [@zhensherlock](https://github.com/zhensherlock)! - refactor: use builtinModules for external dependencies
+
+- [`ede7f24`](https://github.com/my-mcp-hub/mcp-kit/commit/ede7f24aeede222c5801120e825349d39b148329) Thanks [@zhensherlock](https://github.com/zhensherlock)! - build: replace eslint with biome for linting
+
+- [`405b805`](https://github.com/my-mcp-hub/mcp-kit/commit/405b805c4078d8d8c8d952eb90b59eb5b5eb9e40) Thanks [@zhensherlock](https://github.com/zhensherlock)! - refactor: standardize imports and format configuration files
+
+- [`8aba7cf`](https://github.com/my-mcp-hub/mcp-kit/commit/8aba7cfc78a6699df4ebd9e5f46c725b1b7c6f0b) Thanks [@zhensherlock](https://github.com/zhensherlock)! - chore: update dependencies
+
 ## 0.1.4
 
 ### Patch Changes
