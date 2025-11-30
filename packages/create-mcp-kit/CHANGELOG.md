@@ -1,5 +1,32 @@
 # create-mcp-kit
 
+## 0.1.5
+
+### Patch Changes
+
+- [`70c03b7`](https://github.com/my-mcp-hub/mcp-kit/commit/70c03b709642445e428815efe2ee1f26ad33203a) Thanks [@zhensherlock](https://github.com/zhensherlock)! - feat: update client-js template
+
+- [`bfd07be`](https://github.com/my-mcp-hub/mcp-kit/commit/bfd07be48ff494a8d5a9ba70978e517111c8216b) Thanks [@zhensherlock](https://github.com/zhensherlock)! - chore: update dependencies
+
+- [`3df871a`](https://github.com/my-mcp-hub/mcp-kit/commit/3df871a9c5024b2a29af0d93086e370d4b8cd763) Thanks [@zhensherlock](https://github.com/zhensherlock)! - refactor: use builtinModules for external dependencies
+
+- [`680715b`](https://github.com/my-mcp-hub/mcp-kit/commit/680715b444aeb46f856ddec1212aec773ebadcdb) Thanks [@zhensherlock](https://github.com/zhensherlock)! - feat: update server-ts template
+
+- [`323b544`](https://github.com/my-mcp-hub/mcp-kit/commit/323b54431d26735f9bde6348f0f4456172e1b1df) Thanks [@zhensherlock](https://github.com/zhensherlock)! - refactor: use import.meta.dirname instead of fileURLToPath
+
+- [`ede7f24`](https://github.com/my-mcp-hub/mcp-kit/commit/ede7f24aeede222c5801120e825349d39b148329) Thanks [@zhensherlock](https://github.com/zhensherlock)! - build: replace eslint with biome for linting
+
+- [`405b805`](https://github.com/my-mcp-hub/mcp-kit/commit/405b805c4078d8d8c8d952eb90b59eb5b5eb9e40) Thanks [@zhensherlock](https://github.com/zhensherlock)! - refactor: standardize imports and format configuration files
+
+- [`25216d3`](https://github.com/my-mcp-hub/mcp-kit/commit/25216d3d9c2e620712e441922ef6423cf65ede26) Thanks [@zhensherlock](https://github.com/zhensherlock)! - feat: update server-js template
+
+- [`8aba7cf`](https://github.com/my-mcp-hub/mcp-kit/commit/8aba7cfc78a6699df4ebd9e5f46c725b1b7c6f0b) Thanks [@zhensherlock](https://github.com/zhensherlock)! - chore: update dependencies
+
+- [`3c16c68`](https://github.com/my-mcp-hub/mcp-kit/commit/3c16c68164a214b08f3255a1ae127df4ef96293f) Thanks [@zhensherlock](https://github.com/zhensherlock)! - feat: update client-ts template
+
+- Updated dependencies [[`bfd07be`](https://github.com/my-mcp-hub/mcp-kit/commit/bfd07be48ff494a8d5a9ba70978e517111c8216b), [`3df871a`](https://github.com/my-mcp-hub/mcp-kit/commit/3df871a9c5024b2a29af0d93086e370d4b8cd763), [`ede7f24`](https://github.com/my-mcp-hub/mcp-kit/commit/ede7f24aeede222c5801120e825349d39b148329), [`405b805`](https://github.com/my-mcp-hub/mcp-kit/commit/405b805c4078d8d8c8d952eb90b59eb5b5eb9e40), [`8aba7cf`](https://github.com/my-mcp-hub/mcp-kit/commit/8aba7cfc78a6699df4ebd9e5f46c725b1b7c6f0b)]:
+  - @mcp-tool-kit/shared@0.1.5
+
 ## 0.1.4
 
 ### Patch Changes
