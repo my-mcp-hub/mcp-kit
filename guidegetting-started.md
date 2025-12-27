@@ -1,5 +1,5 @@
 ---
-url: /mcp-kit/en/guide/getting-started.md
+url: /mcp-kit/guidegetting-started.md
 ---
 
 # Getting Started

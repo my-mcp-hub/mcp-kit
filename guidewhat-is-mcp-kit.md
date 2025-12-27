@@ -1,5 +1,5 @@
 ---
-url: /mcp-kit/en/guide/what-is-mcp-kit.md
+url: /mcp-kit/guidewhat-is-mcp-kit.md
 ---
 
 # What is MCP Kit?
