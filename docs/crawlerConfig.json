@@ -7,7 +7,7 @@
     "default": {
       "lvl0": {
         "selector": "",
-        "defaultValue": "Documentation"
+        "default_value": "Documentation"
       },
       "lvl1": ".content h1",
       "lvl2": ".content h2",
