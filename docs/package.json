@@ -13,8 +13,12 @@
   "author": "zhensherlock",
   "license": "MIT",
   "devDependencies": {
+    "@types/lodash-es": "^4.17.12",
     "vitepress": "^2.0.0-alpha.15",
     "vitepress-plugin-group-icons": "^1.6.5",
     "vitepress-plugin-llms": "^1.9.3"
+  },
+  "dependencies": {
+    "lodash-es": "^4.17.22"
   }
 }

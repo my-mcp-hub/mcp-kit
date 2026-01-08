@@ -1,6 +1,15 @@
 {
   "index_name": "create-mcp-kit",
-  "start_urls": ["https://my-mcp-hub.github.io/mcp-kit/"],
+  "start_urls": [
+    {
+      "url": "https://my-mcp-hub.github.io/mcp-kit/",
+      "tags": ["gh"]
+    },
+    {
+      "url": "https://mcp-kit-docs.vercel.app/",
+      "tags": ["vercel"]
+    }
+  ],
   "rateLimit": 8,
   "maxDepth": 10,
   "selectors": {

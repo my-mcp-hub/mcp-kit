@@ -1,7 +1,10 @@
+import { isUndefined } from 'lodash-es'
 import { defineConfig } from 'vitepress'
 import { groupIconMdPlugin, groupIconVitePlugin } from 'vitepress-plugin-group-icons'
 import llmstxt from 'vitepress-plugin-llms'
 import pkg from '../../packages/create-mcp-kit/package.json' with { type: 'json' }
+
+const isGithubPages = isUndefined(process.env.VERCEL)
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
@@ -10,8 +13,11 @@ export default defineConfig({
   rewrites: {
     'en/:rest*': ':rest*',
     'en/index.md': 'index.md',
+    'en/guide/what-is-mcp.md': 'guide/what-is-mcp.md',
+    'en/guide/what-is-mcp-kit.md': 'guide/what-is-mcp-kit.md',
+    'en/guide/getting-started.md': 'guide/getting-started.md',
   },
-  base: process.env.VERCEL ? '/' : '/mcp-kit/',
+  base: isGithubPages ? '/mcp-kit/' : '/',
   head: [
     ['link', { rel: 'shortcut icon', href: '/mcp-kit/favicons/favicon.png' }],
     ['link', { rel: 'apple-touch-icon', sizes: '180x180', href: '/mcp-kit/favicons/apple-touch-icon.png' }],
@@ -59,6 +65,9 @@ export default defineConfig({
         appId: 'V6CF28P0PS',
         apiKey: '692752b7b3c6f794997d8ae22aed79fa',
         indexName: 'create-mcp-kit',
+        searchParameters: {
+          facetFilters: [`tags:${isGithubPages ? 'gh' : 'vercel'}`],
+        },
       },
     },
   },
