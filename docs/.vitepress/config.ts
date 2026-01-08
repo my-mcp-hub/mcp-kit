@@ -5,6 +5,7 @@ import llmstxt from 'vitepress-plugin-llms'
 import pkg from '../../packages/create-mcp-kit/package.json' with { type: 'json' }
 
 const isGithubPages = isUndefined(process.env.VERCEL)
+const base = isGithubPages ? '/mcp-kit/' : '/'
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
@@ -17,10 +18,10 @@ export default defineConfig({
     'en/guide/what-is-mcp-kit.md': 'guide/what-is-mcp-kit.md',
     'en/guide/getting-started.md': 'guide/getting-started.md',
   },
-  base: isGithubPages ? '/mcp-kit/' : '/',
+  base,
   head: [
-    ['link', { rel: 'shortcut icon', href: '/mcp-kit/favicons/favicon.png' }],
-    ['link', { rel: 'apple-touch-icon', sizes: '180x180', href: '/mcp-kit/favicons/apple-touch-icon.png' }],
+    ['link', { rel: 'shortcut icon', href: `${base}favicons/favicon.png` }],
+    ['link', { rel: 'apple-touch-icon', sizes: '180x180', href: `${base}favicons/apple-touch-icon.png` }],
   ],
   locales: {
     root: { label: 'English', lang: 'en-US', dir: 'ltr' },
