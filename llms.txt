@@ -28,6 +28,6 @@ In addition, MCP Kit streamlines the development workflow with [getting started 
 
 ### Other
 
-- [Getting Started](/mcp-kit/guidegetting-started.md)
-- [What is MCP Kit?](/mcp-kit/guidewhat-is-mcp-kit.md)
-- [What is MCP?](/mcp-kit/guidewhat-is-mcp.md)
+- [Getting Started](/mcp-kit/guide/getting-started.md)
+- [What is MCP Kit?](/mcp-kit/guide/what-is-mcp-kit.md)
+- [What is MCP?](/mcp-kit/guide/what-is-mcp.md)

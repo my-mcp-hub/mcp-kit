@@ -1,5 +1,5 @@
 ---
-url: /mcp-kit/guidegetting-started.md
+url: /mcp-kit/guide/getting-started.md
 ---
 
 # Getting Started
@@ -211,7 +211,7 @@ The client project includes similar scripts for development, testing, and buildi
 ---
 
 ---
-url: /mcp-kit/guidewhat-is-mcp-kit.md
+url: /mcp-kit/guide/what-is-mcp-kit.md
 ---
 
 # What is MCP Kit?
@@ -260,7 +260,7 @@ Whether you want to create an MCP server providing specific functionality or nee
 ---
 
 ---
-url: /mcp-kit/guidewhat-is-mcp.md
+url: /mcp-kit/guide/what-is-mcp.md
 ---
 
 # What is MCP?
