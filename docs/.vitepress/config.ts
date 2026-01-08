@@ -86,9 +86,9 @@ export default defineConfig({
             text: 'Introduction',
             base: '',
             items: [
-              { text: 'What is MCP?', link: '/en/guide/what-is-mcp' },
-              { text: 'What is MCP Kit?', link: '/en/guide/what-is-mcp-kit' },
-              { text: 'Getting Started', link: '/en/guide/getting-started' },
+              { text: 'What is MCP?', link: '/guide/what-is-mcp' },
+              { text: 'What is MCP Kit?', link: '/guide/what-is-mcp-kit' },
+              { text: 'Getting Started', link: '/guide/getting-started' },
             ],
           },
           {
