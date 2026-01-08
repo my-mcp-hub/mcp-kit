@@ -11,7 +11,7 @@ export default defineConfig({
     'en/:rest*': ':rest*',
     'en/index.md': 'index.md',
   },
-  base: '/mcp-kit/',
+  base: process.env.VERCEL ? '/' : '/mcp-kit/',
   head: [
     ['link', { rel: 'shortcut icon', href: '/mcp-kit/favicons/favicon.png' }],
     ['link', { rel: 'apple-touch-icon', sizes: '180x180', href: '/mcp-kit/favicons/apple-touch-icon.png' }],
