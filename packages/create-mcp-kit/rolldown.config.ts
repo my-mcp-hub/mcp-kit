@@ -4,7 +4,7 @@ import typescript from '@rollup/plugin-typescript'
 import { defineConfig } from 'rolldown'
 
 const isProd = process.env.NODE_ENV === 'production'
-const isDev = process.env.NODE_ENV === 'local'
+const isDev = process.env.NODE_ENV === 'development'
 
 export default defineConfig({
   input: 'src/index.ts',

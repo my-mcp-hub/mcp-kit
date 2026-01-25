@@ -40,8 +40,9 @@
   },
   "scripts": {
     "clean:dist": "rimraf dist",
+    "dev": "rolldown -c rolldown.config.ts --watch --no-clear-screen",
     "build:types": "tsc",
-    "build": "cross-env NODE_ENV=production && npm run clean:dist && npm run build:types && rolldown -c rolldown.config.ts"
+    "build": "npm run clean:dist && npm run build:types && rolldown -c rolldown.config.ts"
   },
   "bugs": {
     "url": "https://github.com/my-mcp-hub/mcp-kit/issues"
