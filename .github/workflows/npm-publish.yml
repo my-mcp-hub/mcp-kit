@@ -4,13 +4,14 @@ on:
   release:
     types: [created]
 
+permissions:
+  id-token: write
+  contents: read
+
 jobs:
   build:
     if: github.repository == 'my-mcp-hub/mcp-kit'
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      id-token: write
     steps:
       - name: Get package name
         id: package
@@ -36,9 +37,37 @@ jobs:
       - name: Test Package
         run: pnpm run test
 
-      - name: Publish NPM Package
-        run: |
-          cd packages/$PACKAGE_NAME
-          pnpm publish --no-git-checks --provenance --access public
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      - name: Pack package
+        run: pnpm -C packages/${{ env.PACKAGE_NAME }} pack
+
+      - name: Upload dist artifact
+        uses: actions/upload-artifact@v6
+        with:
+          name: npm-package
+          path: packages/${{ env.PACKAGE_NAME }}/*.tgz
+
+#      - name: Publish NPM Package
+#        run: |
+#          cd packages/$PACKAGE_NAME
+#          pnpm publish --no-git-checks --provenance --access public
+#        env:
+#          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+  publish:
+    if: github.repository == 'my-mcp-hub/mcp-kit'
+    needs: build
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v6
+
+      - uses: actions/download-artifact@v7
+        with:
+          name: npm-package
+          path: .
+
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+          registry-url: 'https://registry.npmjs.org'
+      - run: npm publish *.tgz --no-git-checks --provenance --access public
