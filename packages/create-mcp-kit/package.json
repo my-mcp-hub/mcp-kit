@@ -1,10 +1,10 @@
 {
   "name": "create-mcp-kit",
-  "version": "0.1.5",
+  "version": "1.0.0",
   "description": "A CLI tool to create MCP (Model Context Protocol) applications with ease.",
   "type": "module",
   "author": "zhensherlock",
-  "homepage": "https://github.com/my-mcp-hub/mcp-kit/tree/master/packages/create#readme",
+  "homepage": "https://my-mcp-hub.github.io/mcp-kit/",
   "bin": {
     "create-mcp-kit": "./dist/index.js"
   },

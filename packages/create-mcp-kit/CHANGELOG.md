@@ -1,5 +1,18 @@
 # create-mcp-kit
 
+## 1.0.0
+
+### Major Changes
+
+- [`f65c06c`](https://github.com/my-mcp-hub/mcp-kit/commit/f65c06c9014622449cb2ea16fb7949385e506ee9) Thanks [@zhensherlock](https://github.com/zhensherlock)! - chore: update biome to 2.3.12 and rolldown to rc.1
+
+- [`84b3abb`](https://github.com/my-mcp-hub/mcp-kit/commit/84b3abb8aa6450c7ec791c11e5bc851fc36bff67) Thanks [@zhensherlock](https://github.com/zhensherlock)! - build: integrate turbo for monorepo build orchestration
+
+### Patch Changes
+
+- Updated dependencies [[`f65c06c`](https://github.com/my-mcp-hub/mcp-kit/commit/f65c06c9014622449cb2ea16fb7949385e506ee9), [`84b3abb`](https://github.com/my-mcp-hub/mcp-kit/commit/84b3abb8aa6450c7ec791c11e5bc851fc36bff67), [`4feb23d`](https://github.com/my-mcp-hub/mcp-kit/commit/4feb23d086c7b1c9e5d29ac2ed130261a4160e8b)]:
+  - @mcp-tool-kit/shared@1.0.0
+
 ## 0.1.5
 
 ### Patch Changes
