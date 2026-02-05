@@ -1,5 +1,14 @@
 # create-mcp-kit
 
+## 1.0.1
+
+### Patch Changes
+
+- [`238a150`](https://github.com/my-mcp-hub/mcp-kit/commit/238a1507cab48ebd3a6e86d4391c9abeb3f5b6ac) Thanks [@zhensherlock](https://github.com/zhensherlock)! - chore: update dependencies
+
+- Updated dependencies [[`238a150`](https://github.com/my-mcp-hub/mcp-kit/commit/238a1507cab48ebd3a6e86d4391c9abeb3f5b6ac)]:
+  - @mcp-tool-kit/shared@1.0.1
+
 ## 1.0.0
 
 ### Major Changes
