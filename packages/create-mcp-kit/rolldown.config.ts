@@ -13,6 +13,9 @@ export default defineConfig({
     dir: 'dist',
     sourcemap: isDev,
   },
+  watch: {
+    clearScreen: false,
+  },
   plugins: [isProd && terser(), typescript()],
   external: [
     ...builtinModules,

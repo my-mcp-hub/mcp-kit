@@ -42,7 +42,7 @@
   },
   "scripts": {
     "clean:dist": "rimraf dist",
-    "dev": "rolldown -c rolldown.config.ts --watch --no-clear-screen",
+    "dev": "rolldown -c rolldown.config.ts --watch",
     "build:types": "tsc --noEmit",
     "build": "npm run clean:dist && npm run build:types && rolldown -c rolldown.config.ts"
   },

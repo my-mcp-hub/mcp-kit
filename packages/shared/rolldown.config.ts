@@ -14,11 +14,9 @@ export default defineConfig({
     preserveModules: true,
     preserveModulesRoot: 'src',
   },
-  // resolve: {
-  //   alias: {
-  //     '@': './src',
-  //   },
-  // },
+  watch: {
+    clearScreen: false,
+  },
   plugins: [isProd && terser(), typescript()],
   external: [...builtinModules, ...builtinModules.map(m => `node:${m}`), 'handlebars'],
 })
