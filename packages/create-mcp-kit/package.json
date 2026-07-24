@@ -44,13 +44,14 @@
     "clean:dist": "rimraf dist",
     "dev": "rolldown -c rolldown.config.ts --watch",
     "build:types": "tsc --noEmit",
-    "build": "npm run clean:dist && npm run build:types && rolldown -c rolldown.config.ts"
+    "build": "npm run clean:dist && npm run build:types && rolldown -c rolldown.config.ts",
+    "start": "node ./dist/index.js"
   },
   "bugs": {
     "url": "https://github.com/my-mcp-hub/mcp-kit/issues"
   },
   "dependencies": {
-    "@clack/prompts": "^0.11.0",
+    "@clack/prompts": "^1.7.0",
     "@mcp-tool-kit/shared": "workspace:^",
     "gradient-string": "^3.0.0",
     "handlebars": "^4.7.9",

@@ -27,47 +27,46 @@
     "prepare": "husky"
   },
   "dependencies": {
-    "@modelcontextprotocol/sdk": "^1.23.0",
-    "dotenv": "^17.2.3"
+    "@modelcontextprotocol/sdk": "^1.29.0",
+    "dotenv": "^17.4.2"
   },
   "devDependencies": {
 {{#if (includes plugins 'commitlint')}}
-    "@commitlint/cli": "^20.1.0",
-    "@commitlint/config-conventional": "^20.0.0",
+    "@commitlint/cli": "^21.2.1",
+    "@commitlint/config-conventional": "^21.2.0",
 {{/if}}
 {{#if (includes plugins 'style')}}
-    "@typescript-eslint/eslint-plugin": "^8.48.0",
-    "@typescript-eslint/parser": "^8.48.0",
+    "typescript-eslint": "^8.65.0",
 {{/if}}
 {{#if (includes plugins 'vitest')}}
-    "@vitest/coverage-v8": "^4.0.14",
+    "@vitest/coverage-v8": "^4.1.10",
 {{/if}}
 {{#if (includes plugins 'changelog')}}
     "compare-func": "^2.0.0",
 {{/if}}
-    "concurrently": "^9.2.1",
+    "concurrently": "^10.0.3",
 {{#if (includes plugins 'changelog')}}
-    "conventional-changelog-angular": "^8.1.0",
+    "conventional-changelog-angular": "^8.3.1",
     "conventional-changelog-cli": "^5.0.0",
 {{/if}}
     "cross-env": "^10.1.0",
-    "esbuild": "^0.25.12",
+    "esbuild": "^0.28.1",
 {{#if (includes plugins 'style')}}
-    "eslint": "^9.39.1",
+    "eslint": "^9.39.5",
     "eslint-plugin-import": "^2.32.0",
-    "eslint-plugin-prettier": "^5.5.4",
-    "globals": "^16.5.0",
+    "eslint-plugin-prettier": "^5.5.6",
+    "globals": "^17.7.0",
 {{/if}}
     "husky": "^9.1.7",
 {{#if (includes plugins 'style')}}
-    "lint-staged": "^16.2.6",
-    "prettier": "^3.6.2",
+    "lint-staged": "^17.1.1",
+    "prettier": "^3.9.6",
 {{/if}}
-    "tsx": "^4.20.6",
+    "tsx": "^4.23.1",
     "typescript": "^5.9.3",
 {{#if (includes plugins 'vitest')}}
-    "vitest": "^4.0.14",
+    "vitest": "^4.1.10",
 {{/if}}
-    "rimraf": "^6.1.0"
+    "rimraf": "^6.1.3"
   }
 }

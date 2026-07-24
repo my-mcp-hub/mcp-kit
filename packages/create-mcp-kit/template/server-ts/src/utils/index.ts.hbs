@@ -1,11 +1,15 @@
+{{#if (or (includes transports 'streamable') (includes transports 'sse'))}}
 import { nanoid } from 'nanoid'
+{{/if}}
 import type { ArgumentsCamelCase } from 'yargs'
 import type { OptionsType } from '@/types'
 
+{{#if (or (includes transports 'streamable') (includes transports 'sse'))}}
 export function generateSessionId() {
   return nanoid()
 }
 
+{{/if}}
 export function getOptions(
   argv: ArgumentsCamelCase,
   pkg: {

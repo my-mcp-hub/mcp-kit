@@ -85,7 +85,7 @@ export async function webServer(server: McpServer, options: OptionsType) {
     transports.sse[transport.sessionId] = transport
 
     const interval = setInterval(() => {
-      res.raw.write(`event: ping\ndata: {"time":"${new Date().toISOString()}"}\n\n`)
+      res.write(`event: ping\ndata: {"time":"${new Date().toISOString()}"}\n\n`)
     }, 15000)
 
     res.on('close', () => {

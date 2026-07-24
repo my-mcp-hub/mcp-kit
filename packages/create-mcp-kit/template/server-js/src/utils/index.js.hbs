@@ -1,9 +1,11 @@
+{{#if (or (includes transports 'streamable') (includes transports 'sse'))}}
 import { nanoid } from 'nanoid'
 
 export function generateSessionId() {
   return nanoid()
 }
 
+{{/if}}
 export function getOptions(argv, pkg) {
   return {
     name: pkg.name,
