@@ -1,4 +1,72 @@
 ---
+url: /mcp-kit/guide/what-is-mcp.md
+---
+
+# What is MCP?
+
+The Model Context Protocol (MCP) is an open protocol that standardizes how applications provide context to large language models (LLMs). Think of MCP like a USB-C port for AI applications. Just as USB-C provides a standardized way to connect your devices to various peripherals and accessories, MCP provides a standardized way to connect AI models to different data sources and tools. MCP enables you to build agents and complex workflows on top of LLMs and connects your models with the world.
+
+MCP provides:
+
+* **A growing list of pre-built integrations** that your LLM can directly plug into
+* **A standardized way** to build custom integrations for AI applications
+* **An open protocol** that everyone is free to implement and use
+* **The flexibility to change** between different apps and take your context with you
+
+For more information, please visit the official MCP website: <https://modelcontextprotocol.io/>
+
+---
+
+---
+url: /mcp-kit/guide/what-is-mcp-kit.md
+---
+
+# What is MCP Kit?
+
+MCP Kit is a toolkit for creating MCP (Model Context Protocol) applications with ease, enabling developers to build MCP-compliant servers and client applications.
+
+## What MCP Kit Provides
+
+MCP Kit offers a complete set of tools and frameworks to help developers quickly set up MCP applications:
+
+* **Quick project scaffolding**: Create project structures through simple CLI commands
+* **TypeScript support**: Out-of-the-box TypeScript configuration
+* **Built-in development tools**: Including testing, building, and code quality tools
+* **Configurable project templates**: Adaptable to different development needs
+* **Multiple transport modes**: Support for stdio, streamable-http, and SSE communication methods
+* **Comprehensive APIs**: Rich interfaces supporting various functionality implementations
+
+## Core Features of MCP Kit
+
+MCP Kit supports creating two types of projects:
+
+### MCP Server
+
+Create an MCP server that provides tools, resources, and prompts for MCP clients. Servers can:
+
+* Implement custom tools for client use
+* Define resources accessible by clients
+* Create reusable prompt templates
+* Support multiple transport modes (stdio, HTTP, SSE)
+
+### MCP Client
+
+Create client applications that connect to MCP servers and use their tools, resources, and prompts. Clients can:
+
+* Connect to servers using various transport modes
+* Call tools provided by servers
+* Access resources defined by servers
+* Use prompt templates created by servers
+
+## Why Choose MCP Kit?
+
+MCP Kit allows developers to focus on business logic rather than underlying implementation details. Through standardized interfaces and tools, it simplifies the development process for MCP applications, making it easier and more efficient to create high-quality AI applications.
+
+Whether you want to create an MCP server providing specific functionality or need a client application that leverages these capabilities, MCP Kit provides the tools and frameworks needed to quickly achieve your goals.
+
+---
+
+---
 url: /mcp-kit/guide/getting-started.md
 ---
 
@@ -211,70 +279,21 @@ The client project includes similar scripts for development, testing, and buildi
 ---
 
 ---
-url: /mcp-kit/guide/what-is-mcp-kit.md
+url: /mcp-kit/zh/guide/what-is-mcp.md
 ---
 
-# What is MCP Kit?
+# 什么是 MCP？
 
-MCP Kit is a toolkit for creating MCP (Model Context Protocol) applications with ease, enabling developers to build MCP-compliant servers and client applications.
+模型上下文协议（Model Context Protocol，MCP）是一个开放协议，它标准化了应用程序如何向大型语言模型（LLMs）提供上下文。可以将 MCP 想象成 AI 应用程序的 USB-C 接口。就像 USB-C 为连接设备与各种外设和配件提供了标准化方式一样，MCP 为连接 AI 模型与不同数据源和工具提供了标准化方式。MCP 使您能够在 LLMs 之上构建代理和复杂工作流，并将您的模型与世界连接起来。
 
-## What MCP Kit Provides
+MCP 提供：
 
-MCP Kit offers a complete set of tools and frameworks to help developers quickly set up MCP applications:
+* **不断增长的预构建集成列表**，您的 LLM 可以直接插入使用
+* **构建 AI 应用程序自定义集成的标准化方式**
+* **一个人人都可以自由实现和使用的开放协议**
+* **在不同应用程序之间切换的灵活性**，并且可以随身携带您的上下文
 
-* **Quick project scaffolding**: Create project structures through simple CLI commands
-* **TypeScript support**: Out-of-the-box TypeScript configuration
-* **Built-in development tools**: Including testing, building, and code quality tools
-* **Configurable project templates**: Adaptable to different development needs
-* **Multiple transport modes**: Support for stdio, streamable-http, and SSE communication methods
-* **Comprehensive APIs**: Rich interfaces supporting various functionality implementations
-
-## Core Features of MCP Kit
-
-MCP Kit supports creating two types of projects:
-
-### MCP Server
-
-Create an MCP server that provides tools, resources, and prompts for MCP clients. Servers can:
-
-* Implement custom tools for client use
-* Define resources accessible by clients
-* Create reusable prompt templates
-* Support multiple transport modes (stdio, HTTP, SSE)
-
-### MCP Client
-
-Create client applications that connect to MCP servers and use their tools, resources, and prompts. Clients can:
-
-* Connect to servers using various transport modes
-* Call tools provided by servers
-* Access resources defined by servers
-* Use prompt templates created by servers
-
-## Why Choose MCP Kit?
-
-MCP Kit allows developers to focus on business logic rather than underlying implementation details. Through standardized interfaces and tools, it simplifies the development process for MCP applications, making it easier and more efficient to create high-quality AI applications.
-
-Whether you want to create an MCP server providing specific functionality or need a client application that leverages these capabilities, MCP Kit provides the tools and frameworks needed to quickly achieve your goals.
-
----
-
----
-url: /mcp-kit/guide/what-is-mcp.md
----
-
-# What is MCP?
-
-The Model Context Protocol (MCP) is an open protocol that standardizes how applications provide context to large language models (LLMs). Think of MCP like a USB-C port for AI applications. Just as USB-C provides a standardized way to connect your devices to various peripherals and accessories, MCP provides a standardized way to connect AI models to different data sources and tools. MCP enables you to build agents and complex workflows on top of LLMs and connects your models with the world.
-
-MCP provides:
-
-* **A growing list of pre-built integrations** that your LLM can directly plug into
-* **A standardized way** to build custom integrations for AI applications
-* **An open protocol** that everyone is free to implement and use
-* **The flexibility to change** between different apps and take your context with you
-
-For more information, please visit the official MCP website: <https://modelcontextprotocol.io/>
+如果想了解更多，请访问 MCP 官网：<https://modelcontextprotocol.io/>
 
 ---
 
@@ -324,25 +343,6 @@ MCP Kit 支持创建两种类型的项目：
 MCP Kit 让开发者能够专注于业务逻辑而不是底层实现细节。通过标准化的接口和工具，它简化了 MCP 应用的开发流程，使得创建高质量的 AI 应用变得更加容易和高效。
 
 无论你是想创建一个提供特定功能的 MCP 服务器，还是需要一个能够利用这些功能的客户端应用，MCP Kit 都能提供所需的工具和框架，帮助你快速实现目标。
-
----
-
----
-url: /mcp-kit/zh/guide/what-is-mcp.md
----
-
-# 什么是 MCP？
-
-模型上下文协议（Model Context Protocol，MCP）是一个开放协议，它标准化了应用程序如何向大型语言模型（LLMs）提供上下文。可以将 MCP 想象成 AI 应用程序的 USB-C 接口。就像 USB-C 为连接设备与各种外设和配件提供了标准化方式一样，MCP 为连接 AI 模型与不同数据源和工具提供了标准化方式。MCP 使您能够在 LLMs 之上构建代理和复杂工作流，并将您的模型与世界连接起来。
-
-MCP 提供：
-
-* **不断增长的预构建集成列表**，您的 LLM 可以直接插入使用
-* **构建 AI 应用程序自定义集成的标准化方式**
-* **一个人人都可以自由实现和使用的开放协议**
-* **在不同应用程序之间切换的灵活性**，并且可以随身携带您的上下文
-
-如果想了解更多，请访问 MCP 官网：<https://modelcontextprotocol.io/>
 
 ---
 
