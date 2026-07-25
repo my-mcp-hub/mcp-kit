@@ -1,23 +1,27 @@
 import 'dotenv/config'
-import { setTimeout as sleep } from 'timers/promises'
-import { Client } from '@modelcontextprotocol/sdk/client/index.js'
+import { pathToFileURL } from 'node:url'
+import { Client{{#if (includes transports 'streamable')}}, StreamableHTTPClientTransport{{/if}} } from '@modelcontextprotocol/client'
 {{#if (includes transports 'stdio')}}
-import { StdioClientTransport } from '@modelcontextprotocol/sdk/client/stdio.js'
+import { StdioClientTransport } from '@modelcontextprotocol/client/stdio'
 {{/if}}
-{{#if (includes transports 'streamable')}}
-import { StreamableHTTPClientTransport } from '@modelcontextprotocol/sdk/client/streamableHttp.js'
-{{/if}}
-{{#if (includes transports 'sse')}}
-import { SSEClientTransport } from '@modelcontextprotocol/sdk/client/sse.js'
-{{/if}}
+
+const createClient = name =>
+  new Client(
+    {
+      name,
+      version: '1.0.0',
+    },
+    {
+      versionNegotiation: {
+        mode: 'auto',
+      },
+    },
+  )
 {{#if (includes transports 'stdio')}}
 
 export async function testStdioTransport() {
   console.log('start stdio client transport')
-  const client = new Client({
-    name: 'mcp-stdio-client',
-    version: '1.0.0',
-  })
+  const client = createClient('mcp-stdio-client')
 
   const stdioClientTransport = new StdioClientTransport({
     command: 'npx',
@@ -29,7 +33,8 @@ export async function testStdioTransport() {
 
   try {
     await client.connect(stdioClientTransport)
-    console.log('stdio client transport connected')
+    const protocolVersion = client.getNegotiatedProtocolVersion()
+    console.log(`stdio client transport connected (${protocolVersion})`)
 
     const { tools } = await client.listTools()
     console.log(tools.map(item => item.name))
@@ -43,32 +48,31 @@ export async function testStdioTransport() {
     })
     console.log(callResult.content)
     console.log('stdio client transport call tool done')
-  } catch (error) {
-    console.error('stdio transport error:', error)
+
+    return {
+      protocolVersion,
+      tools,
+      callResult,
+    }
   } finally {
     await client.close()
     console.log('stdio client transport closed')
   }
-
-  console.log('stdio client transport done\n\n')
-  await sleep(1000)
 }
 {{/if}}
 {{#if (includes transports 'streamable')}}
 
 export async function testStreamableHttpTransport() {
   console.log('start streamable http client transport')
-  const client = new Client({
-    name: 'mcp-http-client',
-    version: '1.0.0',
-  })
+  const client = createClient('mcp-http-client')
 
   const streamableBaseUrl = new URL('http://localhost:8401/mcp')
   const streamableClientTransport = new StreamableHTTPClientTransport(streamableBaseUrl)
 
   try {
     await client.connect(streamableClientTransport)
-    console.log('streamable http client transport connected')
+    const protocolVersion = client.getNegotiatedProtocolVersion()
+    console.log(`streamable http client transport connected (${protocolVersion})`)
 
     const { tools } = await client.listTools()
     console.log(tools.map(item => item.name))
@@ -82,54 +86,17 @@ export async function testStreamableHttpTransport() {
     })
     console.log(callResult.content)
     console.log('streamable http client transport call tool done')
-  } catch (error) {
-    console.error('streamable http transport error:', error)
+
+    return {
+      protocolVersion,
+      tools,
+      callResult,
+    }
   } finally {
+    await streamableClientTransport.terminateSession()
     await client.close()
     console.log('streamable http client transport closed')
   }
-
-  console.log('streamable http client transport done\n\n')
-  await sleep(1000)
-}
-{{/if}}
-{{#if (includes transports 'sse')}}
-
-export async function testSSETransport() {
-  console.log('start sse client transport')
-  const client = new Client({
-    name: 'mcp-sse-client',
-    version: '1.0.0',
-  })
-
-  const sseBaseUrl = new URL('http://localhost:8401/sse')
-  const sseClientTransport = new SSEClientTransport(sseBaseUrl)
-
-  try {
-    await client.connect(sseClientTransport)
-    console.log('sse client transport connected')
-
-    const { tools } = await client.listTools()
-    console.log(tools.map(item => item.name))
-    console.log('sse client transport tools listed')
-
-    const callResult = await client.callTool({
-      name: 'GetData',
-      arguments: {
-        keyword: 'Hello',
-      },
-    })
-    console.log(callResult.content)
-    console.log('sse client transport call tool done')
-  } catch (error) {
-    console.error('sse transport error:', error)
-  } finally {
-    await client.close()
-    console.log('sse client transport closed')
-  }
-
-  console.log('sse client transport done\n\n')
-  await sleep(1000)
 }
 {{/if}}
 
@@ -141,13 +108,12 @@ async function main() {
 {{#if (includes transports 'streamable')}}
     await testStreamableHttpTransport()
 {{/if}}
-{{#if (includes transports 'sse')}}
-    await testSSETransport()
-{{/if}}
   } catch (error) {
     console.error('Main error:', error)
-    process.exit(1)
+    process.exitCode = 1
   }
 }
 
-await main()
+if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
+  await main()
+}

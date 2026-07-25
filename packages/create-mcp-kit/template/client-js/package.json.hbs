@@ -15,7 +15,7 @@
 {{#if (includes plugins 'style')}}
     "lint": "npx eslint \"src/**/*.js\"",
 {{/if}}
-    "build": "tsc --noEmit && cross-env NODE_ENV=production node scripts/build.js",
+    "build": "cross-env NODE_ENV=production node scripts/build.js",
     "dev": "cross-env NODE_ENV=local node scripts/dev.js",
 {{#if (includes plugins 'vitest')}}
     "test": "vitest run",
@@ -27,7 +27,7 @@
     "prepare": "husky"
   },
   "dependencies": {
-    "@modelcontextprotocol/sdk": "^1.29.0",
+    "@modelcontextprotocol/client": "^2.0.0-beta.5",
     "dotenv": "^17.4.2"
   },
   "devDependencies": {
@@ -55,7 +55,7 @@
 {{/if}}
     "husky": "^9.1.7",
 {{#if (includes plugins 'style')}}
-    "lint-staged": "^17.1.1",
+    "lint-staged": "^17.2.0",
     "prettier": "^3.9.6",
 {{/if}}
 {{#if (includes plugins 'vitest')}}

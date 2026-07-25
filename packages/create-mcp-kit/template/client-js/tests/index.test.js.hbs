@@ -1,22 +1,36 @@
 {{#if (includes plugins 'vitest')}}
-import { describe, test } from 'vitest'
-import { {{#each transports}} {{~#if (eq this "stdio")}}testStdioTransport{{/if}} {{~#if (eq this "streamable")}}testStreamableHttpTransport{{/if}} {{~#if (eq this "sse")}}testSSETransport{{/if}}{{~#unless @last}}, {{/unless}}{{/each}} } from '@/index.js'
+import { describe, expect, test } from 'vitest'
+{{#if (and (includes transports 'stdio') (includes transports 'streamable'))}}
+import { testStdioTransport, testStreamableHttpTransport } from '@/index.js'
+{{else if (includes transports 'stdio')}}
+import { testStdioTransport } from '@/index.js'
+{{else}}
+import { testStreamableHttpTransport } from '@/index.js'
+{{/if}}
 
 describe('MCP client', () => {
-  {{#if (includes transports 'stdio')}}
+{{#if (includes transports 'stdio')}}
   test('stdio transport', async () => {
-    await testStdioTransport()
+    const result = await testStdioTransport()
+
+    expect(result.protocolVersion).toBeDefined()
+    expect(result.tools.map(tool => tool.name)).toContain('GetData')
+    expect(result.callResult).toMatchObject({
+      content: [{ type: 'text', text: 'keyword: Hello;' }],
+    })
   })
-  {{/if}}
-  {{#if (includes transports 'streamable')}}
+{{/if}}
+{{#if (includes transports 'streamable')}}
+
   test('streamable http transport', async () => {
-    await testStreamableHttpTransport()
+    const result = await testStreamableHttpTransport()
+
+    expect(result.protocolVersion).toBeDefined()
+    expect(result.tools.map(tool => tool.name)).toContain('GetData')
+    expect(result.callResult).toMatchObject({
+      content: [{ type: 'text', text: 'keyword: Hello;' }],
+    })
   })
-  {{/if}}
-  {{#if (includes transports 'sse')}}
-  test('sse transport', async () => {
-    await testSSETransport()
-  })
-  {{/if}}
+{{/if}}
 })
 {{/if}}

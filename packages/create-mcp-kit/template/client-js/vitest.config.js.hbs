@@ -8,7 +8,8 @@ export default defineConfig({
     },
   },
   test: {
-  {{#if (or (includes transports 'streamable') (includes transports 'sse'))}}
+    testTimeout: 30000,
+  {{#if (includes transports 'streamable')}}
     globalSetup: ['./vitest.global.js'],
   {{/if}}
     coverage: {

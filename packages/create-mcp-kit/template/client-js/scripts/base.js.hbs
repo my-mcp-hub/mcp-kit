@@ -8,7 +8,7 @@ const isProd = process.env.NODE_ENV === 'production'
 const isDev = process.env.NODE_ENV === 'local'
 let nodeProcess = null
 
-{{#if (or (includes transports 'streamable') (includes transports 'sse'))}}
+{{#if (includes transports 'streamable')}}
 if (isDev) {
   spawn('npx', ['-y', '@my-mcp-hub/node-mcp-server', 'web'], {
     stdio: 'inherit',
@@ -25,7 +25,7 @@ export const config = {
   sourcemap: isDev,
   minify: isProd,
   platform: 'node',
-  external: ['dotenv', 'timers/promises', '@modelcontextprotocol/sdk'],
+  external: ['dotenv', '@modelcontextprotocol/client'],
   alias: {
     '@': path.resolve(__dirname, '../src'),
   },
