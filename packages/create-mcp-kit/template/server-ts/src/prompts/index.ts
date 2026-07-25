@@ -1,4 +1,4 @@
-import type { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js'
+import type { McpServer } from '@modelcontextprotocol/server'
 import { z } from 'zod'
 
 export const registerPrompts = (server: McpServer) => {
@@ -7,9 +7,9 @@ export const registerPrompts = (server: McpServer) => {
     {
       title: 'Echo Prompt',
       description: 'Creates a prompt to process a message.',
-      argsSchema: {
+      argsSchema: z.object({
         message: z.string(),
-      },
+      }),
     },
     ({ message }) => {
       return {

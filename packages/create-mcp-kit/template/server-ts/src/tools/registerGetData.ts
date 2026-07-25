@@ -1,4 +1,4 @@
-import type { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js'
+import type { McpServer } from '@modelcontextprotocol/server'
 import { z } from 'zod'
 import type { OptionsType } from '@/types'
 
@@ -8,9 +8,9 @@ export default function register(server: McpServer, options: OptionsType) {
     {
       title: 'Get Data',
       description: 'Get Data',
-      inputSchema: {
+      inputSchema: z.object({
         keyword: z.string().describe('search keyword'),
-      },
+      }),
     },
     async ({ keyword }) => {
       const { success, data, message } = await getData(keyword, options)

@@ -6,9 +6,9 @@ export const registerPrompts = server => {
     {
       title: 'Echo Prompt',
       description: 'Creates a prompt to process a message.',
-      argsSchema: {
+      argsSchema: z.object({
         message: z.string(),
-      },
+      }),
     },
     ({ message }) => {
       return {

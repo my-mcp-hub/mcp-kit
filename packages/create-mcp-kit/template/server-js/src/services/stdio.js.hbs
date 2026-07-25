@@ -1,8 +1,7 @@
 {{#if (includes transports 'stdio')}}
-import { StdioServerTransport } from '@modelcontextprotocol/sdk/server/stdio.js'
+import { serveStdio } from '@modelcontextprotocol/server/stdio'
 
-export async function stdioServer(server) {
-  const transport = new StdioServerTransport()
-  await server.connect(transport)
+export function stdioServer(createServer) {
+  return serveStdio(createServer)
 }
 {{/if}}

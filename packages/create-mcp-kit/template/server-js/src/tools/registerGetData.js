@@ -6,9 +6,9 @@ export default function register(server, options) {
     {
       title: 'Get Data',
       description: 'Get Data',
-      inputSchema: {
+      inputSchema: z.object({
         keyword: z.string().describe('search keyword'),
-      },
+      }),
     },
     async ({ keyword }) => {
       const { success, data, message } = await getData(keyword, options)

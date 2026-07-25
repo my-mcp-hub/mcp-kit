@@ -1,7 +1,7 @@
 export interface OptionsType {
   name: string
   version: string
-{{#if (or (includes transports 'streamable') (includes transports 'sse'))}}
+{{#if (includes transports 'streamable')}}
   port: number
 {{/if}}
 }

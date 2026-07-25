@@ -2,25 +2,28 @@
 import { describe, expect, test } from 'vitest'
 
 describe('echoPrompt', () => {
-  test('should return correct prompt content for a valid argument', async () => {
-    expect(
-      await global.client.getPrompt({
-        name: 'echo',
-        arguments: {
-          message: 'hello',
-        },
-      }),
-    ).toStrictEqual({
-      messages: [
-        {
-          role: 'user',
-          content: {
-            type: 'text',
-            text: 'Please process this message: hello',
+  test.each(Object.entries(global.clients))(
+    'should return correct prompt content for a valid argument over %s',
+    async (_name, client) => {
+      expect(
+        await client.getPrompt({
+          name: 'echo',
+          arguments: {
+            message: 'hello',
           },
-        },
-      ],
-    })
-  })
+        }),
+      ).toMatchObject({
+        messages: [
+          {
+            role: 'user',
+            content: {
+              type: 'text',
+              text: 'Please process this message: hello',
+            },
+          },
+        ],
+      })
+    },
+  )
 })
 {{/if}}

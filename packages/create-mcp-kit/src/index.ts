@@ -49,7 +49,6 @@ const group = await clack.group(
         options: [
           { value: 'stdio', label: pc.magentaBright('STDIO') },
           { value: 'streamable', label: pc.greenBright('Streamable HTTP') },
-          { value: 'sse', label: pc.yellowBright('SSE') },
         ],
       })
     },

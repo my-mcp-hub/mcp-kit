@@ -13,7 +13,7 @@
     }
   },
 {{#if (includes plugins 'vitest')}}
-  {{#if (or (includes transports 'streamable') (includes transports 'sse'))}}
+  {{#if (includes transports 'streamable')}}
   "include": ["src", "tests", "vitest.config.js", "vitest.global.js", "vitest.setup.js"],
   {{else}}
   "include": ["src", "tests", "vitest.config.js", "vitest.setup.js"],

@@ -27,7 +27,15 @@ export const config = {
   sourcemap: isDev,
   minify: isProd,
   platform: 'node',
-  external: ['yargs', 'express', 'nanoid', 'zod', 'dotenv', '@modelcontextprotocol/sdk'],
+  external: [
+    'yargs',
+    'express',
+    'zod',
+    'dotenv',
+    '@modelcontextprotocol/server',
+    '@modelcontextprotocol/node',
+    '@modelcontextprotocol/express',
+  ],
   alias: {
     '@': path.resolve(__dirname, '../src'),
   },
@@ -60,13 +68,24 @@ const after = async result => {
       console.error('❌ Rebuild failed')
     }
 {{#if (includes plugins 'inspector')}}
+    const inspectorServer = process.env.TRANSPORT === 'web' ? 'mcp-streamable' : 'mcp-stdio'
+
+    if (process.env.TRANSPORT === 'web') {
+      if (webProcess) {
+        webProcess.kill('SIGINT')
+      }
+      webProcess = spawn('node', ['build/index.js', 'web'], {
+        stdio: 'inherit',
+      })
+    }
+
     console.log('🚀 Starting @modelcontextprotocol/inspector...')
     if (inspectorProcess) {
       kill(inspectorProcess.pid, 'SIGINT')
     }
     inspectorProcess = spawn(
       'npx',
-      ['@modelcontextprotocol/inspector', '--config', './src/assets/mcp.json', '--server', 'mcp-stdio'],
+      ['@modelcontextprotocol/inspector', '--config', './src/assets/mcp.json', '--server', inspectorServer],
       {
         stdio: 'inherit',
         shell: true,
@@ -78,15 +97,6 @@ const after = async result => {
       },
     )
     autoOpenBrowser = false
-
-    if (process.env.TRANSPORT === 'web') {
-      if (webProcess) {
-        webProcess.kill('SIGINT')
-      }
-      webProcess = spawn('node', ['build/index.js', 'web'], {
-        stdio: 'inherit',
-      })
-    }
 {{/if}}
   }
 }

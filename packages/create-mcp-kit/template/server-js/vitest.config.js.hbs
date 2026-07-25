@@ -8,14 +8,14 @@ export default defineConfig({
     },
   },
   test: {
-  {{#if (or (includes transports 'streamable') (includes transports 'sse'))}}
+  {{#if (includes transports 'streamable')}}
     globalSetup: ['./vitest.global.js'],
   {{/if}}
     setupFiles: ['./vitest.setup.js'],
     coverage: {
       include: ['src/**/*.js'],
     },
-  {{#if (or (includes transports 'streamable') (includes transports 'sse'))}}
+  {{#if (includes transports 'streamable')}}
     pool: 'threads',
     maxWorkers: 1,
   {{/if}}

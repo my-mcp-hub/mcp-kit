@@ -8,10 +8,6 @@
     "mcp-streamable": {
       "type": "streamable-http",
       "url": "http://localhost:8401/mcp"
-    },
-    "mcp-sse": {
-      "type": "sse",
-      "url": "http://localhost:8401/sse"
     }
   }
 }
