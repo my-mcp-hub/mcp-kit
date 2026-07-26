@@ -58,7 +58,6 @@ MCP Kit 是一个仅支持 ESM 的包。它需要 Node.js 版本 18 或更高，
 4. 选择 **Project transport type** （可以选择多个选项）:
    - **STDIO**: 通过标准输入/输出流进行通信
    - **Streamable HTTP**: 具有流式功能的 RESTful API
-   - **SSE**: 用于实时通信的服务器发送事件
 
 5. 选择 **Project template**:
    - **Standard**: 包含推荐的插件和配置
@@ -93,7 +92,7 @@ MCP Kit 是一个仅支持 ESM 的包。它需要 Node.js 版本 18 或更高，
 │   │   └── index.ts       # 提示注册
 │   ├── services/          # 服务器实现
 │   │   ├── stdio.ts       # STDIO 传输实现
-│   │   └── web.ts         # 可流式 HTTP 和 SSE 传输实现
+│   │   └── web.ts         # Streamable HTTP 传输实现
 │   └── index.ts           # 入口点
 ├── tests/                 # 测试文件（可选）
 ├── scripts/               # 构建和开发脚本

@@ -12,7 +12,7 @@ A CLI tool to create MCP (Model Context Protocol) applications with ease.
 - 📦 TypeScript support out of the box
 - 🛠️ Built-in development tools
 - 🔧 Configurable project templates
-- 🌐 Multiple Transport Modes (stdio/streamable-http/sse)
+- 🌐 Multiple Transport Modes (stdio/streamable-http)
 - 📚 Comprehensive APIs
 
 ## Usage
@@ -56,7 +56,7 @@ The generated server project will have the following structure:
 │   │   └── index.ts       # Prompts registration
 │   ├── services/          # Server implementations
 │   │   ├── stdio.ts       # STDIO transport implementation
-│   │   └── web.ts         # Streamable HTTP and SSE transport implementation
+│   │   └── web.ts         # Streamable HTTP transport implementation
 │   └── index.ts           # Entry point
 ├── tests/                 # Test files (optional)
 ├── scripts/               # Build and development scripts
@@ -118,11 +118,10 @@ The generated client project will have the following structure:
 
 #### Transport Modes
 
-MCP Server supports three transport modes:
+MCP Server supports two transport modes:
 
 1. **STDIO**: Communication through standard input/output streams
 2. **Streamable HTTP**: RESTful API with streaming capabilities
-3. **SSE (Server-Sent Events)**: Real-time event streaming from server to client
 
 #### MCP Tools
 Implement custom tools that can be used by MCP clients:
@@ -245,13 +244,21 @@ Connect to MCP servers using different transport modes:
 
 ```ts
 // Import the MCP client
-import { McpClient } from '@modelcontextprotocol/sdk/client/mcp.js'
-import { StdioClientTransport } from '@modelcontextprotocol/sdk/client/transports/stdio.js'
-import { StreamableHTTPClientTransport } from '@modelcontextprotocol/sdk/client/transports/streamable-http.js'
-import { SSEClientTransport } from '@modelcontextprotocol/sdk/client/transports/sse.js'
+import { Client, StreamableHTTPClientTransport } from '@modelcontextprotocol/client'
+import { StdioClientTransport } from '@modelcontextprotocol/client/stdio'
 
 // Create a new MCP client
-const client = new McpClient()
+const client = new Client(
+  {
+    name: 'mcp-client',
+    version: '1.0.0',
+  },
+  {
+    versionNegotiation: {
+      mode: 'auto',
+    },
+  },
+)
 
 // STDIO Transport
 const stdioClientTransport = new StdioClientTransport({
@@ -265,11 +272,6 @@ await client.connect(stdioClientTransport)
 const streamableBaseUrl = new URL('http://localhost:8401/mcp')
 const streamableClientTransport = new StreamableHTTPClientTransport(streamableBaseUrl)
 await client.connect(streamableClientTransport)
-
-// SSE Transport
-const sseBaseUrl = new URL('http://localhost:8401/sse')
-const sseClientTransport = new SSEClientTransport(sseBaseUrl)
-await client.connect(sseClientTransport)
 ```
 
 #### Tool Calling
