@@ -1,5 +1,5 @@
-import registerGetData from './registerGetData.js'
+import registerSearchDocuments from './registerSearchDocuments.js'
 
-export const registerTools = (server, options) => {
-  registerGetData(server, options)
+export const registerTools = server => {
+  registerSearchDocuments(server)
 }
