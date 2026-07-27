@@ -83,7 +83,6 @@ When you run the create command, MCP Kit will launch an interactive setup wizard
 4. Select **Project transport type** (multiple options can be selected):
    * **STDIO**: Communication through standard input/output streams
    * **Streamable HTTP**: RESTful API with streaming capabilities
-   * **SSE**: Server-Sent Events for real-time communication
 
 5. Choose a **Project template**:
    * **Standard**: Includes recommended plugins and configurations
@@ -118,7 +117,7 @@ The generated file structure depends on the project type you selected.
 │   │   └── index.ts       # Prompts registration
 │   ├── services/          # Server implementations
 │   │   ├── stdio.ts       # STDIO transport implementation
-│   │   └── web.ts         # Streamable HTTP and SSE transport implementation
+│   │   └── web.ts         # Streamable HTTP transport implementation
 │   └── index.ts           # Entry point
 ├── tests/                 # Test files (optional)
 ├── scripts/               # Build and development scripts

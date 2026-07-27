@@ -14,7 +14,7 @@ MCP Kit 提供了一套完整的工具和框架，帮助开发者快速搭建 MC
 * **TypeScript 支持**: 开箱即用的 TypeScript 配置
 * **内置开发工具**: 包含测试、构建和代码质量工具
 * **可配置的项目模板**: 适应不同开发需求
-* **多种传输模式**: 支持 stdio、streamable-http 和 SSE 等通信方式
+* **多种传输模式**: 支持 stdio 和 streamable-http 通信方式
 * **全面的 API**: 丰富的接口支持各种功能实现
 
 ## MCP Kit 的核心功能
@@ -28,7 +28,7 @@ MCP Kit 支持创建两种类型的项目：
 * 实现自定义工具供客户端调用
 * 定义可被客户端访问的资源
 * 创建可重用的提示模板
-* 支持多种传输模式（stdio、HTTP、SSE）
+* 支持多种传输模式（stdio 和 Streamable HTTP）
 
 ### MCP 客户端
 

@@ -14,7 +14,7 @@ MCP Kit offers a complete set of tools and frameworks to help developers quickly
 * **TypeScript support**: Out-of-the-box TypeScript configuration
 * **Built-in development tools**: Including testing, building, and code quality tools
 * **Configurable project templates**: Adaptable to different development needs
-* **Multiple transport modes**: Support for stdio, streamable-http, and SSE communication methods
+* **Multiple transport modes**: Support for stdio and streamable-http communication methods
 * **Comprehensive APIs**: Rich interfaces supporting various functionality implementations
 
 ## Core Features of MCP Kit
@@ -28,7 +28,7 @@ Create an MCP server that provides tools, resources, and prompts for MCP clients
 * Implement custom tools for client use
 * Define resources accessible by clients
 * Create reusable prompt templates
-* Support multiple transport modes (stdio, HTTP, SSE)
+* Support multiple transport modes (stdio and Streamable HTTP)
 
 ### MCP Client
 
