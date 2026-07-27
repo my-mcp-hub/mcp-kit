@@ -1,1 +1,37 @@
 # {{projectName}}
+
+MCP TypeScript SDK 2.0 starter using the `2026-07-28` protocol{{#if (and (includes transports 'stdio') (includes transports 'streamable'))}} over stdio and Streamable HTTP{{else if (includes transports 'stdio')}} over stdio{{else}} over Streamable HTTP{{/if}}.
+
+The built-in knowledge-base example demonstrates how the three server primitives work together:
+
+1. Call the `search_documents` Tool to find one of three MCP guides.
+2. Read the returned `kb://documents/{documentId}` Resource URI.
+3. Get the `review_document` Prompt to review the same document.
+
+The example is deterministic and has no external data dependency. Tool results include both
+`structuredContent` and text content, resources are Markdown documents with stable URIs, and missing
+resources return a protocol-level Resource Not Found error.
+
+```bash
+npm install
+{{#if (includes transports 'stdio')}}
+npm run dev:stdio
+{{else}}
+npm run dev:web
+{{/if}}
+```
+{{#if (and (includes transports 'stdio') (includes transports 'streamable'))}}
+
+Run the HTTP transport on `http://localhost:8401/mcp`:
+
+```bash
+npm run dev:web
+```
+{{/if}}
+
+Verify the configured transports:
+
+```bash
+npm test
+npm run build
+```

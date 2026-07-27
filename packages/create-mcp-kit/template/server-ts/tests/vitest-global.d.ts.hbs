@@ -2,6 +2,6 @@
 import type { Client } from '@modelcontextprotocol/client'
 
 declare global {
-  var clients: Record<{{#if (and (includes transports 'stdio') (includes transports 'streamable'))}}'stdio' | 'streamable'{{else if (includes transports 'stdio')}}'stdio'{{else}}'streamable'{{/if}}, Client>;
+  var clients: Record<{{#if (and (includes transports 'stdio') (includes transports 'streamable'))}}'stdio' | 'streamable'{{else if (includes transports 'stdio')}}'stdio'{{else}}'streamable'{{/if}}, Client>
 }
 {{/if}}

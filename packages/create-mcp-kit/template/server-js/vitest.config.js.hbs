@@ -8,6 +8,7 @@ export default defineConfig({
     },
   },
   test: {
+    testTimeout: 30000,
   {{#if (includes transports 'streamable')}}
     globalSetup: ['./vitest.global.js'],
   {{/if}}

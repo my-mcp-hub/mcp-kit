@@ -1,10 +1,10 @@
 {{#if (includes plugins 'vitest')}}
 import 'dotenv/config'
-import { afterAll } from 'vitest'
 import { Client{{#if (includes transports 'streamable')}}, StreamableHTTPClientTransport{{/if}} } from '@modelcontextprotocol/client'
 {{#if (includes transports 'stdio')}}
 import { StdioClientTransport } from '@modelcontextprotocol/client/stdio'
 {{/if}}
+import { afterAll } from 'vitest'
 
 const modernProtocolOptions = {
   versionNegotiation: {

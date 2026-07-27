@@ -1,6 +1,6 @@
 {{#if (includes transports 'stdio')}}
-import { serveStdio } from '@modelcontextprotocol/server/stdio'
 import type { McpServer } from '@modelcontextprotocol/server'
+import { serveStdio } from '@modelcontextprotocol/server/stdio'
 
 export function stdioServer(createServer: () => McpServer) {
   return serveStdio(createServer)

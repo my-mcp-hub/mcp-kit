@@ -2,7 +2,7 @@
 import yargs from 'yargs'
 import { hideBin } from 'yargs/helpers'
 {{#if (and (includes transports 'stdio') (includes transports 'streamable'))}}
-import { startWebServer, startStdioServer } from './services/index.js'
+import { startStdioServer, startWebServer } from './services/index.js'
 {{else if (includes transports 'stdio')}}
 import { startStdioServer } from './services/index.js'
 {{else}}
