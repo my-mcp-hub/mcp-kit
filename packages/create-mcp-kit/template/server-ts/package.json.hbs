@@ -42,27 +42,30 @@
   },
   "dependencies": {
 {{#if (includes transports 'streamable')}}
-    "@modelcontextprotocol/express": "^2.0.0-beta.5",
-    "@modelcontextprotocol/node": "^2.0.0-beta.5",
+    "@modelcontextprotocol/express": "^2.0.0",
+    "@modelcontextprotocol/node": "^2.0.0",
 {{/if}}
-    "@modelcontextprotocol/server": "^2.0.0-beta.5",
+    "@modelcontextprotocol/server": "^2.0.0",
     "dotenv": "^17.4.2",
 {{#if (includes transports 'streamable')}}
     "express": "^5.2.1",
 {{/if}}
-    "yargs": "^18.0.0",
+    "yargs": "^18.1.0",
     "zod": "^4.4.3"
   },
   "devDependencies": {
+{{#if (includes plugins 'style')}}
+    "@biomejs/biome": "2.5.5",
+{{/if}}
 {{#if (includes plugins 'commitlint')}}
     "@commitlint/cli": "^21.2.1",
     "@commitlint/config-conventional": "^21.2.0",
 {{/if}}
 {{#if (includes plugins 'inspector')}}
-    "@modelcontextprotocol/inspector": "^1.0.0",
+    "@modelcontextprotocol/inspector": "^1.0.1",
 {{/if}}
 {{#if (includes plugins 'vitest')}}
-    "@modelcontextprotocol/client": "^2.0.0-beta.5",
+    "@modelcontextprotocol/client": "^2.0.0",
 {{/if}}
 {{#if (includes transports 'streamable')}}
     "@types/express": "^5.0.6",
@@ -90,7 +93,7 @@
     "eslint": "^9.39.5",
     "eslint-plugin-import": "^2.32.0",
     "eslint-plugin-prettier": "^5.5.6",
-    "globals": "^17.7.0",
+    "globals": "^17.8.0",
 {{/if}}
     "husky": "^9.1.7",
 {{#if (includes plugins 'style')}}

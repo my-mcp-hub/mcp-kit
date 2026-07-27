@@ -5,6 +5,7 @@ import globals from 'globals'
 import tseslint from 'typescript-eslint'
 
 export default [
+  ...tseslint.configs.recommended,
   {
     ignores: ['**/build', '**/node_modules', '**/.*', '**/*.d.ts', '.husky/'],
   },

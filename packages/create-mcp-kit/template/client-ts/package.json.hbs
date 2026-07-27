@@ -27,10 +27,13 @@
     "prepare": "husky"
   },
   "dependencies": {
-    "@modelcontextprotocol/client": "^2.0.0-beta.5",
+    "@modelcontextprotocol/client": "^2.0.0",
     "dotenv": "^17.4.2"
   },
   "devDependencies": {
+{{#if (includes plugins 'style')}}
+    "@biomejs/biome": "2.5.5",
+{{/if}}
 {{#if (includes plugins 'commitlint')}}
     "@commitlint/cli": "^21.2.1",
     "@commitlint/config-conventional": "^21.2.0",
@@ -38,6 +41,7 @@
 {{#if (includes plugins 'vitest')}}
     "@vitest/coverage-v8": "^4.1.10",
 {{/if}}
+    "@types/node": "^22.20.1",
 {{#if (includes plugins 'changelog')}}
     "compare-func": "^2.0.0",
 {{/if}}
@@ -52,7 +56,7 @@
     "eslint": "^9.39.5",
     "eslint-plugin-import": "^2.32.0",
     "eslint-plugin-prettier": "^5.5.6",
-    "globals": "^17.7.0",
+    "globals": "^17.8.0",
 {{/if}}
     "husky": "^9.1.7",
 {{#if (includes plugins 'style')}}
