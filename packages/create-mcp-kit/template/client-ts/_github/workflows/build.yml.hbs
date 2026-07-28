@@ -12,28 +12,36 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
         with:
           fetch-depth: 0
 
       - name: Install Node
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v7
         with:
           node-version: 22
           cache: npm
 
       - name: Install Package
-        run: npm i
+        run: npm ci
 
+{{#if (includes plugins 'style')}}
       - name: Lint
         run: npm run lint
 
+{{/if}}
       - name: Build Package
         run: npm run build
 
+{{#if (includes plugins 'vitest')}}
       - name: Test Package
         run: npm run coverage
 
-      - name: Coveralls
-        uses: coverallsapp/github-action@v2
+      - name: Upload coverage reports to Codecov
+        uses: codecov/codecov-action@v7
+        with:
+          verbose: true
+        env:
+          CODECOV_TOKEN: $\{{ secrets.CODECOV_TOKEN }}
+{{/if}}
 {{/if}}
