@@ -15,7 +15,7 @@ runs:
   using: "composite"
   steps:
     - name: Install pnpm
-      uses: pnpm/action-setup@v4
+      uses: pnpm/action-setup@v6
 
     - name: Install Node
       uses: actions/setup-node@v6
@@ -23,8 +23,8 @@ runs:
         node-version: ${{ inputs.node-version }}
         cache: 'pnpm'
         cache-dependency-path: '**/pnpm-lock.yaml'
-    #        registry-url: 'https://registry.npmjs.org'
-    #        always-auth: true
+#        registry-url: 'https://registry.npmjs.org'
+#        always-auth: true
 
     - name: Configure npm authentication
       if: ${{ inputs.npm-token != '' }}
