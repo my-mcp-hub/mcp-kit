@@ -1,36 +1,73 @@
 {{#if (includes plugins 'vitest')}}
+import path from 'node:path'
 import { describe, expect, test } from 'vitest'
 {{#if (and (includes transports 'stdio') (includes transports 'streamable'))}}
-import { testStdioTransport, testStreamableHttpTransport } from '@/index.js'
+import { runStdioDemo, runStreamableHttpDemo } from '@/index.js'
 {{else if (includes transports 'stdio')}}
-import { testStdioTransport } from '@/index.js'
+import { runStdioDemo } from '@/index.js'
 {{else}}
-import { testStreamableHttpTransport } from '@/index.js'
+import { runStreamableHttpDemo } from '@/index.js'
+{{/if}}
+{{#if (includes transports 'stdio')}}
+
+const serverRoot = path.resolve(process.cwd(), '../mcp-server-starter')
+const localServerOptions = {
+  command: 'npx',
+  args: ['tsx', './src/index.js'],
+  cwd: serverRoot,
+  env: process.env,
+}
 {{/if}}
 
 describe('MCP client', () => {
 {{#if (includes transports 'stdio')}}
   test('stdio transport', async () => {
-    const result = await testStdioTransport()
-
-    expect(result.protocolVersion).toBeDefined()
-    expect(result.tools.map(tool => tool.name)).toContain('GetData')
-    expect(result.callResult).toMatchObject({
-      content: [{ type: 'text', text: 'keyword: Hello;' }],
-    })
+    const result = await runStdioDemo(localServerOptions)
+    assertKnowledgeBaseDemo(result)
   })
 {{/if}}
 {{#if (includes transports 'streamable')}}
 
   test('streamable http transport', async () => {
-    const result = await testStreamableHttpTransport()
-
-    expect(result.protocolVersion).toBeDefined()
-    expect(result.tools.map(tool => tool.name)).toContain('GetData')
-    expect(result.callResult).toMatchObject({
-      content: [{ type: 'text', text: 'keyword: Hello;' }],
-    })
+    const result = await runStreamableHttpDemo()
+    assertKnowledgeBaseDemo(result)
   })
 {{/if}}
 })
+
+const assertKnowledgeBaseDemo = result => {
+  expect(result.protocolVersion).toBe('2026-07-28')
+  expect(result.tools.map(tool => tool.name)).toContain('search_documents')
+  expect(result.resources).toHaveLength(3)
+  expect(result.prompts.map(prompt => prompt.name)).toContain('review_document')
+  expect(result.selectedDocument).toMatchObject({
+    id: 'transport-and-lifecycle',
+    uri: 'kb://documents/transport-and-lifecycle',
+  })
+  expect(result.resourceResult).toMatchObject({
+    contents: [
+      {
+        uri: 'kb://documents/transport-and-lifecycle',
+        mimeType: 'text/markdown',
+      },
+    ],
+  })
+  expect(result.promptResult).toMatchObject({
+    messages: [
+      {
+        content: {
+          type: 'text',
+        },
+      },
+      {
+        content: {
+          type: 'resource',
+          resource: {
+            uri: 'kb://documents/transport-and-lifecycle',
+          },
+        },
+      },
+    ],
+  })
+}
 {{/if}}

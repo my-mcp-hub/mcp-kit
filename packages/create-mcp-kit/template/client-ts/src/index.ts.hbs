@@ -1,112 +1,33 @@
 import 'dotenv/config'
 import { pathToFileURL } from 'node:url'
-import { Client{{#if (includes transports 'streamable')}}, StreamableHTTPClientTransport{{/if}} } from '@modelcontextprotocol/client'
-{{#if (includes transports 'stdio')}}
-import { StdioClientTransport } from '@modelcontextprotocol/client/stdio'
+{{#if (and (includes transports 'stdio') (includes transports 'streamable'))}}
+import { runStdioDemo, runStreamableHttpDemo } from './transports'
+{{else if (includes transports 'stdio')}}
+import { runStdioDemo } from './transports'
+{{else}}
+import { runStreamableHttpDemo } from './transports'
 {{/if}}
 
-const createClient = (name: string) =>
-  new Client(
-    {
-      name,
-      version: '1.0.0',
-    },
-    {
-      versionNegotiation: {
-        mode: 'auto',
-      },
-    },
-  )
-{{#if (includes transports 'stdio')}}
-
-export async function testStdioTransport() {
-  console.log('start stdio client transport')
-  const client = createClient('mcp-stdio-client')
-
-  const stdioClientTransport = new StdioClientTransport({
-    command: 'npx',
-    args: ['-y', '@my-mcp-hub/node-mcp-server'],
-    env: {
-      ...(process.env as Record<string, string>),
-    },
-  })
-
-  try {
-    await client.connect(stdioClientTransport)
-    const protocolVersion = client.getNegotiatedProtocolVersion()
-    console.log(`stdio client transport connected (${protocolVersion})`)
-
-    const { tools } = await client.listTools()
-    console.log(tools.map(item => item.name))
-    console.log('stdio client transport tools listed')
-
-    const callResult = await client.callTool({
-      name: 'GetData',
-      arguments: {
-        keyword: 'Hello',
-      },
-    })
-    console.log(callResult.content)
-    console.log('stdio client transport call tool done')
-
-    return {
-      protocolVersion,
-      tools,
-      callResult,
-    }
-  } finally {
-    await client.close()
-    console.log('stdio client transport closed')
-  }
-}
-{{/if}}
-{{#if (includes transports 'streamable')}}
-
-export async function testStreamableHttpTransport() {
-  console.log('start streamable http client transport')
-  const client = createClient('mcp-http-client')
-
-  const streamableBaseUrl = new URL('http://localhost:8401/mcp')
-  const streamableClientTransport = new StreamableHTTPClientTransport(streamableBaseUrl)
-
-  try {
-    await client.connect(streamableClientTransport)
-    const protocolVersion = client.getNegotiatedProtocolVersion()
-    console.log(`streamable http client transport connected (${protocolVersion})`)
-
-    const { tools } = await client.listTools()
-    console.log(tools.map(item => item.name))
-    console.log('streamable http client transport tools listed')
-
-    const callResult = await client.callTool({
-      name: 'GetData',
-      arguments: {
-        keyword: 'Hello',
-      },
-    })
-    console.log(callResult.content)
-    console.log('streamable http client transport call tool done')
-
-    return {
-      protocolVersion,
-      tools,
-      callResult,
-    }
-  } finally {
-    await streamableClientTransport.terminateSession()
-    await client.close()
-    console.log('streamable http client transport closed')
-  }
-}
+export { createClient } from './client'
+export { runKnowledgeBaseDemo } from './knowledgeBaseDemo'
+{{#if (and (includes transports 'stdio') (includes transports 'streamable'))}}
+export { runStdioDemo, runStreamableHttpDemo } from './transports'
+{{else if (includes transports 'stdio')}}
+export { runStdioDemo } from './transports'
+{{else}}
+export { runStreamableHttpDemo } from './transports'
 {{/if}}
 
 async function main() {
   try {
 {{#if (includes transports 'stdio')}}
-    await testStdioTransport()
+    const stdioResult = await runStdioDemo()
+    console.log('stdio demo:', stdioResult.selectedDocument)
 {{/if}}
 {{#if (includes transports 'streamable')}}
-    await testStreamableHttpTransport()
+
+    const httpResult = await runStreamableHttpDemo()
+    console.log('streamable HTTP demo:', httpResult.selectedDocument)
 {{/if}}
   } catch (error) {
     console.error('Main error:', error)

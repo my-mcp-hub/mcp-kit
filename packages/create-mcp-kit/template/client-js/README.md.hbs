@@ -1,1 +1,25 @@
 # {{projectName}}
+
+MCP JavaScript SDK 2.0 client starter{{#if (and (includes transports 'stdio') (includes transports 'streamable'))}} for stdio and Streamable HTTP{{else if (includes transports 'stdio')}} for stdio{{else}} for Streamable HTTP{{/if}}.
+
+The demo runs one complete workflow against the paired server:
+
+1. Discover Tools, Resources, and Prompts.
+2. Call `search_documents`.
+3. Read the selected `kb://documents/{documentId}` Resource.
+4. Get `review_document` with the selected document ID.
+
+{{#if (includes transports 'stdio')}}By default, the stdio example starts `@my-mcp-hub/node-mcp-server`.{{/if}}{{#if (includes transports 'streamable')}} The HTTP example connects
+to `http://localhost:8401/mcp`; set `MCP_SERVER_URL` to use another HTTP endpoint.{{/if}}
+
+```bash
+npm install
+npm run dev
+```
+
+The test suite expects the paired server project in `../mcp-server-starter` and verifies the same workflow over the configured transports:
+
+```bash
+npm test
+npm run build
+```

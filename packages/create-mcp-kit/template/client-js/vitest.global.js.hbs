@@ -1,9 +1,12 @@
 {{#if (and (includes plugins 'vitest') (includes transports 'streamable'))}}
+import path from 'node:path'
 import { spawn } from 'child_process'
 import { waitForValue } from './tests/utils'
 
 export default async function setup() {
-  const webProcess = spawn('npx', ['-y', '@my-mcp-hub/node-mcp-server', 'web'], {
+  const serverRoot = path.resolve(process.cwd(), '../mcp-server-starter')
+  const webProcess = spawn('npx', ['tsx', './src/index.js', 'web'], {
+    cwd: serverRoot,
     stdio: 'pipe',
   })
   let webStarted = false

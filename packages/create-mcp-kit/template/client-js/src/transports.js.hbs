@@ -1,0 +1,44 @@
+{{#if (includes transports 'streamable')}}
+import { StreamableHTTPClientTransport } from '@modelcontextprotocol/client'
+{{/if}}
+{{#if (includes transports 'stdio')}}
+import { StdioClientTransport } from '@modelcontextprotocol/client/stdio'
+{{/if}}
+import { createClient } from './client.js'
+import { runKnowledgeBaseDemo } from './knowledgeBaseDemo.js'
+{{#if (includes transports 'stdio')}}
+
+const defaultStdioOptions = {
+  command: 'npx',
+  args: ['-y', '@my-mcp-hub/node-mcp-server'],
+  env: process.env,
+}
+
+export async function runStdioDemo(options = defaultStdioOptions) {
+  const client = createClient('knowledge-base-stdio-client')
+  const transport = new StdioClientTransport(options)
+
+  try {
+    await client.connect(transport)
+    return await runKnowledgeBaseDemo(client)
+  } finally {
+    await client.close()
+  }
+}
+{{/if}}
+{{#if (includes transports 'streamable')}}
+
+export async function runStreamableHttpDemo(
+  serverUrl = new URL(process.env.MCP_SERVER_URL ?? 'http://localhost:8401/mcp'),
+) {
+  const client = createClient('knowledge-base-http-client')
+  const transport = new StreamableHTTPClientTransport(serverUrl)
+
+  try {
+    await client.connect(transport)
+    return await runKnowledgeBaseDemo(client)
+  } finally {
+    await client.close()
+  }
+}
+{{/if}}
