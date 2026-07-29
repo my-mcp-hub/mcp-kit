@@ -1,21 +1,15 @@
 # MCP Kit
 
-> A CLI tool to create MCP applications with ease
+> Scaffold ready-to-develop Model Context Protocol servers and clients
 
-- 🚀 Quick Scaffolding
-- 📦️ TypeScript First
-- 🛠️️ Development Tools
-- 🔧 Configurable Templates
-- 🌐️ Multiple Transport Modes
-- 📚️ Comprehensive APIs
+MCP Kit is an interactive CLI that generates ready-to-develop Model Context Protocol servers and clients.
 
-MCP Kit is a toolkit for creating MCP (Model Context Protocol) applications with ease, enabling developers to build MCP-compliant servers and client applications. It consists of two major parts:
+- Generate TypeScript or JavaScript projects.
+- Select STDIO, Streamable HTTP, or both.
+- Start from a runnable knowledge-base workflow connecting a Tool, Resource, and Prompt.
+- Use the recommended engineering setup or choose individual testing, CI, inspection, style, commit, and changelog plugins.
 
-- A scaffolding system that quickly generates MCP server and client projects with [pre-configured TypeScript setup](https://my-mcp-hub.github.io/mcp-kit/guide/what-is-mcp-kit.html) and built-in developer tools for rapid development.
-
-- Project templates that provide standardized structure for both [MCP servers and clients](https://my-mcp-hub.github.io/mcp-kit/guide/what-is-mcp.html), pre-configured to follow Model Context Protocol specifications.
-
-In addition, MCP Kit streamlines the development workflow with [getting started guides](https://my-mcp-hub.github.io/mcp-kit/guide/getting-started.html) and best practices with full TypeScript support.
+See [What is MCP Kit?](https://my-mcp-hub.github.io/mcp-kit/guide/what-is-mcp-kit.html) for the generated workflow and [Getting Started](https://my-mcp-hub.github.io/mcp-kit/guide/getting-started.html) for the current CLI options and scripts.
 
 ## Table of Contents
 
