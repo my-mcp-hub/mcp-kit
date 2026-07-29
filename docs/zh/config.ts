@@ -3,7 +3,7 @@ import pkg from '../../packages/create-mcp-kit/package.json' with { type: 'json'
 
 // https://vitepress.dev/reference/site-config
 export default defineAdditionalConfig({
-  description: '一个轻松创建 MCP 应用的 CLI 工具',
+  description: '生成可直接开发的 MCP 服务端与客户端',
   themeConfig: {
     nav: [
       { text: '首页', link: '/zh/' },

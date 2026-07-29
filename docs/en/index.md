@@ -2,9 +2,9 @@
 layout: home
 
 hero:
-  name: "MCP Kit"
-  text: "Model Context Protocol Toolkit"
-  tagline: A CLI tool to create MCP applications with ease
+  name: 'MCP Kit'
+  text: 'Scaffold MCP servers and clients'
+  tagline: Choose TypeScript or JavaScript, STDIO or Streamable HTTP, and start from a working protocol example.
   image:
     src: /logo.png
     alt: MCP Kit
@@ -19,21 +19,20 @@ hero:
 features:
   - title: Quick Scaffolding
     icon: 🚀
-    details: Quickly scaffold MCP server and client projects with pre-configured TypeScript setup and developer tools.
-  - title: TypeScript First
+    details: Generate a working MCP server or client through a short, guided setup.
+  - title: TypeScript or JavaScript
     icon: 📦
-    details: Built-in TypeScript support with full type safety, modern ES modules, and excellent developer experience.
-  - title: Development Tools
+    details: Start with modern ESM templates in either language, with type-safe TypeScript available out of the box.
+  - title: Real Protocol Workflow
+    icon: 🔗
+    details: Explore a runnable knowledge-base example connecting tools, resources, and prompts end to end.
+  - title: Optional Development Tools
     icon: 🛠️️
-    details: Includes testing, linting, hot reload, and build tools to streamline your development workflow.
-  - title: Configurable Templates
+    details: Add Vitest, GitHub Actions, MCP Inspector, linting, commit checks, and changelog support.
+  - title: Standard or Custom
     icon: 🔧️
-    details: Flexible project templates that can be customized to fit your specific use case and requirements.
-  - title: Multiple Transport Modes
+    details: Choose the recommended setup or select only the plugins that belong in your workflow.
+  - title: Two Transport Modes
     icon: 🌐️
-    details: Support for both STDIO and web server modes, allowing flexible deployment options.
-  - title: Comprehensive APIs
-    icon: 📚️
-    details: Easy-to-use APIs for implementing tools, resources, and prompts following MCP specifications.
+    details: Generate STDIO, Streamable HTTP, or both, with transport-specific source and development scripts.
 ---
-

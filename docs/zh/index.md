@@ -2,9 +2,9 @@
 layout: home
 
 hero:
-  name: "MCP Kit"
-  text: "模型上下文协议工具包"
-  tagline: 一个轻松创建 MCP 应用的 CLI 工具
+  name: 'MCP Kit'
+  text: '快速生成 MCP 服务端与客户端'
+  tagline: 选择 TypeScript 或 JavaScript、STDIO 或 Streamable HTTP，从可运行的协议示例开始开发。
   image:
     src: /logo.png
     alt: MCP Kit
@@ -19,20 +19,20 @@ hero:
 features:
   - title: 快速脚手架
     icon: 🚀
-    details: 快速生成 MCP 服务端和客户端项目，预配置 TypeScript 环境和开发工具。
-  - title: TypeScript 优先
+    details: 通过简短的引导式配置，生成可运行的 MCP 服务端或客户端。
+  - title: TypeScript 或 JavaScript
     icon: 📦
-    details: 内置 TypeScript 支持，具备完整的类型安全、现代 ES 模块和优秀的开发体验。
-  - title: 开发工具集
+    details: 两种语言都采用现代 ESM 模板，并提供开箱即用的 TypeScript 类型安全。
+  - title: 完整协议工作流
+    icon: 🔗
+    details: 内置可运行的知识库示例，端到端串联工具、资源与提示。
+  - title: 可选开发工具
     icon: 🛠️️
-    details: 内置测试、代码检查、热重载和构建工具，简化开发流程。
-  - title: 可配置模板
+    details: 可加入 Vitest、GitHub Actions、MCP Inspector、代码检查、提交检查和变更日志。
+  - title: 标准或自定义
     icon: 🔧️
-    details: 灵活的项目模板，可根据具体需求自定义。
-  - title: 多种传输模式
+    details: 选择推荐配置，或仅启用适合当前工作流的插件。
+  - title: 两种传输模式
     icon: 🌐️
-    details: 支持 STDIO 和 Web 服务两种模式，部署更灵活。
-  - title: 完整 API
-    icon: 📚️
-    details: 提供易用的 API，用于实现符合 MCP 规范的工具、资源和提示功能。
+    details: 可生成 STDIO、Streamable HTTP 或同时生成两者，并配套对应源码与开发脚本。
 ---
