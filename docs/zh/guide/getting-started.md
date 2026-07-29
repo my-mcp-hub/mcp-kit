@@ -4,180 +4,150 @@ layout: doc
 
 # 入门指南
 
-## 安装
+## 前提条件
 
-### 前提条件
+- [Node.js](https://nodejs.org/) 22 或更高版本
+- 终端，以及 npm、pnpm、Yarn、Bun 或 Deno
 
-- [Node.js](https://nodejs.org/) 版本 18 或更高。
-- 通过命令行界面（CLI）访问 MCP Kit 的终端。
+MCP Kit 及其生成的模板使用现代 ES 模块。生成项目中的 `.nvmrc` 指定为 Node.js 22。
 
-MCP Kit 可用于创建新的 MCP（模型上下文协议）应用程序。您可以使用以下任何包管理器安装和使用它：
+## 创建项目
+
+无需全局安装，直接运行 CLI：
 
 ::: code-group
+
 ```sh [npm]
-$ npm create mcp-kit@latest
+npm create mcp-kit@latest
 ```
 
 ```sh [pnpm]
-$ pnpm create mcp-kit
+pnpm create mcp-kit
 ```
 
 ```sh [yarn]
-$ yarn create mcp-kit
+yarn create mcp-kit
 ```
 
-```bash [bun]
-$ bun create mcp-kit
+```sh [Bun]
+bun create mcp-kit
 ```
 
-```bash [deno]
-$ deno init --npm mcp-kit
+```sh [Deno]
+deno init --npm mcp-kit
 ```
-:::
 
-::: tip NOTE
-MCP Kit 是一个仅支持 ESM 的包。它需要 Node.js 版本 18 或更高，并使用现代 JavaScript 特性。
 :::
 
 ## 设置向导
 
-当您运行创建命令时，MCP Kit 将启动一个交互式设置向导，引导您创建一个新项目：
+交互式向导会依次询问：
 
 <<< @/snippets/init.ansi
 
-1. 首先，系统会提示您选择 **Project type**:
-   - **MCP Server**: 创建一个为 MCP 客户端提供工具、资源和提示的服务器
-   - **MCP Client**: 创建一个连接到 MCP 服务器的客户端
+1. **项目类型** — MCP Server 或 MCP Client。
+2. **项目名称** — 默认为 `mcp-server-starter` 或 `mcp-client-starter`。
+3. **开发语言** — TypeScript 或 JavaScript。
+4. **传输方式** — STDIO、Streamable HTTP，或同时选择两者。
+5. **项目模板** — Standard 或 Custom。
+6. **插件** — Custom 项目会显示此项，可任意组合 GitHub Actions、Vitest、MCP Inspector（仅服务端）、代码风格工具、Commitlint 和变更日志工具。
+7. **安装依赖** — 立即安装或稍后手动安装。
 
-2. 接下来，系统会要求您提供**Project name** (默认为 `mcp-[type]-starter`)
+Standard 模板会启用全部推荐插件，服务端项目还会包含 MCP Inspector。
 
-3. 选择您偏好的 **Project language**:
-   - **TypeScript** (recommended)
-   - **JavaScript**
-
-4. 选择 **Project transport type** （可以选择多个选项）:
-   - **STDIO**: 通过标准输入/输出流进行通信
-   - **Streamable HTTP**: 具有流式功能的 RESTful API
-
-5. 选择 **Project template**:
-   - **Standard**: 包含推荐的插件和配置
-   - **Custom**: 允许您选择特定的插件
-
-6. 如果您选择了 **Custom** 模板, 系统会提示您选择 **Project plugins**:
-   - **GitHub Action**: CI/CD 工作流
-   - **Vitest**: 测试框架
-   - **Inspector**: 调试工具（仅限服务器项目）
-   - **ESLint + Prettier + Lint-staged**: 代码质量工具
-   - **Commitlint**: 提交消息检查
-   - **Changelog**: 自动生成变更日志
-
-7. 最后，系统会询问您是否要自动 **install dependencies**
-
-完成这些步骤后，MCP Kit 将使用所选配置创建您的项目。
-
-## 文件结构
-
-生成的文件结构取决于您选择的项目类型。
-
-### MCP 服务器项目结构
-
-```
-├── src/
-│   ├── tools/             # MCP 工具实现
-│   │   ├── index.ts       # 工具注册
-│   │   └── register*.ts   # 单个工具实现
-│   ├── resources/         # MCP 资源实现
-│   │   └── index.ts       # 资源注册
-│   ├── prompts/           # MCP 提示实现
-│   │   └── index.ts       # 提示注册
-│   ├── services/          # 服务器实现
-│   │   ├── stdio.ts       # STDIO 传输实现
-│   │   └── web.ts         # Streamable HTTP 传输实现
-│   └── index.ts           # 入口点
-├── tests/                 # 测试文件（可选）
-├── scripts/               # 构建和开发脚本
-├── .github/               # GitHub Actions 工作流（可选）
-├── .husky/                # Git 钩子（可选）
-├── .prettierrc            # Prettier 配置（可选）
-├── changelog-option.js    # 约定式变更日志配置（可选）
-├── commitlint.config.js   # 提交消息检查规则（可选）
-├── eslint.config.js       # ESLint 配置（可选）
-├── lint-staged.config.js  # Lint-staged 配置（可选）
-├── vitest.*.ts            # Vitest 配置（可选）
-└── package.json
-```
-
-### MCP 客户端项目结构
-
-```
-├── src/
-│   └── index.ts           # 带有传输实现的入口点
-├── tests/                 # 测试文件（可选）
-├── scripts/               # 构建和开发脚本
-├── .github/               # GitHub Actions 工作流（可选）
-├── .husky/                # Git 钩子（可选）
-├── .prettierrc            # Prettier 配置（可选）
-├── changelog-option.js    # 约定式变更日志配置（可选）
-├── commitlint.config.js   # 提交消息检查规则（可选）
-├── eslint.config.js       # ESLint 配置（可选）
-├── lint-staged.config.js  # Lint-staged 配置（可选）
-├── vitest.*.ts            # Vitest 配置（可选）
-└── package.json
-```
-
-::: tip
-项目结构设计为模块化和可扩展的。您可以根据自己的需求进行自定义。
+::: info
+目标目录不能已存在。如果所选项目名称对应的目录已经存在，CLI 会停止执行且不会覆盖该目录。
 :::
 
-## 启动和运行
+## 运行生成的项目
 
-创建项目后，您可以使用以下 npm 脚本来开发、测试和构建您的应用程序：
+如果向导已经安装依赖：
 
-### MCP 服务器开发脚本
-
-```json [package.json]
-{
-  "scripts": {
-    "dev": "以 stdio 模式启动开发服务器",
-    "dev:web": "以 web 模式启动开发服务器",
-    "build": "构建项目",
-    "test": "运行测试（如果选择了 vitest 插件）",
-    "coverage": "生成测试覆盖率报告（如果选择了 vitest 插件）",
-    "lint": "运行代码检查（如果选择了 style 插件）"
-  }
-}
+```sh
+cd mcp-server-starter
+npm run dev
 ```
 
-要启动开发服务器，请运行：
+否则先安装依赖：
 
-::: code-group
-
-```sh [npm]
-$ npm run dev
+```sh
+cd mcp-server-starter
+npm install
+npm run dev
 ```
 
-```sh [pnpm]
-$ pnpm run dev
+`npm run dev` 会启动所选的默认传输方式。服务端脚本如下：
+
+| 所选传输方式    | 可用脚本                      | 默认方式        |
+| --------------- | ----------------------------- | --------------- |
+| STDIO           | `dev`、`dev:stdio`            | STDIO           |
+| Streamable HTTP | `dev`、`dev:web`              | Streamable HTTP |
+| 两者            | `dev`、`dev:stdio`、`dev:web` | STDIO           |
+
+Streamable HTTP 开发服务器默认监听 `8401` 端口，MCP 端点为 `http://localhost:8401/mcp`。可通过 `PORT` 修改服务端端口。
+
+客户端项目使用 `npm run dev`。HTTP 连接默认指向同一端点，可通过 `MCP_SERVER_URL` 修改。
+
+## 生成的服务端
+
+同时选择两种传输方式时，TypeScript 服务端的核心结构如下：
+
+```text
+src/
+├── assets/                  # 随包分发的静态资源
+├── constants/
+├── data/
+│   └── documents.ts         # 结果确定的示例知识库
+├── prompts/
+│   └── index.ts             # review_document 提示
+├── resources/
+│   └── index.ts             # kb://documents/{documentId}
+├── services/
+│   ├── index.ts             # 服务端工厂与能力注册
+│   ├── stdio.ts             # STDIO 传输
+│   └── web.ts               # Streamable HTTP 传输
+├── tools/
+│   ├── index.ts
+│   └── registerSearchDocuments.ts
+├── types/
+├── utils/
+└── index.ts                 # 命令行入口
 ```
 
-```sh [yarn]
-$ yarn dev
+生成时会删除未选择的传输文件。JavaScript 项目采用相同结构，文件扩展名为 `.js`。
+
+该模板演示了一条完整的 MCP 工作流：
+
+1. `search_documents` 搜索内置的三篇 MCP 指南，同时返回文本和结构化结果。
+2. 每个结果都链接到一个 `kb://documents/{documentId}` Markdown 资源。
+3. `review_document` 将选中的资源附加到可复用的审阅提示中。
+
+## 生成的客户端
+
+客户端将协议工作流与传输连接分开：
+
+```text
+src/
+├── client.ts                # MCP Client 工厂
+├── knowledgeBaseDemo.ts     # 端到端协议工作流
+├── transports.ts            # 所选传输方式的连接辅助函数
+└── index.ts                 # 导出与可运行示例
 ```
 
-:::
+使用 STDIO 时，示例默认启动 `@my-mcp-hub/node-mcp-server`。可向 `runStdioDemo` 传入其他进程参数来连接不同服务端。使用 Streamable HTTP 时，请先启动兼容服务端再运行客户端。
 
-### MCP 客户端开发脚本
+## 开发脚本
 
-客户端项目包含类似的脚本，用于开发、测试和构建：
+每个生成项目都包含：
 
-```json [package.json]
-{
-  "scripts": {
-    "dev": "以开发模式启动客户端",
-    "build": "构建项目",
-    "test": "运行测试（如果选择了 vitest 插件）",
-    "coverage": "生成测试覆盖率报告（如果选择了 vitest 插件）",
-    "lint": "运行代码检查（如果选择了 style 插件）"
-  }
-}
-```
+- `npm run dev` — 监听源码并运行应用。
+- `npm run build` — 对 TypeScript 项目执行类型检查，并将应用打包到 `build/`。
+
+所选插件还会加入：
+
+- Vitest：`npm test` 和 `npm run coverage`。
+- 代码风格工具：`npm run lint`。
+- 变更日志工具：`npm run changelog`。
+- 代码风格与 Commitlint 插件：Git 钩子和提交检查。
+
+生成的客户端测试套件默认在 `../mcp-server-starter` 查找配套服务端。

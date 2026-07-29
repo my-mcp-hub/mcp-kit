@@ -1,45 +1,51 @@
 ---
 layout: doc
 ---
+
 # What is MCP Kit?
 
-MCP Kit is a toolkit for creating MCP (Model Context Protocol) applications with ease, enabling developers to build MCP-compliant servers and client applications.
+MCP Kit is an interactive scaffolding CLI for Model Context Protocol (MCP) applications. It generates ready-to-develop servers and clients whose source code, scripts, tests, and documentation match the choices made in the setup wizard.
 
-## What MCP Kit Provides
+## What it generates
 
-MCP Kit offers a complete set of tools and frameworks to help developers quickly set up MCP applications:
+MCP Kit supports both sides of an MCP integration:
 
-- **Quick project scaffolding**: Create project structures through simple CLI commands
-- **TypeScript support**: Out-of-the-box TypeScript configuration
-- **Built-in development tools**: Including testing, building, and code quality tools
-- **Configurable project templates**: Adaptable to different development needs
-- **Multiple transport modes**: Support for stdio and streamable-http communication methods
-- **Comprehensive APIs**: Rich interfaces supporting various functionality implementations
+- **MCP Server** projects register tools, resources, and prompts and expose them over STDIO, Streamable HTTP, or both.
+- **MCP Client** projects include connection helpers and a complete example that discovers and uses those server capabilities.
 
-## Core Features of MCP Kit
+Every project can use TypeScript or JavaScript. The generated code uses modern ES modules and includes build and local development scripts.
 
-MCP Kit supports creating two types of projects:
+## A working example, not an empty shell
 
-### MCP Server
+The paired server and client templates demonstrate one end-to-end knowledge-base workflow:
 
-Create an MCP server that provides tools, resources, and prompts for MCP clients. Servers can:
+1. The client calls the `search_documents` tool.
+2. The tool returns structured matches and stable `kb://documents/{documentId}` resource URIs.
+3. The client reads the selected Markdown resource.
+4. The client gets the `review_document` prompt with that resource attached.
 
-- Implement custom tools for client use
-- Define resources accessible by clients
-- Create reusable prompt templates
-- Support multiple transport modes (stdio and Streamable HTTP)
+The example is deterministic and does not depend on an external database or API, so it can be used as a runnable reference before you replace it with your own domain logic.
 
-### MCP Client
+## Transports
 
-Create client applications that connect to MCP servers and use their tools, resources, and prompts. Clients can:
+- **STDIO** is intended for local, process-based integrations. The generated server communicates through standard input and output.
+- **Streamable HTTP** exposes an MCP endpoint at `/mcp`; the generated development server listens on port `8401` by default.
 
-- Connect to servers using various transport modes
-- Call tools provided by servers
-- Access resources defined by servers
-- Use prompt templates created by servers
+Selecting both transports keeps their implementations separate and adds a script for each one.
 
-## Why Choose MCP Kit?
+## Standard and custom setups
 
-MCP Kit allows developers to focus on business logic rather than underlying implementation details. Through standardized interfaces and tools, it simplifies the development process for MCP applications, making it easier and more efficient to create high-quality AI applications.
+The **Standard** setup enables the recommended engineering stack:
 
-Whether you want to create an MCP server providing specific functionality or need a client application that leverages these capabilities, MCP Kit provides the tools and frameworks needed to quickly achieve your goals.
+- GitHub Actions
+- Vitest
+- MCP Inspector for server projects
+- ESLint, Prettier, and lint-staged
+- Commitlint
+- changelog tooling
+
+The **Custom** setup lets you select any combination of those plugins, including none of them.
+
+## Next step
+
+Continue to [Getting Started](./getting-started.md) to generate and run a project.

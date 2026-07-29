@@ -4,180 +4,150 @@ layout: doc
 
 # Getting Started
 
-## Installation
+## Prerequisites
 
-### Prerequisites
+- [Node.js](https://nodejs.org/) 22 or later
+- A terminal and npm, pnpm, Yarn, Bun, or Deno
 
-- [Node.js](https://nodejs.org/) version 18 or higher.
-- Terminal for accessing MCP Kit via its command line interface (CLI).
+MCP Kit and the generated templates use modern ES modules. Generated projects include an `.nvmrc` set to Node.js 22.
 
-MCP Kit can be used to create new MCP (Model Context Protocol) applications. You can install and use it with any of the following package managers:
+## Create a project
+
+Run the CLI without installing it globally:
 
 ::: code-group
+
 ```sh [npm]
-$ npm create mcp-kit@latest
+npm create mcp-kit@latest
 ```
 
 ```sh [pnpm]
-$ pnpm create mcp-kit
+pnpm create mcp-kit
 ```
 
 ```sh [yarn]
-$ yarn create mcp-kit
+yarn create mcp-kit
 ```
 
-```bash [bun]
-$ bun create mcp-kit
+```sh [Bun]
+bun create mcp-kit
 ```
 
-```bash [deno]
-$ deno init --npm mcp-kit
+```sh [Deno]
+deno init --npm mcp-kit
 ```
+
 :::
 
-::: tip NOTE
-MCP Kit is an ESM-only package. It requires Node.js version 18 or higher and uses modern JavaScript features.
-:::
+## Setup wizard
 
-## Setup Wizard
-
-When you run the create command, MCP Kit will launch an interactive setup wizard that guides you through creating a new project:
+The interactive wizard asks for the project:
 
 <<< @/snippets/init.ansi
 
-1. First, you'll be prompted to select a **Project type**:
-   - **MCP Server**: Creates a server that provides tools, resources, and prompts for MCP clients
-   - **MCP Client**: Creates a client that connects to MCP servers
+1. **Type** — MCP Server or MCP Client.
+2. **Name** — defaults to `mcp-server-starter` or `mcp-client-starter`.
+3. **Language** — TypeScript or JavaScript.
+4. **Transport** — STDIO, Streamable HTTP, or both.
+5. **Template** — Standard or Custom.
+6. **Plugins** — shown for Custom projects. Choose GitHub Actions, Vitest, MCP Inspector (server only), style tooling, Commitlint, and changelog tooling in any combination.
+7. **Dependency installation** — install immediately or leave it for later.
 
-2. Next, you'll be asked to provide a **Project name** (defaults to `mcp-[type]-starter`)
+The Standard template enables all recommended plugins. Server projects also receive MCP Inspector.
 
-3. Choose your preferred **Project language**:
-   - **TypeScript** (recommended)
-   - **JavaScript**
-
-4. Select **Project transport type** (multiple options can be selected):
-   - **STDIO**: Communication through standard input/output streams
-   - **Streamable HTTP**: RESTful API with streaming capabilities
-
-5. Choose a **Project template**:
-   - **Standard**: Includes recommended plugins and configurations
-   - **Custom**: Allows you to select specific plugins
-
-6. If you selected **Custom** template, you'll be prompted to select **Project plugins**:
-   - **GitHub Action**: CI/CD workflows
-   - **Vitest**: Testing framework
-   - **Inspector**: Debugging tools (server projects only)
-   - **ESLint + Prettier + Lint-staged**: Code quality tools
-   - **Commitlint**: Commit message linting
-   - **Changelog**: Automated changelog generation
-
-7. Finally, you'll be asked if you want to **install dependencies** automatically
-
-After completing these steps, MCP Kit will create your project with the selected configuration.
-
-## File Structure
-
-The generated file structure depends on the project type you selected.
-
-### MCP Server Project Structure
-
-```
-├── src/
-│   ├── tools/             # MCP tools implementation
-│   │   ├── index.ts       # Tools registration
-│   │   └── register*.ts   # Individual tool implementations
-│   ├── resources/         # MCP resources implementation
-│   │   └── index.ts       # Resources registration
-│   ├── prompts/           # MCP prompts implementation
-│   │   └── index.ts       # Prompts registration
-│   ├── services/          # Server implementations
-│   │   ├── stdio.ts       # STDIO transport implementation
-│   │   └── web.ts         # Streamable HTTP transport implementation
-│   └── index.ts           # Entry point
-├── tests/                 # Test files (optional)
-├── scripts/               # Build and development scripts
-├── .github/               # GitHub Actions workflows (optional)
-├── .husky/                # Git hooks (optional)
-├── .prettierrc            # Prettier configuration (optional)
-├── changelog-option.js    # Conventional changelog config (optional)
-├── commitlint.config.js   # Commit message lint rules (optional)
-├── eslint.config.js       # ESLint configuration (optional)
-├── lint-staged.config.js  # Lint-staged configuration (optional)
-├── vitest.*.ts            # Vitest configuration (optional)
-└── package.json
-```
-
-### MCP Client Project Structure
-
-```
-├── src/
-│   └── index.ts           # Entry point with transport implementations
-├── tests/                 # Test files (optional)
-├── scripts/               # Build and development scripts
-├── .github/               # GitHub Actions workflows (optional)
-├── .husky/                # Git hooks (optional)
-├── .prettierrc            # Prettier configuration (optional)
-├── changelog-option.js    # Conventional changelog config (optional)
-├── commitlint.config.js   # Commit message lint rules (optional)
-├── eslint.config.js       # ESLint configuration (optional)
-├── lint-staged.config.js  # Lint-staged configuration (optional)
-├── vitest.*.ts            # Vitest configuration (optional)
-└── package.json
-```
-
-::: tip
-The project structure is designed to be modular and extensible. You can customize it according to your needs.
+::: info
+The target directory must not already exist. The CLI stops without overwriting it if a directory with the selected project name is present.
 :::
 
-## Up and Running
+## Run the generated project
 
-After creating your project, you can use the following npm scripts to develop, test, and build your application:
+If the wizard installed dependencies:
 
-### MCP Server Development Scripts
-
-```json [package.json]
-{
-  "scripts": {
-    "dev": "Start the development server in stdio mode",
-    "dev:web": "Start the development server in web mode",
-    "build": "Build the project",
-    "test": "Run tests (if vitest plugin is selected)",
-    "coverage": "Generate test coverage report (if vitest plugin is selected)",
-    "lint": "Run linting (if style plugin is selected)"
-  }
-}
+```sh
+cd mcp-server-starter
+npm run dev
 ```
 
-To start the development server, run:
+Otherwise, install first:
 
-::: code-group
-
-```sh [npm]
-$ npm run dev
+```sh
+cd mcp-server-starter
+npm install
+npm run dev
 ```
 
-```sh [pnpm]
-$ pnpm run dev
+`npm run dev` starts the selected default transport. For servers:
+
+| Selected transport | Available scripts             | Default         |
+| ------------------ | ----------------------------- | --------------- |
+| STDIO              | `dev`, `dev:stdio`            | STDIO           |
+| Streamable HTTP    | `dev`, `dev:web`              | Streamable HTTP |
+| Both               | `dev`, `dev:stdio`, `dev:web` | STDIO           |
+
+The Streamable HTTP development server listens on port `8401` and exposes its MCP endpoint at `http://localhost:8401/mcp`. Set `PORT` to change the server port.
+
+Client projects use `npm run dev`. Their HTTP connection defaults to the same endpoint and can be changed with `MCP_SERVER_URL`.
+
+## Generated server
+
+A TypeScript server generated with both transports has this core structure:
+
+```text
+src/
+├── assets/                  # Packaged static assets
+├── constants/
+├── data/
+│   └── documents.ts         # Deterministic example knowledge base
+├── prompts/
+│   └── index.ts             # review_document prompt
+├── resources/
+│   └── index.ts             # kb://documents/{documentId}
+├── services/
+│   ├── index.ts             # Server factory and registration
+│   ├── stdio.ts             # STDIO transport
+│   └── web.ts               # Streamable HTTP transport
+├── tools/
+│   ├── index.ts
+│   └── registerSearchDocuments.ts
+├── types/
+├── utils/
+└── index.ts                 # Command-line entry point
 ```
 
-```sh [yarn]
-$ yarn dev
+Transport files that were not selected are removed during generation. JavaScript projects use the same layout with `.js` files.
+
+The starter demonstrates a complete MCP workflow:
+
+1. `search_documents` searches three built-in MCP guides and returns text plus structured results.
+2. Each match links to a `kb://documents/{documentId}` Markdown resource.
+3. `review_document` attaches the selected resource to a reusable review prompt.
+
+## Generated client
+
+The client keeps protocol and transport responsibilities separate:
+
+```text
+src/
+├── client.ts                # MCP Client factory
+├── knowledgeBaseDemo.ts     # End-to-end protocol workflow
+├── transports.ts            # Selected connection helpers
+└── index.ts                 # Exports and runnable demo
 ```
 
-:::
+For STDIO, the demo starts `@my-mcp-hub/node-mcp-server` by default. Pass different process options to `runStdioDemo` to connect another server. For Streamable HTTP, start a compatible server before running the client.
 
-### MCP Client Development Scripts
+## Development scripts
 
-The client project includes similar scripts for development, testing, and building:
+Every generated project includes:
 
-```json [package.json]
-{
-  "scripts": {
-    "dev": "Start the client in development mode",
-    "build": "Build the project",
-    "test": "Run tests (if vitest plugin is selected)",
-    "coverage": "Generate test coverage report (if vitest plugin is selected)",
-    "lint": "Run linting (if style plugin is selected)"
-  }
-}
-```
+- `npm run dev` — watch source files and run the application.
+- `npm run build` — type-check TypeScript projects and bundle the application into `build/`.
+
+Selected plugins add:
+
+- `npm test` and `npm run coverage` with Vitest.
+- `npm run lint` with the style plugin.
+- `npm run changelog` with the changelog plugin.
+- Git hooks and commit checks with the style and Commitlint plugins.
+
+The generated test suite for a client expects the paired server at `../mcp-server-starter`.
