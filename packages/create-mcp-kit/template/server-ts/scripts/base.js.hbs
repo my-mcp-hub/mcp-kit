@@ -1,5 +1,6 @@
 {{#if (includes plugins 'inspector')}}
 import { spawn } from 'child_process'
+import { randomBytes } from 'crypto'
 {{/if}}
 import { promises as fs } from 'fs'
 import path from 'path'
@@ -16,6 +17,7 @@ const isDev = process.env.NODE_ENV === 'local'
 let inspectorProcess = null
 let webProcess = null
 let autoOpenBrowser = true
+const inspectorApiToken = process.env.MCP_INSPECTOR_API_TOKEN ?? randomBytes(32).toString('hex')
 {{/if}}
 
 /** @type {import('esbuild').BuildOptions} */
@@ -68,7 +70,8 @@ const after = async result => {
       console.error('❌ Rebuild failed')
     }
 {{#if (includes plugins 'inspector')}}
-    const inspectorServer = process.env.TRANSPORT === 'web' ? 'mcp-streamable' : 'mcp-stdio'
+    const inspectorConfig =
+      process.env.TRANSPORT === 'web' ? './src/assets/mcp.http.json' : './src/assets/mcp.stdio.json'
 
     if (process.env.TRANSPORT === 'web') {
       if (webProcess) {
@@ -83,19 +86,15 @@ const after = async result => {
     if (inspectorProcess) {
       kill(inspectorProcess.pid, 'SIGINT')
     }
-    inspectorProcess = spawn(
-      'npx',
-      ['@modelcontextprotocol/inspector', '--config', './src/assets/mcp.json', '--server', inspectorServer],
-      {
-        stdio: 'inherit',
-        shell: true,
-        env: {
-          ...process.env,
-          DANGEROUSLY_OMIT_AUTH: true,
-          MCP_AUTO_OPEN_ENABLED: autoOpenBrowser,
-        },
+    inspectorProcess = spawn('npx', ['@modelcontextprotocol/inspector', '--web', '--config', inspectorConfig], {
+      stdio: 'inherit',
+      shell: true,
+      env: {
+        ...process.env,
+        MCP_INSPECTOR_API_TOKEN: inspectorApiToken,
+        MCP_AUTO_OPEN_ENABLED: String(autoOpenBrowser),
       },
-    )
+    })
     autoOpenBrowser = false
 {{/if}}
   }

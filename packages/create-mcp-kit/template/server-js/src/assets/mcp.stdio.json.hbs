@@ -1,0 +1,13 @@
+{{#if (includes transports 'stdio')}}
+{
+  "mcpServers": {
+    "mcp-stdio": {
+      "type": "stdio",
+      "command": "node",
+      "args": ["build/index.js"],
+      "env": {},
+      "protocolEra": "modern"
+    }
+  }
+}
+{{/if}}

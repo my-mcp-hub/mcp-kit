@@ -1,348 +1,162 @@
-# Create-MCP-Kit
-A CLI tool to create MCP (Model Context Protocol) applications with ease.
+<p align="center">
+  <a href="https://my-mcp-hub.github.io/mcp-kit/" target="_blank" rel="noopener noreferrer">
+    <img width="960" src="https://raw.githubusercontent.com/my-mcp-hub/mcp-kit/main/docs/public/readme-hero.webp" alt="mcp-kit CLI generating a ready-to-develop MCP project" />
+  </a>
+</p>
 
-[![][npm-release-shield]][npm-release-link]
-[![][codecov-shield]][codecov-link]
-[![][github-release-date-shield]][github-release-date-link]
-[![][github-action-build-shield]][github-action-build-link]
-[![][github-license-shield]][github-license-link]
+<h1 align="center">mcp-kit</h1>
 
-## Features
-- 🚀 Quick project scaffolding
-- 📦 TypeScript support out of the box
-- 🛠️ Built-in development tools
-- 🔧 Configurable project templates
-- 🌐 Multiple Transport Modes (stdio/streamable-http)
-- 📚 Comprehensive APIs
+<p align="center">
+  An interactive CLI for scaffolding ready-to-develop Model Context Protocol servers and clients.
+</p>
 
-## Usage
+<p align="center">
+  <a href="https://my-mcp-hub.github.io/mcp-kit/">Documentation</a>
+  ·
+  <a href="https://my-mcp-hub.github.io/mcp-kit/guide/getting-started">Getting started</a>
+  ·
+  <a href="https://github.com/my-mcp-hub/mcp-kit/issues">Issues</a>
+  ·
+  <a href="https://github.com/my-mcp-hub/mcp-kit/blob/main/packages/create-mcp-kit/CHANGELOG.md">Changelog</a>
+</p>
+
+<p align="center">
+  <a href="https://www.npmjs.com/package/create-mcp-kit"><img src="https://img.shields.io/npm/v/create-mcp-kit?color=1677FF&labelColor=black&logo=npm&logoColor=white&style=flat-square" alt="npm version" /></a>
+  <a href="https://github.com/my-mcp-hub/mcp-kit/actions/workflows/build.yml"><img src="https://img.shields.io/github/actions/workflow/status/my-mcp-hub/mcp-kit/build.yml?branch=main&color=1677FF&label=build&labelColor=black&logo=githubactions&logoColor=white&style=flat-square" alt="build status" /></a>
+  <a href="https://codecov.io/gh/my-mcp-hub/mcp-kit"><img src="https://img.shields.io/codecov/c/github/my-mcp-hub/mcp-kit?color=1677FF&labelColor=black&logo=codecov&logoColor=white&style=flat-square" alt="test coverage" /></a>
+  <a href="https://github.com/my-mcp-hub/mcp-kit/blob/main/LICENSE"><img src="https://img.shields.io/github/license/my-mcp-hub/mcp-kit?color=1677FF&labelColor=black&style=flat-square" alt="MIT license" /></a>
+</p>
+
+## Overview
+
+`mcp-kit` turns the repetitive setup around an MCP application into a short, guided workflow. Choose what you are building, select a language and transport, then decide how much engineering infrastructure you want. The CLI writes a working project that follows the same choices all the way through its source, scripts, tests, and documentation.
+
+It is designed for both sides of an MCP integration:
+
+| Project        | What the generated starter provides                                                                              |
+| -------------- | ---------------------------------------------------------------------------------------------------------------- |
+| **MCP Server** | A structured server with tools, resources, prompts, lifecycle handling, and the transports you selected          |
+| **MCP Client** | A client with connection helpers and an end-to-end example that discovers and uses tools, resources, and prompts |
+
+## Why mcp-kit?
+
+- **Start with a real MCP workflow** — generated starters include working protocol primitives and a small knowledge-base example, not an empty entry file.
+- **Build either side** — create a server or a client from the same CLI.
+- **Choose your runtime shape** — use TypeScript or JavaScript with STDIO, Streamable HTTP, or both.
+- **Keep only the tooling you need** — start with the recommended setup or select individual plugins.
+- **Develop immediately** — generated scripts cover local development, production builds, linting, testing, and coverage when enabled.
+- **Stay close to the protocol** — server templates separate tools, resources, prompts, and transports into focused modules.
+
+## Quick start
+
+Run the CLI with your package manager:
 
 ```bash
 npm create mcp-kit@latest
 ```
 
-or
+```bash
+pnpm create mcp-kit
+```
 
 ```bash
-yarn create mcp-kit@latest
+yarn create mcp-kit
 ```
 
-or
+`bun create mcp-kit` and `deno init --npm mcp-kit` are also supported.
+
+The interactive setup asks for:
+
+| Choice       | Options                                                                                                 |
+| ------------ | ------------------------------------------------------------------------------------------------------- |
+| Project type | MCP Server · MCP Client                                                                                 |
+| Language     | TypeScript · JavaScript                                                                                 |
+| Transport    | STDIO · Streamable HTTP · both                                                                          |
+| Template     | Standard · Custom                                                                                       |
+| Plugins      | GitHub Actions · Vitest · MCP Inspector (server) · ESLint/Prettier/Lint-staged · Commitlint · Changelog |
+| Dependencies | Install now · install later                                                                             |
+
+After generation:
 
 ```bash
-pnpm create mcp-kit@latest
+cd mcp-server-starter
+npm run dev
 ```
 
-## Project Types
+## What gets generated
 
-create-mcp-kit supports generating two types of projects:
-
-### MCP Server
-
-Create an MCP server that provides tools, resources, and prompts for MCP clients.
-
-#### Server Project Structure
+The exact output follows your answers. A TypeScript server with both transports uses a structure like this:
 
 ```text
-The generated server project will have the following structure:
-
-├── src/
-│   ├── tools/             # MCP tools implementation
-│   │   ├── index.ts       # Tools registration
-│   │   └── register*.ts   # Individual tool implementations
-│   ├── resources/         # MCP resources implementation
-│   │   └── index.ts       # Resources registration
-│   ├── prompts/           # MCP prompts implementation
-│   │   └── index.ts       # Prompts registration
-│   ├── services/          # Server implementations
-│   │   ├── stdio.ts       # STDIO transport implementation
-│   │   └── web.ts         # Streamable HTTP transport implementation
-│   └── index.ts           # Entry point
-├── tests/                 # Test files (optional)
-├── scripts/               # Build and development scripts
-├── .github/               # GitHub Actions workflows (optional)
-├── .husky/                # Git hooks (optional)
-├── .prettierrc            # Prettier configuration (optional)
-├── changelog-option.js    # Conventional changelog config (optional)
-├── commitlint.config.js   # Commit message lint rules (optional)
-├── eslint.config.js       # ESLint configuration (optional)
-├── lint-staged.config.js  # Lint-staged configuration (optional)
-├── vitest.*.ts            # Vitest configuration (optional)
-└── package.json
+src/
+├── data/                 # Example knowledge-base data
+├── prompts/              # User-controlled prompt templates
+├── resources/            # Application-controlled context
+├── services/
+│   ├── stdio.ts          # Local process transport
+│   └── web.ts            # Streamable HTTP transport
+├── tools/                # Model-controlled actions
+├── types/
+├── utils/
+└── index.ts              # CLI entry point
 ```
 
-#### Server Development Scripts
+Depending on the selected plugins, the project can also include Vitest, GitHub Actions, MCP Inspector, lint and formatting rules, Git hooks, commit checks, and changelog tooling.
 
-- `npm run dev` - Start the development server in stdio mode
-- `npm run dev:web` - Start the development server in web mode
-- `npm run build` - Build the project
-- `npm run test` - Run tests (if vitest plugin is selected)
-- `npm run coverage` - Generate test coverage report (if vitest plugin is selected)
-- `npm run lint` - Run linting (if style plugin is selected)
+## Server starter
 
-### MCP Client
+The server template demonstrates how the three MCP primitives work together:
 
-Create an MCP client that connects to MCP servers and uses their tools, resources, and prompts.
+1. `search_documents` searches the starter knowledge base and returns structured results with stable resource URIs.
+2. `kb://documents/{documentId}` exposes the matching document as an MCP resource.
+3. `review_document` packages that resource into a reusable review prompt.
 
-#### Client Project Structure
+The same server can be generated for local STDIO integrations, a Streamable HTTP endpoint at `/mcp`, or both.
 
-```text
-The generated client project will have the following structure:
+Common development commands:
 
-├── src/
-│   └── index.ts           # Entry point with transport implementations
-├── tests/                 # Test files (optional)
-├── scripts/               # Build and development scripts
-├── .github/               # GitHub Actions workflows (optional)
-├── .husky/                # Git hooks (optional)
-├── .prettierrc            # Prettier configuration (optional)
-├── changelog-option.js    # Conventional changelog config (optional)
-├── commitlint.config.js   # Commit message lint rules (optional)
-├── eslint.config.js       # ESLint configuration (optional)
-├── lint-staged.config.js  # Lint-staged configuration (optional)
-├── vitest.*.ts            # Vitest configuration (optional)
-└── package.json
+```bash
+npm run dev       # start the default development transport
+npm run dev:stdio # start the STDIO server, when selected
+npm run dev:web   # start the Streamable HTTP server, when selected
+npm run build
 ```
 
-#### Client Development Scripts
+## Client starter
 
-- `npm run dev` - Start the client in development mode
-- `npm run build` - Build the project
-- `npm run test` - Run tests (if vitest plugin is selected)
-- `npm run coverage` - Generate test coverage report (if vitest plugin is selected)
-- `npm run lint` - Run linting (if style plugin is selected)
+The client template includes transport-specific connection helpers and an end-to-end demo that:
 
-## Features
+- negotiates the protocol version;
+- lists tools, resources, and prompts;
+- calls `search_documents`;
+- reads the returned resource URI;
+- retrieves the `review_document` prompt;
+- closes the client connection cleanly.
 
-### MCP Server Features
+Use it as a runnable reference or as the base for your own MCP host integration.
 
-#### Transport Modes
+## Standard or custom setup
 
-MCP Server supports two transport modes:
+The **Standard** template is the fast path. It enables GitHub Actions, Vitest, code-quality tooling, commit checks, changelog support, and MCP Inspector for server projects.
 
-1. **STDIO**: Communication through standard input/output streams
-2. **Streamable HTTP**: RESTful API with streaming capabilities
+Choose **Custom** when you want a smaller starter and select only the plugins that belong in your workflow.
 
-#### MCP Tools
-Implement custom tools that can be used by MCP clients:
+## Documentation
 
-```ts
-// Full implementation example
-import { z } from 'zod'
-import type { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js'
-
-export default function register(server, options) {
-  server.registerTool(
-    'GetData',
-    {
-      title: 'Get Data',
-      description: 'Get Data',
-      inputSchema: {
-        keyword: z.string().describe('search keyword'),
-      },
-    },
-    async ({ keyword }) => {
-      const { success, data, message } = await getData(keyword, options)
-      return {
-        content: [
-          {
-            type: 'text',
-            text: success ? data : message,
-          },
-        ],
-      }
-    },
-  )
-}
-
-export const getData = async (keyword, options) => {
-  if (!keyword || keyword === 'error') {
-    return {
-      success: false,
-      message: 'Invalid keyword',
-    }
-  }
-
-  return {
-    success: true,
-    data: `Data for ${keyword}`,
-  }
-}
-```
-
-#### MCP Resources
-Define resources that can be accessed by MCP clients:
-
-```ts
-// Full implementation example
-import { type McpServer, ResourceTemplate } from '@modelcontextprotocol/sdk/server/mcp.js'
-import type { OptionsType } from '@/types'
-
-export const registerResources = (server: McpServer, options: OptionsType) => {
-  server.registerResource(
-    'search',
-    new ResourceTemplate('search://{keyword}', {
-      list: undefined,
-    }),
-    {
-      title: 'Search Resource',
-      description: 'Dynamic generate search resource',
-    },
-    async (uri, { keyword }) => {
-      return {
-        contents: [
-          {
-            uri: uri.href,
-            text: `search ${keyword}`,
-          },
-        ],
-      }
-    },
-  )
-}
-```
-
-#### MCP Prompts
-Create reusable prompts for MCP clients:
-
-```ts
-// Full implementation example
-import { z } from 'zod'
-import type { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js'
-
-export const registerPrompts = (server: McpServer) => {
-  server.registerPrompt(
-    'echo',
-    {
-      title: 'Echo Prompt',
-      description: 'Creates a prompt to process a message.',
-      argsSchema: {
-        message: z.string(),
-      },
-    },
-    ({ message }) => {
-      return {
-        messages: [
-          {
-            role: 'user',
-            content: {
-              type: 'text',
-              text: `Please process this message: ${message}`,
-            },
-          },
-        ],
-      }
-    },
-  )
-}
-```
-
-### MCP Client Features
-
-#### Multiple Transport Modes
-Connect to MCP servers using different transport modes:
-
-```ts
-// Import the MCP client
-import { Client, StreamableHTTPClientTransport } from '@modelcontextprotocol/client'
-import { StdioClientTransport } from '@modelcontextprotocol/client/stdio'
-
-// Create a new MCP client
-const client = new Client(
-  {
-    name: 'mcp-client',
-    version: '1.0.0',
-  },
-  {
-    versionNegotiation: {
-      mode: 'auto',
-    },
-  },
-)
-
-// STDIO Transport
-const stdioClientTransport = new StdioClientTransport({
-  command: 'npx',
-  args: ['-y', '@my-mcp-hub/node-mcp-server'],
-  env: process.env,
-})
-await client.connect(stdioClientTransport)
-
-// Streamable HTTP Transport
-const streamableBaseUrl = new URL('http://localhost:8401/mcp')
-const streamableClientTransport = new StreamableHTTPClientTransport(streamableBaseUrl)
-await client.connect(streamableClientTransport)
-```
-
-#### Tool Calling
-Call tools provided by MCP servers:
-
-```ts
-// List available tools
-const tools = await client.listTools()
-console.log(tools)
-
-// Call a tool
-const callResult = await client.callTool({
-  name: 'GetData',
-  arguments: {
-    keyword: 'Hello',
-  },
-})
-console.log(callResult.content)
-```
-
-#### Resource Access
-Access resources provided by MCP servers:
-
-```ts
-// List available resources
-const resources = await client.listResources()
-console.log(resources)
-
-// Get a resource
-const resource = await client.getResource('search://example')
-console.log(resource.contents)
-```
-
-#### Prompt Usage
-Use prompts provided by MCP servers:
-
-```ts
-// List available prompts
-const prompts = await client.listPrompts()
-console.log(prompts)
-
-// Use a prompt
-const prompt = await client.getPrompt('echo', { message: 'Hello, world!' })
-console.log(prompt.messages)
-```
+- [What is MCP Kit?](https://my-mcp-hub.github.io/mcp-kit/guide/what-is-mcp-kit)
+- [Getting started](https://my-mcp-hub.github.io/mcp-kit/guide/getting-started)
+- [What is MCP?](https://my-mcp-hub.github.io/mcp-kit/guide/what-is-mcp)
 
 ## Contributing
 
-Feel free to dive in! [Open an issue](https://github.com/my-mcp-hub/mcp-kit/issues/new/choose) or submit PRs.
-
-Standard Readme follows the [Contributor Covenant](http://contributor-covenant.org/version/1/3/0/) Code of Conduct.
+Contributions and bug reports are welcome. [Open an issue](https://github.com/my-mcp-hub/mcp-kit/issues/new/choose) or submit a pull request, and follow the project [Code of Conduct](https://github.com/my-mcp-hub/mcp-kit/blob/main/CODE_OF_CONDUCT.md).
 
 ### Contributors
 
-This project exists thanks to all the people who contribute.
-
 <a href="https://github.com/my-mcp-hub/mcp-kit/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=my-mcp-hub/mcp-kit" />
+  <img src="https://contrib.rocks/image?repo=my-mcp-hub/mcp-kit" alt="mcp-kit contributors" />
 </a>
 
 ## License
 
-[MIT](LICENSE) © MichaelSun
-
-[npm-release-link]: https://www.npmjs.com/package/create-mcp-kit
-[npm-release-shield]: https://img.shields.io/npm/v/create-mcp-kit?color=1677FF&labelColor=black&logo=npm&logoColor=white&style=flat-square
-[codecov-link]: https://coveralls.io/github/my-mcp-hub/mcp-kit?branch=main
-[codecov-shield]: https://img.shields.io/coverallsCoverage/github/my-mcp-hub/mcp-kit?color=1677FF&labelColor=black&style=flat-square&logo=codecov&logoColor=white
-[github-release-date-link]: https://github.com/my-mcp-hub/mcp-kit/releases
-[github-release-date-shield]: https://img.shields.io/github/release-date/my-mcp-hub/mcp-kit?color=1677FF&labelColor=black&style=flat-square
-[github-action-build-link]: https://github.com/my-mcp-hub/mcp-kit/actions/workflows/build.yml
-[github-action-build-shield]: https://img.shields.io/github/actions/workflow/status/my-mcp-hub/mcp-kit/build.yml?branch=main&color=1677FF&label=build&labelColor=black&logo=githubactions&logoColor=white&style=flat-square
-[github-license-link]: https://github.com/my-mcp-hub/mcp-kit/blob/main/LICENSE
-[github-license-shield]: https://img.shields.io/github/license/my-mcp-hub/mcp-kit?color=1677FF&labelColor=black&style=flat-square
+[MIT](https://github.com/my-mcp-hub/mcp-kit/blob/main/LICENSE) © Michael Sun
