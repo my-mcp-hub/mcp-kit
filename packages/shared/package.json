@@ -41,7 +41,7 @@
   "scripts": {
     "clean:dist": "rimraf dist",
     "dev": "rolldown -c rolldown.config.ts --watch",
-    "build:types": "tsc",
+    "build:types": "tsc -p tsconfig.build.json",
     "build": "npm run clean:dist && npm run build:types && rolldown -c rolldown.config.ts"
   },
   "bugs": {

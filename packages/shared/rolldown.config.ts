@@ -10,13 +10,13 @@ export default defineConfig({
   output: {
     format: 'esm',
     dir: 'dist',
-    sourcemap: false,
+    sourcemap: true,
     preserveModules: true,
     preserveModulesRoot: 'src',
   },
   watch: {
     clearScreen: false,
   },
-  plugins: [isProd && terser(), typescript()],
+  plugins: [isProd && terser(), typescript({ tsconfig: './tsconfig.build.json' })],
   external: [...builtinModules, ...builtinModules.map(m => `node:${m}`), 'handlebars'],
 })
