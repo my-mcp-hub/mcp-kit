@@ -1,6 +1,6 @@
 {
   "name": "create-mcp-kit",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "An interactive CLI for scaffolding ready-to-develop MCP servers and clients in TypeScript or JavaScript.",
   "type": "module",
   "author": "zhensherlock",

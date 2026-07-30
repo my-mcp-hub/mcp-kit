@@ -1,5 +1,50 @@
 # create-mcp-kit
 
+## 1.0.2
+
+### Patch Changes
+
+- [`c5bbfb0`](https://github.com/my-mcp-hub/mcp-kit/commit/c5bbfb07160c408b070a0686b80b55908697843d) Thanks [@zhensherlock](https://github.com/zhensherlock)! - feat(create-mcp-kit): demonstrate knowledge base clients
+
+- [`a9e3c2e`](https://github.com/my-mcp-hub/mcp-kit/commit/a9e3c2e254e816b319827788275af4dae13d3d27) Thanks [@zhensherlock](https://github.com/zhensherlock)! - feat(create-mcp-kit): migrate client templates to MCP v2
+
+- [`140f8c4`](https://github.com/my-mcp-hub/mcp-kit/commit/140f8c465f126d2c9efadeeaa67fa9d3a4087ec8) Thanks [@zhensherlock](https://github.com/zhensherlock)! - chore(rolldown): disable watch mode screen clearing in config
+
+- [`7316b70`](https://github.com/my-mcp-hub/mcp-kit/commit/7316b701b0a7e3674b8ba90c87db78cf749e08ab) Thanks [@zhensherlock](https://github.com/zhensherlock)! - feat(create-mcp-kit): assemble knowledge base servers
+
+- [`09607c2`](https://github.com/my-mcp-hub/mcp-kit/commit/09607c24bfe546c871a25edc9798e04c5d284d58) Thanks [@zhensherlock](https://github.com/zhensherlock)! - test(create-mcp-kit): verify projects without dependency install
+
+- [`3341299`](https://github.com/my-mcp-hub/mcp-kit/commit/3341299dd9cc3f15360f2a84434c4c3a35f30561) Thanks [@zhensherlock](https://github.com/zhensherlock)! - docs: align transport guidance with MCP v2
+
+- [`f0395a3`](https://github.com/my-mcp-hub/mcp-kit/commit/f0395a3f576844fc4aeec5506c3998c16655d1bb) Thanks [@zhensherlock](https://github.com/zhensherlock)! - feat(create-mcp-kit): expose knowledge base resources
+
+- [`b43eb61`](https://github.com/my-mcp-hub/mcp-kit/commit/b43eb6182baf1afa7f890ee59a09200e4f9ef918) Thanks [@zhensherlock](https://github.com/zhensherlock)! - docs(create-mcp-kit): update CLI usage guides
+
+- [`4e916c3`](https://github.com/my-mcp-hub/mcp-kit/commit/4e916c38081e2d9ea4860c97cb76f103bccd53f9) Thanks [@zhensherlock](https://github.com/zhensherlock)! - chore(create-mcp-kit): refresh generated project tooling
+
+- [`598b471`](https://github.com/my-mcp-hub/mcp-kit/commit/598b47153130de375b41bf041b3aa982fb08b0fa) Thanks [@zhensherlock](https://github.com/zhensherlock)! - feat(create-mcp-kit): migrate server templates to MCP v2
+
+- [`d47ac33`](https://github.com/my-mcp-hub/mcp-kit/commit/d47ac33b09ef06a65f1ab772cdc21492af4f9da1) Thanks [@zhensherlock](https://github.com/zhensherlock)! - chore(deps): update dependencies and generated templates
+
+- [`e6cae76`](https://github.com/my-mcp-hub/mcp-kit/commit/e6cae76cb8d43fe3205654194d50faf138d1fc84) Thanks [@zhensherlock](https://github.com/zhensherlock)! - feat(create-mcp-kit): add knowledge base search tools
+
+- [`6804ec0`](https://github.com/my-mcp-hub/mcp-kit/commit/6804ec0028720cbc568afbf1af946cb2dcf4023b) Thanks [@zhensherlock](https://github.com/zhensherlock)! - fix(create-mcp-kit): secure generated Inspector sessions
+
+- [`f5fe55d`](https://github.com/my-mcp-hub/mcp-kit/commit/f5fe55d5297fc34c2b748e393e9d7b6fd1d1ee5f) Thanks [@zhensherlock](https://github.com/zhensherlock)! - chore(packages): improve package descriptions and discovery keywords
+
+- [`d284492`](https://github.com/my-mcp-hub/mcp-kit/commit/d2844922202f5c8a326d8a2ea1ca90876ee3c24d) Thanks [@zhensherlock](https://github.com/zhensherlock)! - feat(create-mcp-kit): add document review prompts
+
+- [`0151553`](https://github.com/my-mcp-hub/mcp-kit/commit/01515535848f1edac22f9f619322297bf3b0f835) Thanks [@zhensherlock](https://github.com/zhensherlock)! - chore: update dependencies
+
+- [`286ac2a`](https://github.com/my-mcp-hub/mcp-kit/commit/286ac2a7d4e092f7324d07ce698d6665d942514b) Thanks [@zhensherlock](https://github.com/zhensherlock)! - ci(create-mcp-kit): modernize generated build workflows
+
+- [`1256f48`](https://github.com/my-mcp-hub/mcp-kit/commit/1256f48c63b054a76bf03e73cd75c06b616cbd17) Thanks [@zhensherlock](https://github.com/zhensherlock)! - refactor(create-mcp-kit): isolate the CLI runtime for focused testing
+
+- [`da16777`](https://github.com/my-mcp-hub/mcp-kit/commit/da16777bde23c7e6825b4b9f44da379ec2afc622) Thanks [@zhensherlock](https://github.com/zhensherlock)! - ci(create-mcp-kit): publish generated packages with provenance
+
+- Updated dependencies [[`140f8c4`](https://github.com/my-mcp-hub/mcp-kit/commit/140f8c465f126d2c9efadeeaa67fa9d3a4087ec8), [`a2fbb99`](https://github.com/my-mcp-hub/mcp-kit/commit/a2fbb99576926be6b64a63e90430e99eb1f01bd4), [`3341299`](https://github.com/my-mcp-hub/mcp-kit/commit/3341299dd9cc3f15360f2a84434c4c3a35f30561), [`d47ac33`](https://github.com/my-mcp-hub/mcp-kit/commit/d47ac33b09ef06a65f1ab772cdc21492af4f9da1), [`f5fe55d`](https://github.com/my-mcp-hub/mcp-kit/commit/f5fe55d5297fc34c2b748e393e9d7b6fd1d1ee5f), [`0151553`](https://github.com/my-mcp-hub/mcp-kit/commit/01515535848f1edac22f9f619322297bf3b0f835)]:
+  - @mcp-tool-kit/shared@1.0.2
+
 ## 1.0.1
 
 ### Patch Changes

@@ -1,4 +1,0 @@
----
----
-
-docs: add contribution guidelines
