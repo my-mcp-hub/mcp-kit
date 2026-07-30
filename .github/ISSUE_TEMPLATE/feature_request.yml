@@ -1,0 +1,71 @@
+name: "✨ Feature request / 新功能"
+description: Propose a concrete improvement / 提出具体的功能改进
+title: "[Feature]: "
+labels:
+  - "✨ Feature Request"
+body:
+  - type: markdown
+    attributes:
+      value: |
+        For early-stage ideas or open-ended design questions, start with [GitHub Discussions](https://github.com/my-mcp-hub/mcp-kit/discussions). Use this form when the use case and desired outcome are concrete.
+
+        对于早期想法或开放式设计讨论，请先使用 [GitHub Discussions](https://github.com/my-mcp-hub/mcp-kit/discussions)。使用本表单提交目标明确的功能需求。
+
+  - type: checkboxes
+    id: prerequisites
+    attributes:
+      label: Prerequisites / 提交前检查
+      options:
+        - label: I searched existing issues and discussions for similar proposals. / 我已搜索类似的 Issue 和 Discussions。
+          required: true
+
+  - type: dropdown
+    id: area
+    attributes:
+      label: Affected area / 涉及范围
+      options:
+        - Interactive CLI and prompts / 交互式 CLI 与提示
+        - MCP Server templates / MCP 服务端模板
+        - MCP Client templates / MCP 客户端模板
+        - Transports / 传输方式
+        - Generated code or configuration / 生成代码或配置
+        - TypeScript or JavaScript support / TypeScript 或 JavaScript 支持
+        - Package or build output / 包或构建产物
+        - Documentation or examples / 文档或示例
+        - Other / 其他
+    validations:
+      required: true
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem or use case / 问题或使用场景
+      description: Explain the user need rather than only describing an implementation. / 请说明用户需求，而不只是描述实现形式。
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposed-solution
+    attributes:
+      label: Proposed solution / 建议方案
+      description: Describe the expected behavior and include a CLI or generated-code example when useful. / 请描述预期行为，必要时提供 CLI 或生成代码示例。
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered / 考虑过的替代方案
+
+  - type: textarea
+    id: additional-context
+    attributes:
+      label: Additional context / 其他信息
+      description: Add examples, screenshots, prior art, or links to a related discussion. / 可补充示例、截图、参考实现或相关讨论。
+
+  - type: checkboxes
+    id: contribution
+    attributes:
+      label: Contribution / 参与实现
+      options:
+        - label: I am willing to help implement or test this feature. / 我愿意协助实现或测试此功能。

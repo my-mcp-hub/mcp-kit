@@ -1,5 +1,5 @@
-blank_issues_enabled: true
+blank_issues_enabled: false
 contact_links:
-  - name: 🤔 Ask a question（提问和讨论）
+  - name: 🤔 GitHub Discussions（提问、想法和展示）
     url: https://github.com/my-mcp-hub/mcp-kit/discussions
-    about: Ask questions and discuss with other community members（提出问题并与其他社区成员讨论）
+    about: Ask questions, discuss ideas, and share projects with the community（提问、讨论想法并分享项目）
