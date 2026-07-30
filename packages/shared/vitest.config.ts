@@ -1,9 +1,10 @@
+import { fileURLToPath } from 'node:url'
 import { defineProject } from 'vitest/config'
 
 export default defineProject({
   resolve: {
     alias: {
-      '@': '/src',
+      '@': fileURLToPath(new URL('./src', import.meta.url)),
     },
   },
   test: {},

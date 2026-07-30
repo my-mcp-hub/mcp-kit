@@ -1,8 +1,8 @@
 import { mkdirSync, rmSync } from 'node:fs'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
-import { describe, test } from 'vitest'
-import { createProject, installDependencies } from '../src'
+import { describe, expect, test } from 'vitest'
+import { createProject, fileExists } from '../src'
 
 describe('test project setup file', () => {
   test('should create project', async () => {
@@ -17,7 +17,8 @@ describe('test project setup file', () => {
       plugins: [],
       components: [],
     })
-    await installDependencies(testDir)
+    expect(await fileExists(testDir)).toBe(true)
+    expect(await fileExists(join(testDir, 'missing'))).toBe(false)
     rmSync(testDir, { recursive: true, force: true })
   }, 60000)
 })
