@@ -11,7 +11,7 @@ describe('test index cli', () => {
     try {
       const userInput = ['\x0D', '\x0D', '\x0D', '\x0D', '\x0D', 'n']
       const scriptPath = resolve('./packages/create-mcp-kit/src/index.ts')
-      const subprocess = execa('c8', ['--reporter=lcov', '--reporter=text', 'tsx', scriptPath], {
+      const subprocess = execa('tsx', [scriptPath], {
         cwd: testDir,
         timeout: 60000,
         env: {

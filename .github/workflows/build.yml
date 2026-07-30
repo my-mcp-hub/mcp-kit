@@ -34,6 +34,9 @@ jobs:
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
           slug: my-mcp-hub/mcp-kit
+          files: coverage/lcov.info
+          disable_search: true
+          fail_ci_if_error: true
 
 #      - name: Coveralls
 #        uses: coverallsapp/github-action@v2

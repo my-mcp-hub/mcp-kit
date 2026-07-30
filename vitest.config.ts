@@ -5,9 +5,9 @@ export default defineConfig({
     projects: ['packages/*/vitest.config.ts'],
     coverage: {
       provider: 'v8',
-      include: ['packages/*/src/*.ts'],
-      reporter: ['json'],
-      reportsDirectory: './coverage/tmp',
+      include: ['packages/*/src/**/*.ts'],
+      reporter: ['text', 'lcov', 'html'],
+      reportsDirectory: './coverage',
     },
   },
 })
