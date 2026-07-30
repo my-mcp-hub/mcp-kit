@@ -1,5 +1,21 @@
 # @mcp-tool-kit/shared
 
+## 1.0.2
+
+### Patch Changes
+
+- [`140f8c4`](https://github.com/my-mcp-hub/mcp-kit/commit/140f8c465f126d2c9efadeeaa67fa9d3a4087ec8) Thanks [@zhensherlock](https://github.com/zhensherlock)! - chore(rolldown): disable watch mode screen clearing in config
+
+- [`a2fbb99`](https://github.com/my-mcp-hub/mcp-kit/commit/a2fbb99576926be6b64a63e90430e99eb1f01bd4) Thanks [@zhensherlock](https://github.com/zhensherlock)! - build(shared): separate production type emission from test type checking
+
+- [`3341299`](https://github.com/my-mcp-hub/mcp-kit/commit/3341299dd9cc3f15360f2a84434c4c3a35f30561) Thanks [@zhensherlock](https://github.com/zhensherlock)! - docs: align transport guidance with MCP v2
+
+- [`d47ac33`](https://github.com/my-mcp-hub/mcp-kit/commit/d47ac33b09ef06a65f1ab772cdc21492af4f9da1) Thanks [@zhensherlock](https://github.com/zhensherlock)! - chore(deps): update dependencies and generated templates
+
+- [`f5fe55d`](https://github.com/my-mcp-hub/mcp-kit/commit/f5fe55d5297fc34c2b748e393e9d7b6fd1d1ee5f) Thanks [@zhensherlock](https://github.com/zhensherlock)! - chore(packages): improve package descriptions and discovery keywords
+
+- [`0151553`](https://github.com/my-mcp-hub/mcp-kit/commit/01515535848f1edac22f9f619322297bf3b0f835) Thanks [@zhensherlock](https://github.com/zhensherlock)! - chore: update dependencies
+
 ## 1.0.1
 
 ### Patch Changes
