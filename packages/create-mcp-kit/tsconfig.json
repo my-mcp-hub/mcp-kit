@@ -11,6 +11,6 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["./src", "./tests"],
+  "include": ["./src", "./tests", "./*.config.ts"],
   "exclude": ["./template/**/*"]
 }
