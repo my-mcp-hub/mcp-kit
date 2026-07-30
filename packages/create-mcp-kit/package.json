@@ -1,7 +1,7 @@
 {
   "name": "create-mcp-kit",
   "version": "1.0.1",
-  "description": "A CLI tool to create MCP (Model Context Protocol) applications with ease.",
+  "description": "An interactive CLI for scaffolding ready-to-develop MCP servers and clients in TypeScript or JavaScript.",
   "type": "module",
   "author": "zhensherlock",
   "homepage": "https://my-mcp-hub.github.io/mcp-kit/",
@@ -10,20 +10,23 @@
   },
   "keywords": [
     "mcp",
+    "model context protocol",
+    "modelcontextprotocol",
     "mcp server",
     "mcp client",
-    "mcp host",
     "mcp kit",
-    "mcp tool kit",
     "mcp cli",
     "cli",
-    "cli tool",
+    "scaffolding",
+    "project generator",
     "create mcp",
     "create mcp server",
     "create mcp client",
-    "create mcp host",
-    "modelcontextprotocol",
-    "typescript"
+    "typescript",
+    "javascript",
+    "nodejs",
+    "stdio",
+    "streamable http"
   ],
   "publishConfig": {
     "registry": "https://registry.npmjs.org/",

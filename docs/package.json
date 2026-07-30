@@ -3,13 +3,21 @@
   "version": "0.0.1",
   "private": true,
   "type": "module",
-  "description": "mcp kit docs",
+  "description": "Documentation for MCP Kit, an interactive CLI for scaffolding MCP servers and clients.",
   "scripts": {
     "dev": "vitepress dev",
     "build": "vitepress build",
     "preview": "vitepress preview"
   },
-  "keywords": [],
+  "keywords": [
+    "mcp",
+    "model context protocol",
+    "modelcontextprotocol",
+    "mcp server",
+    "mcp client",
+    "mcp kit",
+    "documentation"
+  ],
   "author": "zhensherlock",
   "license": "MIT",
   "devDependencies": {
