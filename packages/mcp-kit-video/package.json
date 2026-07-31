@@ -1,0 +1,29 @@
+{
+  "name": "@mcp-kit/video",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "audio:generate": "node scripts/generate-audio.mjs",
+    "build": "tsc --noEmit",
+    "check": "pnpm run build && remotion compositions src/index.ts",
+    "preview": "remotion studio src/index.ts",
+    "render": "remotion render src/index.ts McpKitCliWalkthrough out/mcp-kit-cli-walkthrough.mp4 --codec=h264 --gl=angle",
+    "render:frame": "remotion still src/index.ts McpKitCliWalkthrough out/mcp-kit-cli-walkthrough.png --frame=1439 --gl=angle"
+  },
+  "dependencies": {
+    "@fontsource/inter": "^5.3.0",
+    "@fontsource/jetbrains-mono": "^5.3.0",
+    "@remotion/media": "4.0.502",
+    "@remotion/transitions": "4.0.502",
+    "react": "19.2.8",
+    "react-dom": "19.2.8",
+    "remotion": "4.0.502"
+  },
+  "devDependencies": {
+    "@remotion/cli": "4.0.502",
+    "@types/react": "^19.2.17",
+    "@types/react-dom": "^19.2.3",
+    "typescript": "^5.9.3"
+  }
+}
