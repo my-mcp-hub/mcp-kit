@@ -1,0 +1,108 @@
+name: "🐛 Bug report / 缺陷反馈"
+description: Report a reproducible problem / 报告可复现的问题
+title: "[Bug]: "
+labels:
+  - bug
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for reporting a bug. Usage questions and integration help belong in [GitHub Discussions](https://github.com/{{projectName}}/discussions).
+
+        感谢反馈缺陷。使用问题和集成帮助请前往 [GitHub Discussions](https://github.com/{{projectName}}/discussions)。
+
+  - type: checkboxes
+    id: prerequisites
+    attributes:
+      label: Prerequisites / 提交前检查
+      options:
+        - label: I searched existing issues and discussions for the same problem. / 我已搜索现有 Issue 和 Discussions。
+          required: true
+        - label: I can reproduce the problem in a public minimal example without private data. / 我可以在不含私密数据的公开最小示例中复现问题。
+          required: true
+
+  - type: input
+    id: package-version
+    attributes:
+      label: "{{projectName}} version / 版本"
+      placeholder: e.g. 0.1.0
+    validations:
+      required: true
+
+  - type: dropdown
+    id: transport
+    attributes:
+      label: Transport / 传输方式
+      options:
+        - stdio
+        - Streamable HTTP
+        - Both / 两者都有
+        - Other / 其他
+    validations:
+      required: true
+
+  - type: input
+    id: node-version
+    attributes:
+      label: Node.js version / Node.js 版本
+      placeholder: e.g. 22.20.0
+    validations:
+      required: true
+
+  - type: input
+    id: mcp-client
+    attributes:
+      label: MCP client and version / MCP 客户端及版本
+      placeholder: e.g. MCP Inspector 0.x, Claude Desktop, custom client
+    validations:
+      required: true
+
+  - type: input
+    id: operating-system
+    attributes:
+      label: Operating system and version / 操作系统及版本
+      placeholder: e.g. macOS 26, Windows 11, Ubuntu 24.04
+    validations:
+      required: true
+
+  - type: input
+    id: minimal-reproduction
+    attributes:
+      label: Minimal reproduction URL / 最小复现地址
+      description: Link a small public repository or example that reproduces the problem. / 请提供可复现问题的精简公开仓库或示例。
+      placeholder: https://github.com/...
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce / 复现步骤
+      placeholder: |
+        1. Clone or open the reproduction
+        2. Run ...
+        3. Observe ...
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected-behavior
+    attributes:
+      label: Expected behavior / 预期行为
+    validations:
+      required: true
+
+  - type: textarea
+    id: actual-behavior
+    attributes:
+      label: Actual behavior / 实际行为
+      description: Include complete errors, stderr output, or HTTP responses when relevant. Do not include secrets. / 如有错误、stderr 输出或 HTTP 响应，请完整粘贴并移除敏感信息。
+      render: shell
+    validations:
+      required: true
+
+  - type: textarea
+    id: additional-context
+    attributes:
+      label: Additional context / 其他信息
+      description: Add MCP configuration, command-line arguments, screenshots, or other details that may help diagnose the problem. Remove tokens and private data first. / 可补充 MCP 配置、命令行参数、截图或其他诊断信息，请先移除令牌和私密数据。

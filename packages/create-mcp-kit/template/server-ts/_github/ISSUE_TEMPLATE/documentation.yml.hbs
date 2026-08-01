@@ -1,0 +1,43 @@
+name: "📝 Documentation / 文档相关"
+description: Report missing, unclear, or incorrect documentation / 反馈缺失、含糊或错误的文档
+title: "[Docs]: "
+labels:
+  - documentation
+body:
+  - type: checkboxes
+    id: prerequisites
+    attributes:
+      label: Prerequisites / 提交前检查
+      options:
+        - label: I searched existing issues for the same documentation problem. / 我已搜索相同的文档问题。
+          required: true
+
+  - type: input
+    id: page
+    attributes:
+      label: Page URL or file path / 页面地址或文件路径
+      placeholder: https://github.com/{{projectName}}/blob/main/README.md or README.md
+    validations:
+      required: true
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: Documentation problem / 文档问题
+      description: Explain what is missing, unclear, outdated, or incorrect. / 请说明缺失、含糊、过时或错误的内容。
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposed-change
+    attributes:
+      label: Suggested change / 修改建议
+      description: Provide replacement wording, a command, or an example when possible. / 如有可能，请提供建议文案、命令或示例。
+    validations:
+      required: true
+
+  - type: textarea
+    id: additional-context
+    attributes:
+      label: Additional context / 其他信息
+      description: Add screenshots, related pages, or external references. / 可补充截图、相关页面或外部参考。
