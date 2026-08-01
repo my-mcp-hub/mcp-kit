@@ -1,0 +1,54 @@
+{{#if (includes plugins 'vitest')}}
+import type { Client } from '@modelcontextprotocol/client'
+import { beforeEach, describe, expect, test, vi } from 'vitest'
+import { runKnowledgeBaseDemo } from '@/knowledgeBaseDemo'
+
+const match = {
+  id: 'transport-and-lifecycle',
+  title: 'MCP Transports and Server Lifecycle',
+  summary: 'Transport guidance',
+  score: 4,
+  uri: 'kb://documents/transport-and-lifecycle',
+}
+
+const createClientMock = (...args: [structuredContent?: unknown]) => {
+  const structuredContent = args.length === 0 ? { matches: [match] } : args[0]
+  const methods = {
+    listTools: vi.fn().mockResolvedValue({ tools: [{ name: 'search_documents' }] }),
+    listResources: vi.fn().mockResolvedValue({ resources: [{ uri: match.uri }] }),
+    listPrompts: vi.fn().mockResolvedValue({ prompts: [{ name: 'review_document' }] }),
+    callTool: vi.fn().mockResolvedValue({ structuredContent }),
+    readResource: vi.fn().mockResolvedValue({ contents: [{ uri: match.uri }] }),
+    getPrompt: vi.fn().mockResolvedValue({ messages: [] }),
+    getNegotiatedProtocolVersion: vi.fn().mockReturnValue('2026-07-28'),
+  }
+  return { client: methods as unknown as Client, methods }
+}
+
+describe('runKnowledgeBaseDemo', () => {
+  beforeEach(() => vi.clearAllMocks())
+
+  test('uses structured search data to read and review the selected document', async () => {
+    const { client, methods } = createClientMock()
+    const result = await runKnowledgeBaseDemo(client)
+    expect(methods.readResource).toHaveBeenCalledWith({ uri: match.uri })
+    expect(methods.getPrompt).toHaveBeenCalledWith({
+      name: 'review_document',
+      arguments: { documentId: match.id, focus: 'risks' },
+    })
+    expect(result.selectedDocument).toEqual(match)
+    expect(result.protocolVersion).toBe('2026-07-28')
+  })
+
+  test.each([undefined, null, {}, { matches: 'invalid' }])('rejects invalid structured content: %j', async value => {
+    const { client, methods } = createClientMock(value)
+    await expect(runKnowledgeBaseDemo(client)).rejects.toThrow('search_documents returned invalid structuredContent')
+    expect(methods.readResource).not.toHaveBeenCalled()
+  })
+
+  test('rejects a successful search with no matches', async () => {
+    const { client } = createClientMock({ matches: [] })
+    await expect(runKnowledgeBaseDemo(client)).rejects.toThrow('No knowledge-base document matched the demo query')
+  })
+})
+{{/if}}

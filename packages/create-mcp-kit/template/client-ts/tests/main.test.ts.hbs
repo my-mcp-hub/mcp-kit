@@ -1,0 +1,45 @@
+{{#if (includes plugins 'vitest')}}
+import { afterEach, beforeEach, describe, expect, test, vi } from 'vitest'
+import { type MainDependencies, main } from '@/index'
+
+const createDependencies = (): MainDependencies => ({
+{{#if (includes transports 'stdio')}}
+  runStdioDemo: vi.fn().mockResolvedValue({ selectedDocument: { id: 'mcp-overview' } }),
+{{/if}}
+{{#if (includes transports 'streamable')}}
+  runStreamableHttpDemo: vi.fn().mockResolvedValue({ selectedDocument: { id: 'transport-and-lifecycle' } }),
+{{/if}}
+  logger: { log: vi.fn(), error: vi.fn() },
+})
+
+describe('main', () => {
+  const originalExitCode = process.exitCode
+  beforeEach(() => { process.exitCode = undefined })
+  afterEach(() => { process.exitCode = originalExitCode })
+
+  test('runs configured demos and reports selected documents', async () => {
+    const dependencies = createDependencies()
+    await main(dependencies)
+{{#if (includes transports 'stdio')}}
+    expect(dependencies.runStdioDemo).toHaveBeenCalledOnce()
+{{/if}}
+{{#if (includes transports 'streamable')}}
+    expect(dependencies.runStreamableHttpDemo).toHaveBeenCalledOnce()
+{{/if}}
+    expect(dependencies.logger.error).not.toHaveBeenCalled()
+  })
+
+  test('sets a failing exit code when a demo fails', async () => {
+    const dependencies = createDependencies()
+    const error = new Error('demo failed')
+{{#if (includes transports 'stdio')}}
+    vi.mocked(dependencies.runStdioDemo).mockRejectedValueOnce(error)
+{{else}}
+    vi.mocked(dependencies.runStreamableHttpDemo).mockRejectedValueOnce(error)
+{{/if}}
+    await main(dependencies)
+    expect(dependencies.logger.error).toHaveBeenCalledWith('Main error:', error)
+    expect(process.exitCode).toBe(1)
+  })
+})
+{{/if}}

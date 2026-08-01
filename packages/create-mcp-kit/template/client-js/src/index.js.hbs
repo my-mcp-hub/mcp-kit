@@ -18,19 +18,29 @@ export { runStdioDemo } from './transports.js'
 export { runStreamableHttpDemo } from './transports.js'
 {{/if}}
 
-async function main() {
+const defaultDependencies = {
+{{#if (includes transports 'stdio')}}
+  runStdioDemo,
+{{/if}}
+{{#if (includes transports 'streamable')}}
+  runStreamableHttpDemo,
+{{/if}}
+  logger: console,
+}
+
+export async function main(dependencies = defaultDependencies) {
   try {
 {{#if (includes transports 'stdio')}}
-    const stdioResult = await runStdioDemo()
-    console.log('stdio demo:', stdioResult.selectedDocument)
+    const stdioResult = await dependencies.runStdioDemo()
+    dependencies.logger.log('stdio demo:', stdioResult.selectedDocument)
 {{/if}}
 {{#if (includes transports 'streamable')}}
 
-    const httpResult = await runStreamableHttpDemo()
-    console.log('streamable HTTP demo:', httpResult.selectedDocument)
+    const httpResult = await dependencies.runStreamableHttpDemo()
+    dependencies.logger.log('streamable HTTP demo:', httpResult.selectedDocument)
 {{/if}}
   } catch (error) {
-    console.error('Main error:', error)
+    dependencies.logger.error('Main error:', error)
     process.exitCode = 1
   }
 }

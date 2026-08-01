@@ -1,0 +1,82 @@
+{{#if (includes plugins 'vitest')}}
+import { beforeEach, describe, expect, test, vi } from 'vitest'
+
+const mocks = vi.hoisted(() => ({
+  createClient: vi.fn(),
+  runKnowledgeBaseDemo: vi.fn(),
+}))
+
+vi.mock('../src/client.js', () => ({
+  createClient: mocks.createClient,
+}))
+
+vi.mock('../src/knowledgeBaseDemo.js', () => ({
+  runKnowledgeBaseDemo: mocks.runKnowledgeBaseDemo,
+}))
+
+{{#if (includes transports 'stdio')}}
+import { runStdioDemo{{#if (includes transports 'streamable')}}, runStreamableHttpDemo{{/if}} } from '@/transports.js'
+{{else}}
+import { runStreamableHttpDemo } from '@/transports.js'
+{{/if}}
+
+const createClientMock = () => {
+  const methods = {
+    connect: vi.fn().mockResolvedValue(undefined),
+    close: vi.fn().mockResolvedValue(undefined),
+  }
+  mocks.createClient.mockReturnValue(methods)
+  return methods
+}
+
+describe('transport demos', () => {
+  beforeEach(() => {
+    vi.clearAllMocks()
+  })
+
+{{#if (includes transports 'stdio')}}
+  test('closes the stdio client after a successful demo', async () => {
+    const client = createClientMock()
+    const result = { selectedDocument: { id: 'mcp-overview' } }
+    mocks.runKnowledgeBaseDemo.mockResolvedValue(result)
+
+    await expect(
+      runStdioDemo({
+        command: 'node',
+        args: ['server.js'],
+      }),
+    ).resolves.toBe(result)
+
+    expect(mocks.createClient).toHaveBeenCalledWith('knowledge-base-stdio-client')
+    expect(client.connect).toHaveBeenCalledOnce()
+    expect(mocks.runKnowledgeBaseDemo).toHaveBeenCalledWith(client)
+    expect(client.close).toHaveBeenCalledOnce()
+  })
+
+  test('closes the stdio client when connection fails', async () => {
+    const client = createClientMock()
+    const error = new Error('connection failed')
+    client.connect.mockRejectedValueOnce(error)
+
+    await expect(runStdioDemo({ command: 'node', args: ['server.js'] })).rejects.toBe(error)
+
+    expect(mocks.runKnowledgeBaseDemo).not.toHaveBeenCalled()
+    expect(client.close).toHaveBeenCalledOnce()
+  })
+{{/if}}
+{{#if (includes transports 'streamable')}}
+
+  test('closes the HTTP client when the workflow fails', async () => {
+    const client = createClientMock()
+    const error = new Error('workflow failed')
+    mocks.runKnowledgeBaseDemo.mockRejectedValueOnce(error)
+
+    await expect(runStreamableHttpDemo(new URL('http://localhost:9999/mcp'))).rejects.toBe(error)
+
+    expect(mocks.createClient).toHaveBeenCalledWith('knowledge-base-http-client')
+    expect(client.connect).toHaveBeenCalledOnce()
+    expect(client.close).toHaveBeenCalledOnce()
+  })
+{{/if}}
+})
+{{/if}}

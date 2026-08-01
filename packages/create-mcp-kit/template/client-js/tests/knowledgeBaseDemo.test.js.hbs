@@ -1,0 +1,41 @@
+{{#if (includes plugins 'vitest')}}
+import { beforeEach, describe, expect, test, vi } from 'vitest'
+import { runKnowledgeBaseDemo } from '../src/knowledgeBaseDemo.js'
+
+const match = {
+  id: 'transport-and-lifecycle', title: 'MCP Transports and Server Lifecycle', summary: 'Transport guidance', score: 4,
+  uri: 'kb://documents/transport-and-lifecycle',
+}
+
+const createClientMock = (...args) => {
+  const structuredContent = args.length === 0 ? { matches: [match] } : args[0]
+  const methods = {
+    listTools: vi.fn().mockResolvedValue({ tools: [{ name: 'search_documents' }] }),
+    listResources: vi.fn().mockResolvedValue({ resources: [{ uri: match.uri }] }),
+    listPrompts: vi.fn().mockResolvedValue({ prompts: [{ name: 'review_document' }] }),
+    callTool: vi.fn().mockResolvedValue({ structuredContent }),
+    readResource: vi.fn().mockResolvedValue({ contents: [{ uri: match.uri }] }),
+    getPrompt: vi.fn().mockResolvedValue({ messages: [] }),
+    getNegotiatedProtocolVersion: vi.fn().mockReturnValue('2026-07-28'),
+  }
+  return { client: methods, methods }
+}
+
+describe('runKnowledgeBaseDemo', () => {
+  beforeEach(() => vi.clearAllMocks())
+  test('uses structured search data to read and review the selected document', async () => {
+    const { client, methods } = createClientMock()
+    const result = await runKnowledgeBaseDemo(client)
+    expect(methods.readResource).toHaveBeenCalledWith({ uri: match.uri })
+    expect(result.selectedDocument).toEqual(match)
+  })
+  test.each([undefined, null, {}, { matches: 'invalid' }])('rejects invalid structured content: %j', async value => {
+    const { client } = createClientMock(value)
+    await expect(runKnowledgeBaseDemo(client)).rejects.toThrow('search_documents returned invalid structuredContent')
+  })
+  test('rejects a successful search with no matches', async () => {
+    const { client } = createClientMock({ matches: [] })
+    await expect(runKnowledgeBaseDemo(client)).rejects.toThrow('No knowledge-base document matched the demo query')
+  })
+})
+{{/if}}

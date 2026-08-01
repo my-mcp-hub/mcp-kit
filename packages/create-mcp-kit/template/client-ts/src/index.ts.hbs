@@ -18,19 +18,43 @@ export { runStdioDemo } from './transports'
 export { runStreamableHttpDemo } from './transports'
 {{/if}}
 
-async function main() {
+interface DemoResult {
+  selectedDocument: unknown
+}
+
+export interface MainDependencies {
+{{#if (includes transports 'stdio')}}
+  runStdioDemo: () => Promise<DemoResult>
+{{/if}}
+{{#if (includes transports 'streamable')}}
+  runStreamableHttpDemo: () => Promise<DemoResult>
+{{/if}}
+  logger: Pick<Console, 'log' | 'error'>
+}
+
+const defaultDependencies: MainDependencies = {
+{{#if (includes transports 'stdio')}}
+  runStdioDemo,
+{{/if}}
+{{#if (includes transports 'streamable')}}
+  runStreamableHttpDemo,
+{{/if}}
+  logger: console,
+}
+
+export async function main(dependencies: MainDependencies = defaultDependencies) {
   try {
 {{#if (includes transports 'stdio')}}
-    const stdioResult = await runStdioDemo()
-    console.log('stdio demo:', stdioResult.selectedDocument)
+    const stdioResult = await dependencies.runStdioDemo()
+    dependencies.logger.log('stdio demo:', stdioResult.selectedDocument)
 {{/if}}
 {{#if (includes transports 'streamable')}}
 
-    const httpResult = await runStreamableHttpDemo()
-    console.log('streamable HTTP demo:', httpResult.selectedDocument)
+    const httpResult = await dependencies.runStreamableHttpDemo()
+    dependencies.logger.log('streamable HTTP demo:', httpResult.selectedDocument)
 {{/if}}
   } catch (error) {
-    console.error('Main error:', error)
+    dependencies.logger.error('Main error:', error)
     process.exitCode = 1
   }
 }
