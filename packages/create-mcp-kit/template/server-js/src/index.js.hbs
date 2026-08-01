@@ -8,69 +8,63 @@ import { startStdioServer } from './services/index.js'
 {{else}}
 import { startWebServer } from './services/index.js'
 {{/if}}
-import { getOptions } from './utils/index.js'
+{{#if (includes transports 'streamable')}}
+import { DEFAULT_PORT, getServerOptions, getWebServerOptions, parsePort } from './utils/index.js'
+{{else}}
+import { getServerOptions } from './utils/index.js'
+{{/if}}
 import 'dotenv/config'
 import pkg from '../package.json' with { type: 'json' }
 
 const name = '{{projectName}}'
-
-const argv = await yargs()
-  .scriptName(name)
-  .usage('$0 <command> [options]')
-{{#if (includes transports 'stdio')}}
-  .command(
-    'stdio',
-    'Start the server using the stdio transport protocol.',
-    () => {},
-    argv => startServer('stdio', argv),
-  )
-{{/if}}
-{{#if (includes transports 'streamable')}}
-  .command(
-    'web',
-    'Start the web server transport protocol.',
-    () => {},
-    argv => startServer('web', argv),
-  )
-{{/if}}
-{{#if (includes transports 'streamable')}}
-  .options({
-    port: {
-      describe: 'Specify the port for Streamable HTTP transport (default: 8401)',
-      type: 'string',
-      default: process.env.PORT || '8401',
-    },
-  })
-{{/if}}
-  .help()
-  .parse(hideBin(process.argv))
-
-if (!argv._[0]) {
-{{#if (includes transports 'stdio')}}
-  startServer('stdio', argv)
-{{else}}
-  startServer('web', argv)
-{{/if}}
+const identity = {
+  name,
+  version: pkg.version,
 }
+{{#if (includes transports 'stdio')}}
 
-async function startServer(mode, argv) {
-  const options = getOptions(argv, {
-    name,
-    version: pkg.version,
+const startStdio = () => {
+  startStdioServer(getServerOptions(identity))
+}
+{{/if}}
+{{#if (includes transports 'streamable')}}
+
+const addPortOption = command =>
+  command.option('port', {
+    describe: 'Port for the Streamable HTTP transport',
+    type: 'number',
+    default: process.env.PORT ?? DEFAULT_PORT,
+    coerce: parsePort,
   })
-  {{#if (and (includes transports 'stdio') (includes transports 'streamable'))}}
-  if (mode === 'stdio') {
-    startStdioServer(options).catch(console.error)
-  } else if (mode === 'web') {
-    startWebServer(options).catch(console.error)
-  }
-  {{else if (includes transports 'stdio')}}
-  if (mode === 'stdio') {
-    startStdioServer(options).catch(console.error)
-  }
-  {{else}}
-  if (mode === 'web') {
-    startWebServer(options).catch(console.error)
-  }
-  {{/if}}
+
+const startWeb = argv => startWebServer(getWebServerOptions(argv, identity))
+{{/if}}
+
+try {
+  await yargs(hideBin(process.argv))
+    .scriptName(name)
+    .usage('$0 [command] [options]')
+{{#if (includes transports 'stdio')}}
+    .command('$0', 'Start the server using the stdio transport protocol.', command => command, startStdio)
+    .command('stdio', 'Start the server using the stdio transport protocol.', command => command, startStdio)
+{{else}}
+    .command('$0', 'Start the server using Streamable HTTP.', addPortOption, startWeb)
+{{/if}}
+{{#if (includes transports 'streamable')}}
+    .command('web', 'Start the server using Streamable HTTP.', addPortOption, startWeb)
+{{/if}}
+    .strict()
+    .recommendCommands()
+    .version(pkg.version)
+    .help()
+    .showHelpOnFail(false)
+    .exitProcess(false)
+    .fail((message, error) => {
+      throw error ?? new Error(message)
+    })
+    .parse()
+} catch (error) {
+  const message = error instanceof Error ? error.message : String(error)
+  console.error(`${name}: ${message}`)
+  process.exitCode = 1
 }

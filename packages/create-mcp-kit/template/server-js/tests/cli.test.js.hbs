@@ -1,0 +1,75 @@
+{{#if (includes plugins 'vitest')}}
+import { spawnSync } from 'node:child_process'
+import { fileURLToPath } from 'node:url'
+import { describe, expect, test } from 'vitest'
+{{#if (includes transports 'streamable')}}
+import { parsePort } from '../src/utils/index.js'
+{{/if}}
+import pkg from '../package.json' with { type: 'json' }
+
+const projectRoot = fileURLToPath(new URL('..', import.meta.url))
+
+const runCli = (args, environment = {}) => {
+  const env = { ...process.env }
+  delete env.PORT
+
+  return spawnSync(process.execPath, ['src/index.js', ...args], {
+    cwd: projectRoot,
+    encoding: 'utf8',
+    env: { ...env, ...environment },
+    timeout: 5000,
+  })
+}
+
+describe('CLI contract', () => {
+{{#if (includes transports 'streamable')}}
+  test.each([
+    ['number', 8401, 8401],
+    ['numeric string', '8401', 8401],
+    ['lowest port', 1, 1],
+    ['highest port', 65535, 65535],
+  ])('accepts a valid %s', (_name, input, expected) => {
+    expect(parsePort(input)).toBe(expected)
+  })
+
+  test.each([0, 65536, -1, 1.5, '', 'not-a-port', undefined, null])('rejects invalid port %s', input => {
+    expect(() => parsePort(input)).toThrow('Port must be an integer between 1 and 65535.')
+  })
+{{/if}}
+
+  test('prints help without starting the default server', () => {
+    const result = runCli(['--help'])
+    expect(result.error).toBeUndefined()
+    expect(result.status).toBe(0)
+    expect(result.stderr).toBe('')
+{{#if (includes transports 'streamable')}}
+    expect(result.stdout).toContain('{{projectName}} web')
+{{else}}
+    expect(result.stdout).toContain('{{projectName}} stdio')
+{{/if}}
+    expect(result.stdout).not.toContain('MCP server started')
+  })
+
+  test('prints the package version', () => {
+    const result = runCli(['--version'])
+    expect(result.status).toBe(0)
+    expect(result.stderr).toBe('')
+    expect(result.stdout.trim()).toBe(pkg.version)
+  })
+{{#if (includes transports 'streamable')}}
+
+  test('rejects invalid ports', () => {
+    expect(runCli(['web', '--port', '0']).stderr).toContain('Port must be an integer between 1 and 65535.')
+    expect(runCli(['web'], { PORT: 'invalid' }).stderr).toContain('Port must be an integer between 1 and 65535.')
+  })
+{{/if}}
+{{#if (includes transports 'stdio')}}
+
+  test('does not accept web-only options for stdio', () => {
+    const result = runCli(['stdio', '--port', '8401'])
+    expect(result.status).toBe(1)
+    expect(result.stderr).toContain('Unknown argument: port')
+  })
+{{/if}}
+})
+{{/if}}

@@ -1,7 +1,10 @@
-export interface OptionsType {
+export interface ServerOptions {
   name: string
   version: string
-{{#if (includes transports 'streamable')}}
-  port: number
-{{/if}}
 }
+{{#if (includes transports 'streamable')}}
+
+export interface WebServerOptions extends ServerOptions {
+  port: number
+}
+{{/if}}

@@ -1,9 +1,29 @@
-export function getOptions(argv, pkg) {
-  return {
-    name: pkg.name,
-    version: pkg.version,
 {{#if (includes transports 'streamable')}}
-    port: argv.port,
+export const DEFAULT_PORT = 8401
+
 {{/if}}
+export function getServerOptions(identity) {
+  return {
+    name: identity.name,
+    version: identity.version,
   }
 }
+{{#if (includes transports 'streamable')}}
+
+export function parsePort(value) {
+  const port = typeof value === 'number' ? value : typeof value === 'string' && value.trim() ? Number(value) : NaN
+
+  if (!Number.isInteger(port) || port < 1 || port > 65535) {
+    throw new TypeError('Port must be an integer between 1 and 65535.')
+  }
+
+  return port
+}
+
+export function getWebServerOptions(argv, identity) {
+  return {
+    ...getServerOptions(identity),
+    port: parsePort(argv.port),
+  }
+}
+{{/if}}
