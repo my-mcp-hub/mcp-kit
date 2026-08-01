@@ -1,5 +1,23 @@
 # create-mcp-kit
 
+## 1.0.3
+
+### Patch Changes
+
+- [`667a5cf`](https://github.com/my-mcp-hub/mcp-kit/commit/667a5cfd662f9ddf71c70847d1ca465608f19045) Thanks [@zhensherlock](https://github.com/zhensherlock)! - test(create-mcp-kit): expand generated client coverage
+
+- [`2194972`](https://github.com/my-mcp-hub/mcp-kit/commit/219497261a8b83cbf89a36a7b631527e6c559ad6) Thanks [@zhensherlock](https://github.com/zhensherlock)! - docs(create-mcp-kit): document generated server operations
+
+- [`ac10efe`](https://github.com/my-mcp-hub/mcp-kit/commit/ac10efe6b82d70024da5421768db768c6256c0d2) Thanks [@zhensherlock](https://github.com/zhensherlock)! - chore(create-mcp-kit): update generated client lint tooling
+
+- [`12f0780`](https://github.com/my-mcp-hub/mcp-kit/commit/12f07808a1bf9bd98f4d9fecda35d9e53daae21d) Thanks [@zhensherlock](https://github.com/zhensherlock)! - chore(create-mcp-kit): add generated issue forms
+
+- [`d11a0f4`](https://github.com/my-mcp-hub/mcp-kit/commit/d11a0f44b77e3f87524757dd49bba94b0796e1d0) Thanks [@zhensherlock](https://github.com/zhensherlock)! - chore(create-mcp-kit): update generated server templates to MCP Inspector 2.0
+
+- [`e5dde88`](https://github.com/my-mcp-hub/mcp-kit/commit/e5dde88a263aeac09820552ed43298e0b10dc37c) Thanks [@zhensherlock](https://github.com/zhensherlock)! - build(create-mcp-kit): harden generated server delivery
+
+- [`f075202`](https://github.com/my-mcp-hub/mcp-kit/commit/f07520283ff7ee98378e1627a54f41bf072f049b) Thanks [@zhensherlock](https://github.com/zhensherlock)! - fix(create-mcp-kit): enforce generated server CLI contracts
+
 ## 1.0.2
 
 ### Patch Changes
