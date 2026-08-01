@@ -1,4 +1,9 @@
 import esbuild from 'esbuild'
 import { config } from './base.js'
 
-esbuild.build(config).catch(() => process.exit(1))
+try {
+  await esbuild.build(config)
+} catch (error) {
+  console.error(error)
+  process.exitCode = 1
+}

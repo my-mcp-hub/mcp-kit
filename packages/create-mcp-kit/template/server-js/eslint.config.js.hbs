@@ -5,18 +5,16 @@ import prettierPlugin from 'eslint-plugin-prettier'
 import globals from 'globals'
 
 export default [
+  {
+    ignores: ['**/build', '**/coverage', '**/node_modules', '**/.*', '.husky/'],
+  },
   js.configs.recommended,
   {
-    ignores: ['**/build', '**/node_modules', '**/.*', '.husky/'],
-  },
-  {
   {{#if (includes plugins 'vitest')}}
-    files: ['src/**/*.js', 'tests/**/*.js'],
+    files: ['src/**/*.js', 'tests/**/*.js', 'scripts/**/*.js', '*.js'],
   {{else}}
-    files: ['src/**/*.js'],
+    files: ['src/**/*.js', 'scripts/**/*.js', '*.js'],
   {{/if}}
-  },
-  {
     languageOptions: {
       parserOptions: {
         ecmaVersion: 'latest',

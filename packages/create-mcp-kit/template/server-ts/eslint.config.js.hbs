@@ -5,18 +5,16 @@ import globals from 'globals'
 import tseslint from 'typescript-eslint'
 
 export default [
+  {
+    ignores: ['**/build', '**/coverage', '**/node_modules', '**/.*', '**/*.d.ts', '.husky/'],
+  },
   ...tseslint.configs.recommended,
   {
-    ignores: ['**/build', '**/node_modules', '**/.*', '**/*.d.ts', '.husky/'],
-  },
-  {
   {{#if (includes plugins 'vitest')}}
-    files: ['src/**/*.{js,ts}', 'tests/**/*.{js,ts}'],
+    files: ['src/**/*.{js,ts}', 'tests/**/*.{js,ts}', 'scripts/**/*.{js,cjs}', '*.{js,ts}'],
   {{else}}
-    files: ['src/**/*.{js,ts}'],
+    files: ['src/**/*.{js,ts}', 'scripts/**/*.{js,cjs}', '*.{js,ts}'],
   {{/if}}
-  },
-  {
     languageOptions: {
       parser: tseslint.parser,
       parserOptions: {
@@ -49,6 +47,12 @@ export default [
           extensions: ['.js', '.ts'],
         },
       },
+    },
+  },
+  {
+    files: ['**/*.cjs'],
+    rules: {
+      '@typescript-eslint/no-require-imports': 'off',
     },
   },
 ]
