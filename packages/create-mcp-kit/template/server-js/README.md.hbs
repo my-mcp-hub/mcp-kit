@@ -1,6 +1,6 @@
 # {{projectName}}
 
-MCP JavaScript SDK 2.0 starter using the `2026-07-28` protocol{{#if (and (includes transports 'stdio') (includes transports 'streamable'))}} over stdio and Streamable HTTP{{else if (includes transports 'stdio')}} over stdio{{else}} over Streamable HTTP{{/if}}.
+{{#if (includes transports 'streamable')}}An Express-based {{/if}}MCP JavaScript SDK 2.0 server starter using the `2026-07-28` protocol{{#if (and (includes transports 'stdio') (includes transports 'streamable'))}} over stdio and Streamable HTTP{{else if (includes transports 'stdio')}} over stdio{{else}} over Streamable HTTP{{/if}}.
 
 The built-in knowledge-base example demonstrates how the three server primitives work together:
 
@@ -11,27 +11,72 @@ The built-in knowledge-base example demonstrates how the three server primitives
 The example is deterministic and has no external data dependency. Tool results include both
 `structuredContent` and text content, resources are Markdown documents with stable URIs, and missing
 resources return a protocol-level Resource Not Found error.
+{{#if (includes transports 'streamable')}}
+
+The HTTP endpoint uses `@modelcontextprotocol/express` with Express 5. Its default localhost binding
+validates the `Host` header to protect local development servers from DNS rebinding.
+{{/if}}
+
+## Development
+
+Requires Node.js 22 and npm 10. The repository's `.nvmrc`, `packageManager`, and lockfile define the
+supported local and CI toolchain.
 
 ```bash
+nvm use
 npm install
-{{#if (includes transports 'stdio')}}
-npm run dev:stdio
-{{else}}
-npm run dev:web
-{{/if}}
+{{#if (includes transports 'stdio')}}npm run dev:stdio{{else}}npm run dev:web{{/if}}
 ```
-{{#if (and (includes transports 'stdio') (includes transports 'streamable'))}}
+{{#if (includes transports 'streamable')}}
 
-Run the HTTP transport on `http://localhost:8401/mcp`:
+Run the Streamable HTTP transport on `http://localhost:8401/mcp`:
 
 ```bash
+cp .env.example .env
 npm run dev:web
 ```
+
+The local `.env` file is ignored by Git. `PORT` and `--port` must resolve to an integer from `1` to `65535`.
 {{/if}}
 
-Verify the configured transports:
+Run the same verification stages used by CI:
 
 ```bash
-npm test
-npm run build
+npm run check
 ```
+
+The individual stages are also available as{{#if (includes plugins 'style')}} `npm run lint`,{{/if}} `npm run build`{{#if (includes plugins 'vitest')}},
+`npm test`, and `npm run coverage`{{/if}}. The production build preserves the source module layout as
+Node.js 22 ESM under `build`; `build/index.js` remains the executable entrypoint.
+
+Inspect the npm package before publishing:
+
+```bash
+npm pack --dry-run
+```
+
+## Usage
+
+```bash
+{{#if (includes transports 'stdio')}}# Start with stdio transport{{#if (includes transports 'streamable')}} (default){{/if}}
+node build/index.js
+{{/if}}{{#if (includes transports 'streamable')}}
+# Start with Streamable HTTP
+node build/index.js web --port 8401
+{{/if}}
+
+# Print CLI help or the package version
+node build/index.js --help
+node build/index.js --version
+```
+
+## Environment Variables
+
+{{#if (includes transports 'streamable')}}- `PORT`: Streamable HTTP port (default: `8401`)
+{{/if}}- `NODE_ENV`: `production` for production builds or `local` for development
+{{#if (includes plugins 'inspector')}}- `MCP_INSPECTOR_API_TOKEN`: optional stable token for the MCP Inspector development session
+{{/if}}
+
+## License
+
+[MIT](LICENSE)
