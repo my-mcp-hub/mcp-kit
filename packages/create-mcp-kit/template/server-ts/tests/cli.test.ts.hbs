@@ -37,7 +37,7 @@ describe('CLI contract', () => {
   })
 {{/if}}
 
-  test('prints help without starting the default server', () => {
+  test('prints help without starting the default{{#if (includes transports 'stdio')}} stdio{{/if}} server', () => {
     const result = runCli(['--help'])
 
     expect(result.error).toBeUndefined()
@@ -63,6 +63,7 @@ describe('CLI contract', () => {
 
   test('rejects an invalid command-line port', () => {
     const result = runCli(['web', '--port', '0'])
+
     expect(result.status).toBe(1)
     expect(result.stdout).toBe('')
     expect(result.stderr).toContain('Port must be an integer between 1 and 65535.')
@@ -70,6 +71,7 @@ describe('CLI contract', () => {
 
   test('rejects an invalid PORT environment variable', () => {
     const result = runCli(['web'], { PORT: 'invalid' })
+
     expect(result.status).toBe(1)
     expect(result.stdout).toBe('')
     expect(result.stderr).toContain('Port must be an integer between 1 and 65535.')
@@ -79,6 +81,7 @@ describe('CLI contract', () => {
 
   test('does not accept web-only options for stdio', () => {
     const result = runCli(['stdio', '--port', '8401'])
+
     expect(result.status).toBe(1)
     expect(result.stdout).toBe('')
     expect(result.stderr).toContain('Unknown argument: port')
