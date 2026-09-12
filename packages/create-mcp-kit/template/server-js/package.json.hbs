@@ -62,47 +62,44 @@
     "express": "^5.2.1",
 {{/if}}
     "yargs": "^18.1.0",
-    "zod": "^4.4.3"
+    "zod": "^4.6.2"
   },
   "devDependencies": {
 {{#if (includes plugins 'style')}}
     "@biomejs/biome": "2.5.6",
 {{/if}}
 {{#if (includes plugins 'commitlint')}}
-    "@commitlint/cli": "^21.2.1",
-    "@commitlint/config-conventional": "^21.2.0",
+    "@commitlint/cli": "^21.2.2",
+    "@commitlint/config-conventional": "^21.2.2",
 {{/if}}
 {{#if (includes plugins 'inspector')}}
-    "@modelcontextprotocol/inspector": "^2.0.0",
+    "@modelcontextprotocol/inspector": "^2.6.0",
 {{/if}}
 {{#if (includes plugins 'vitest')}}
     "@modelcontextprotocol/client": "^2.0.0",
-    "@vitest/coverage-v8": "^4.1.10",
+    "@vitest/coverage-v8": "^5.0.0",
     "c8": "^12.0.0",
 {{/if}}
 {{#if (includes plugins 'changelog')}}
     "compare-func": "^2.0.0",
 {{/if}}
 {{#if (includes plugins 'changelog')}}
-    "conventional-changelog-angular": "^8.3.1",
+    "conventional-changelog-angular": "^9.4.0",
     "conventional-changelog-cli": "^5.0.0",
 {{/if}}
     "cross-env": "^10.1.0",
-    "esbuild": "^0.28.1",
+    "esbuild": "^0.28.2",
 {{#if (includes plugins 'style')}}
     "@eslint/js": "^9.39.5",
     "eslint": "^9.39.5",
     "eslint-plugin-import": "^2.32.0",
     "eslint-plugin-prettier": "^5.5.6",
-    "globals": "^17.8.0",
+    "globals": "^17.12.0",
 {{/if}}
     "glob": "^13.0.6",
     "husky": "^9.1.7",
 {{#if (includes plugins 'style')}}
-    "lint-staged": "^17.3.0",
-{{/if}}
-{{#if (includes plugins 'vitest')}}
-    "nyc": "^18.0.0",
+    "lint-staged": "^17.5.1",
 {{/if}}
 {{#if (includes plugins 'style')}}
     "prettier": "^3.9.6",
@@ -111,7 +108,7 @@
     "tree-kill": "^1.2.2",
 {{/if}}
 {{#if (includes plugins 'vitest')}}
-    "vitest": "^4.1.10",
+    "vitest": "^5.0.0",
 {{/if}}
     "rimraf": "^6.1.3"
   },
