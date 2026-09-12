@@ -35,7 +35,9 @@ export async function main(dependencies = defaultDependencies) {
     dependencies.logger.log('stdio demo:', stdioResult.selectedDocument)
 {{/if}}
 {{#if (includes transports 'streamable')}}
+{{#if (includes transports 'stdio')}}
 
+{{/if}}
     const httpResult = await dependencies.runStreamableHttpDemo()
     dependencies.logger.log('streamable HTTP demo:', httpResult.selectedDocument)
 {{/if}}
