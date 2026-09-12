@@ -9,15 +9,20 @@ The demo runs one complete workflow against the paired server:
 3. Read the selected `kb://documents/{documentId}` Resource.
 4. Get `review_document` with the selected document ID.
 
-{{#if (includes transports 'stdio')}}By default, the stdio example starts `@my-mcp-hub/node-mcp-server`.{{/if}}{{#if (includes transports 'streamable')}} The HTTP example connects
-to `http://localhost:8401/mcp`; set `MCP_SERVER_URL` to use another HTTP endpoint.{{/if}}
+{{#if (and (includes transports 'stdio') (includes transports 'streamable'))}}By default, the stdio example starts `@my-mcp-hub/node-mcp-server`, while the HTTP example connects
+to `http://localhost:8401/mcp`. Set `MCP_SERVER_URL` to use another HTTP endpoint, or pass options
+to `runStdioDemo` for another executable.{{else if (includes transports 'stdio')}}By default, the stdio example starts `@my-mcp-hub/node-mcp-server`. Pass options to `runStdioDemo`
+for another executable.{{else}}The HTTP example connects to `http://localhost:8401/mcp`. Set `MCP_SERVER_URL` to use another
+HTTP endpoint.{{/if}}
 
 ```bash
 npm install
 npm run dev
 ```
 
-The test suite expects the paired server project in `../mcp-server-starter` and verifies the same workflow over the configured transports:
+{{#if (and (includes transports 'stdio') (includes transports 'streamable'))}}The test suite starts the sibling `mcp-server-starter` repository and verifies the same workflow over
+both transports:{{else}}The test suite expects the paired server project in `../mcp-server-starter` and verifies the same
+workflow over the configured transport:{{/if}}
 
 ```bash
 npm test
