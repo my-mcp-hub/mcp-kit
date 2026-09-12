@@ -8,10 +8,12 @@ import { startStdioServer } from './services'
 {{else}}
 import { startWebServer } from './services'
 {{/if}}
-{{#if (includes transports 'streamable')}}
+{{#if (and (includes transports 'stdio') (includes transports 'streamable'))}}
 import { DEFAULT_PORT, getServerOptions, getWebServerOptions, parsePort } from './utils'
-{{else}}
+{{else if (includes transports 'stdio')}}
 import { getServerOptions } from './utils'
+{{else}}
+import { DEFAULT_PORT, getWebServerOptions, parsePort } from './utils'
 {{/if}}
 import 'dotenv/config'
 import pkg from '../package.json' with { type: 'json' }
