@@ -22,33 +22,68 @@ const createClientMock = (...args: [structuredContent?: unknown]) => {
     getPrompt: vi.fn().mockResolvedValue({ messages: [] }),
     getNegotiatedProtocolVersion: vi.fn().mockReturnValue('2026-07-28'),
   }
-  return { client: methods as unknown as Client, methods }
+
+  return {
+    client: methods as unknown as Client,
+    methods,
+  }
 }
 
 describe('runKnowledgeBaseDemo', () => {
-  beforeEach(() => vi.clearAllMocks())
+  beforeEach(() => {
+    vi.clearAllMocks()
+  })
 
   test('uses structured search data to read and review the selected document', async () => {
     const { client, methods } = createClientMock()
+
     const result = await runKnowledgeBaseDemo(client)
+
+    expect(methods.callTool).toHaveBeenCalledWith({
+      name: 'search_documents',
+      arguments: {
+        query: 'transport session',
+        limit: 1,
+      },
+    })
     expect(methods.readResource).toHaveBeenCalledWith({ uri: match.uri })
     expect(methods.getPrompt).toHaveBeenCalledWith({
       name: 'review_document',
-      arguments: { documentId: match.id, focus: 'risks' },
+      arguments: {
+        documentId: match.id,
+        focus: 'risks',
+      },
     })
     expect(result.selectedDocument).toEqual(match)
     expect(result.protocolVersion).toBe('2026-07-28')
   })
 
-  test.each([undefined, null, {}, { matches: 'invalid' }])('rejects invalid structured content: %j', async value => {
-    const { client, methods } = createClientMock(value)
-    await expect(runKnowledgeBaseDemo(client)).rejects.toThrow('search_documents returned invalid structuredContent')
-    expect(methods.readResource).not.toHaveBeenCalled()
-  })
+  test.each([undefined, null, {}, { matches: 'invalid' }])(
+    'rejects invalid structured content: %j',
+    async structuredContent => {
+      const { client, methods } = createClientMock(structuredContent)
+
+      await expect(runKnowledgeBaseDemo(client)).rejects.toThrow('search_documents returned invalid structuredContent')
+      expect(methods.readResource).not.toHaveBeenCalled()
+      expect(methods.getPrompt).not.toHaveBeenCalled()
+    },
+  )
 
   test('rejects a successful search with no matches', async () => {
-    const { client } = createClientMock({ matches: [] })
+    const { client, methods } = createClientMock({ matches: [] })
+
     await expect(runKnowledgeBaseDemo(client)).rejects.toThrow('No knowledge-base document matched the demo query')
+    expect(methods.readResource).not.toHaveBeenCalled()
+    expect(methods.getPrompt).not.toHaveBeenCalled()
+  })
+
+  test('propagates resource errors without requesting a prompt', async () => {
+    const { client, methods } = createClientMock()
+    const error = new Error('resource unavailable')
+    methods.readResource.mockRejectedValueOnce(error)
+
+    await expect(runKnowledgeBaseDemo(client)).rejects.toBe(error)
+    expect(methods.getPrompt).not.toHaveBeenCalled()
   })
 })
 {{/if}}

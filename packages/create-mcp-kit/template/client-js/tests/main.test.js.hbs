@@ -1,6 +1,6 @@
 {{#if (includes plugins 'vitest')}}
 import { afterEach, beforeEach, describe, expect, test, vi } from 'vitest'
-import { main } from '../src/index.js'
+import { main } from '@/index.js'
 
 const createDependencies = () => ({
 {{#if (includes transports 'stdio')}}
@@ -9,27 +9,61 @@ const createDependencies = () => ({
 {{#if (includes transports 'streamable')}}
   runStreamableHttpDemo: vi.fn().mockResolvedValue({ selectedDocument: { id: 'transport-and-lifecycle' } }),
 {{/if}}
-  logger: { log: vi.fn(), error: vi.fn() },
+  logger: {
+    log: vi.fn(),
+    error: vi.fn(),
+  },
 })
 
 describe('main', () => {
   const originalExitCode = process.exitCode
-  beforeEach(() => { process.exitCode = undefined })
-  afterEach(() => { process.exitCode = originalExitCode })
-  test('runs configured demos', async () => {
-    const dependencies = createDependencies()
-    await main(dependencies)
-    expect(dependencies.logger.error).not.toHaveBeenCalled()
+
+  beforeEach(() => {
+    process.exitCode = undefined
   })
-  test('sets a failing exit code when a demo fails', async () => {
+
+  afterEach(() => {
+    process.exitCode = originalExitCode
+  })
+
+  test('{{#if (and (includes transports 'stdio') (includes transports 'streamable'))}}runs both demos and reports their selected documents{{else}}runs the configured demo and reports its selected document{{/if}}', async () => {
     const dependencies = createDependencies()
-    const error = new Error('demo failed')
+
+    await main(dependencies)
+
 {{#if (includes transports 'stdio')}}
+    expect(dependencies.runStdioDemo).toHaveBeenCalledOnce()
+{{/if}}
+{{#if (includes transports 'streamable')}}
+    expect(dependencies.runStreamableHttpDemo).toHaveBeenCalledOnce()
+{{/if}}
+{{#if (includes transports 'stdio')}}
+    expect(dependencies.logger.log).toHaveBeenNthCalledWith(1, 'stdio demo:', { id: 'mcp-overview' })
+{{/if}}
+{{#if (includes transports 'streamable')}}
+    expect(dependencies.logger.log).toHaveBeenNthCalledWith({{#if (includes transports 'stdio')}}2{{else}}1{{/if}}, 'streamable HTTP demo:', {
+      id: 'transport-and-lifecycle',
+    })
+{{/if}}
+    expect(dependencies.logger.error).not.toHaveBeenCalled()
+    expect(process.exitCode).toBeUndefined()
+  })
+
+  test('sets a failing exit code{{#if (includes transports 'stdio')}} and stops when the stdio demo fails{{else}} when the HTTP demo fails{{/if}}', async () => {
+    const dependencies = createDependencies()
+{{#if (includes transports 'stdio')}}
+    const error = new Error('stdio failed')
     dependencies.runStdioDemo.mockRejectedValueOnce(error)
 {{else}}
+    const error = new Error('HTTP failed')
     dependencies.runStreamableHttpDemo.mockRejectedValueOnce(error)
 {{/if}}
+
     await main(dependencies)
+
+{{#if (and (includes transports 'stdio') (includes transports 'streamable'))}}
+    expect(dependencies.runStreamableHttpDemo).not.toHaveBeenCalled()
+{{/if}}
     expect(dependencies.logger.error).toHaveBeenCalledWith('Main error:', error)
     expect(process.exitCode).toBe(1)
   })
