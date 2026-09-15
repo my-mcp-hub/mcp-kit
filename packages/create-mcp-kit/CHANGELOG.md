@@ -1,5 +1,25 @@
 # create-mcp-kit
 
+## 1.0.4
+
+### Patch Changes
+
+- [`89faa86`](https://github.com/my-mcp-hub/mcp-kit/commit/89faa86ee3896b4509184eeae13cd9c2ac582960) Thanks [@zhensherlock](https://github.com/zhensherlock)! - docs(create-mcp-kit): clarify generated client transport setup
+
+- [`e83a9de`](https://github.com/my-mcp-hub/mcp-kit/commit/e83a9deb4f6b3103f2e76f74a974bf66ef9a707a) Thanks [@zhensherlock](https://github.com/zhensherlock)! - style(create-mcp-kit): format generated server alias tooling
+
+- [`17a25fb`](https://github.com/my-mcp-hub/mcp-kit/commit/17a25fb10459aa713272bcfb142196f1dbf42e53) Thanks [@zhensherlock](https://github.com/zhensherlock)! - chore(create-mcp-kit): refresh generated client dependencies
+
+- [`e11a2c5`](https://github.com/my-mcp-hub/mcp-kit/commit/e11a2c5380a40aaa0294ad0018e3675b7105a2e9) Thanks [@zhensherlock](https://github.com/zhensherlock)! - chore(create-mcp-kit): refresh generated server dependencies
+
+- [`7faeb92`](https://github.com/my-mcp-hub/mcp-kit/commit/7faeb9239def9fcb34559080e73ef9c2559f2826) Thanks [@zhensherlock](https://github.com/zhensherlock)! - fix(create-mcp-kit): support HTTP-only server startup
+
+- [`abb017a`](https://github.com/my-mcp-hub/mcp-kit/commit/abb017afbf3fec0b4bc7a1936dac74115c655183) Thanks [@zhensherlock](https://github.com/zhensherlock)! - style(create-mcp-kit): separate generated client demo output
+
+- [`f8cebd9`](https://github.com/my-mcp-hub/mcp-kit/commit/f8cebd95153f1ab12aa292f1ed020996b514e34d) Thanks [@zhensherlock](https://github.com/zhensherlock)! - test(create-mcp-kit): strengthen generated client workflows
+
+- [`65d2906`](https://github.com/my-mcp-hub/mcp-kit/commit/65d2906c45264f94c0a699da778818e30919e130) Thanks [@zhensherlock](https://github.com/zhensherlock)! - test(create-mcp-kit): strengthen generated server CLI coverage
+
 ## 1.0.3
 
 ### Patch Changes
