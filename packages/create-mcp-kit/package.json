@@ -54,7 +54,7 @@
     "url": "https://github.com/my-mcp-hub/mcp-kit/issues"
   },
   "dependencies": {
-    "@clack/prompts": "^1.7.0",
+    "@clack/prompts": "^1.8.1",
     "@mcp-tool-kit/shared": "workspace:^",
     "gradient-string": "^3.0.0",
     "handlebars": "^4.7.9",
